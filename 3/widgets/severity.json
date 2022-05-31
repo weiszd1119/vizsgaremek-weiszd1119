@@ -1,0 +1,1 @@
+[{"uid":"93b018d2c33446e8","name":"loginBlondeSite()","time":{"start":1654008852442,"stop":1654008853586,"duration":1144},"status":"passed","severity":"critical"},{"uid":"5f046b8b07315202","name":"navigateOnBlondeSite()","time":{"start":1654008820735,"stop":1654008852373,"duration":31638},"status":"broken","severity":"critical"}]
