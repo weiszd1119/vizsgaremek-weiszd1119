@@ -67,6 +67,7 @@ public class ExamTest {
     @Description("Navigation to the login page")
     @Severity(SeverityLevel.CRITICAL)
     public void fillContactOnBlondeSite() throws InterruptedException {
+        loginBlondeSite();
         driver.navigate().to("https://lennertamas.github.io/blondesite/contact/");
         Thread.sleep(2000);
         WebElement findYourName = driver.findElement(By.name("name"));
