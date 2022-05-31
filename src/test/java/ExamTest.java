@@ -68,6 +68,7 @@ public class ExamTest {
     public void fillContactOnBlondeSite() throws InterruptedException {
         loginBlondeSite();
         Thread.sleep(2000);
+        driver.navigate().to("https://lennertamas.github.io/blondesite/contact/");
         WebElement findYourName = driver.findElement(By.name("name"));
         findYourName.sendKeys("Neville Longbottom");
         WebElement findEmailAddress = driver.findElement(By.name("mail)"));
