@@ -65,8 +65,9 @@ public class ExamTest {
     @Story("Login to Blonde Site")
     @Description("Navigation to the login page")
     @Severity(SeverityLevel.CRITICAL)
-    public void fillContactOnBlondeSite() {
+    public void fillContactOnBlondeSite() throws InterruptedException {
         loginBlondeSite();
+        Thread.sleep(2000);
         WebElement findYourName = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[1]/input"));
         findYourName.sendKeys("Neville Longbottom");
         WebElement findEmailAddress = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[2]/input"));
