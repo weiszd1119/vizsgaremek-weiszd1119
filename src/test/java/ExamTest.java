@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -70,7 +71,7 @@ public class ExamTest {
         Thread.sleep(2000);
         WebElement findYourName = driver.findElement(By.name("name"));
         findYourName.sendKeys("Neville Longbottom");
-        WebElement findEmailAddress = driver.findElement(By.name("mail)"));
+        WebElement findEmailAddress = driver.findElement(By.name("mail"));
         findEmailAddress.sendKeys("nevillelongbottom@roxfort.com");
         WebElement findSubject = driver.findElement(By.name("title"));
         findSubject.sendKeys("I forgot when I take the exam");
