@@ -26,7 +26,7 @@ public class ExamTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-extensions");
-        options.addArguments("--headless");
+        options.addArguments("--headless"); //csak a háttérben fut a Chrome
         options.addArguments("--window-size=1920,1080");
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
@@ -67,7 +67,18 @@ public class ExamTest {
     @Description("Navigation to the login page")
     @Severity(SeverityLevel.CRITICAL)
     public void fillContactOnBlondeSite() throws InterruptedException {
-        loginBlondeSite();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--headless");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("start-maximized");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         driver.navigate().to("https://lennertamas.github.io/blondesite/contact/");
         Thread.sleep(2000);
         WebElement findYourName = driver.findElement(By.name("name"));
