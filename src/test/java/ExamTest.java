@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ExamTest {
     public WebDriver driver;
+
     @Test
     @Epic("Blonde Site")
     @Story("Login to Blonde Site")
@@ -38,9 +39,10 @@ public class ExamTest {
         WebElement findPassword = driver.findElement(By.id("password"));
         findPassword.sendKeys(inputPassword);
         findPassword.sendKeys(Keys.ENTER);
-        assertEquals("https://lennertamas.github.io/blondesite/",driver.getCurrentUrl());
+        assertEquals("https://lennertamas.github.io/blondesite/", driver.getCurrentUrl());
         Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
+
     @Test
     @Epic("Blonde Site")
     @Story("Login to Blonde Site")
@@ -50,11 +52,31 @@ public class ExamTest {
         loginBlondeSite();
         WebElement findSecondPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[2]/a"));
         findSecondPage.click();
-        assertEquals("https://lennertamas.github.io/blondesite/page/2/",driver.getCurrentUrl());
+        assertEquals("https://lennertamas.github.io/blondesite/page/2/", driver.getCurrentUrl());
         Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         WebElement findNextPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[3]/a"));
         findNextPage.click();
-        assertEquals("https://lennertamas.github.io/blondesite/page/2/",driver.getCurrentUrl());
+        assertEquals("https://lennertamas.github.io/blondesite/page/2/", driver.getCurrentUrl());
         Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+    }
+
+    @Test
+    @Epic("Blonde Site")
+    @Story("Login to Blonde Site")
+    @Description("Navigation to the login page")
+    @Severity(SeverityLevel.CRITICAL)
+    public void fillContactOnBlondeSite() {
+        loginBlondeSite();
+        WebElement findYourName = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[1]/input"));
+        findYourName.sendKeys("Neville Longbottom");
+        WebElement findEmailAddress = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[2]/input"));
+        findEmailAddress.sendKeys("nevillelongbottom@roxfort.com");
+        WebElement findSubject = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[2]/input"));
+        findSubject.sendKeys("I forgot when I take the exam");
+        WebElement findMessage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[4]/textarea"));
+        findSubject.sendKeys(" Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom");
+        WebElement findSubmitButton = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/input"));
+        findSubmitButton.click();
+        Allure.addAttachment("Screenshot of Contact Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 }
