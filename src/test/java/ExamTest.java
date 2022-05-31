@@ -38,7 +38,7 @@ public class ExamTest {
         WebElement findPassword = driver.findElement(By.id("password"));
         findPassword.sendKeys(inputPassword);
         findPassword.sendKeys(Keys.ENTER);
-        assertEquals("https://lennertamas.github.io/blondesite/landing.html",driver.getCurrentUrl());
+        assertEquals("https://lennertamas.github.io/blondesite/",driver.getCurrentUrl());
         Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
     @Test
