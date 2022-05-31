@@ -1,20 +1,22 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ExamTest {
-    WebDriver driver;
-
+    public WebDriver driver;
     @Test
+    @Epic("Blonde Site")
+    @Story("Login to Blonde Site")
+    @Description("Navigation to the login page")
+    @Severity(SeverityLevel.CRITICAL)
     public void loginBlondeSite() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -36,5 +38,23 @@ public class ExamTest {
         WebElement findPassword = driver.findElement(By.id("password"));
         findPassword.sendKeys(inputPassword);
         findPassword.sendKeys(Keys.ENTER);
+        assertEquals("https://lennertamas.github.io/blondesite/landing.html",driver.getCurrentUrl());
+        Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+    }
+    @Test
+    @Epic("Blonde Site")
+    @Story("Login to Blonde Site")
+    @Description("Navigation to the login page")
+    @Severity(SeverityLevel.CRITICAL)
+    public void navigateOnBlondeSite() {
+        loginBlondeSite();
+        WebElement findSecondPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[2]/a"));
+        findSecondPage.click();
+        assertEquals("https://lennertamas.github.io/blondesite/page/2/",driver.getCurrentUrl());
+        Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        WebElement findNextPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[3]/a"));
+        findNextPage.click();
+        assertEquals("https://lennertamas.github.io/blondesite/page/2/",driver.getCurrentUrl());
+        Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 }
