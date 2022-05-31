@@ -68,15 +68,15 @@ public class ExamTest {
     public void fillContactOnBlondeSite() throws InterruptedException {
         loginBlondeSite();
         Thread.sleep(2000);
-        WebElement findYourName = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[1]/input//div[2]"));
+        WebElement findYourName = driver.findElement(By.xpath(".//*[text()[contains(.,\"Your Name\")]]"));
         findYourName.sendKeys("Neville Longbottom");
-        WebElement findEmailAddress = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[1]/input//div[2]"));
+        WebElement findEmailAddress = driver.findElement(By.xpath(".//*[text()[contains(.,\"Email Address\")]]"));
         findEmailAddress.sendKeys("nevillelongbottom@roxfort.com");
-        WebElement findSubject = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[3]/input//div[2]"));
+        WebElement findSubject = driver.findElement(By.xpath(".//*[text()[contains(.,\"Subject\")]]"));
         findSubject.sendKeys("I forgot when I take the exam");
-        WebElement findMessage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[4]/textarea"));
+        WebElement findMessage = driver.findElement(By.xpath(".//*[text()[contains(.,\"Message\")]]"));
         findMessage.sendKeys(" Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom");
-        WebElement findSubmitButton = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[4]/textarea//div[2]"));
+        WebElement findSubmitButton = driver.findElement(By.xpath(".//*[text()[contains(.,\"Submit\")]]"));
         findSubmitButton.click();
         Allure.addAttachment("Screenshot of Contact Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
