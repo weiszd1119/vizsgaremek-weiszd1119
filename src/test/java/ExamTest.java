@@ -87,7 +87,7 @@ public class ExamTest {
         findEmailAddress.sendKeys("nevillelongbottom@roxfort.com");
         WebElement findSubject = driver.findElement(By.name("title"));
         findSubject.sendKeys("I forgot when I take the exam");
-        WebElement findMessage = driver.findElement(By.name("Message"));
+        WebElement findMessage = driver.findElement(By.name("message"));
         findMessage.sendKeys(" Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom");
         WebElement findSubmitButton = driver.findElement(By.cssSelector("#content > div > div > div.bg-white.col-span-3.lg\\:col-span-2.p-5.dark\\:bg-warmgray-900.dark\\:text-white > div > div > form > input"));
         findSubmitButton.click();
