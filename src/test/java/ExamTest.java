@@ -68,15 +68,15 @@ public class ExamTest {
     public void fillContactOnBlondeSite() throws InterruptedException {
         loginBlondeSite();
         Thread.sleep(2000);
-        WebElement findYourName = driver.findElement(By.xpath(".//*[text()[contains(.,\"Your Name\")]]"));
+        WebElement findYourName = driver.findElement(By.name("name"));
         findYourName.sendKeys("Neville Longbottom");
-        WebElement findEmailAddress = driver.findElement(By.xpath(".//*[text()[contains(.,\"Email Address\")]]"));
+        WebElement findEmailAddress = driver.findElement(By.name("mail)"));
         findEmailAddress.sendKeys("nevillelongbottom@roxfort.com");
-        WebElement findSubject = driver.findElement(By.xpath(".//*[text()[contains(.,\"Subject\")]]"));
+        WebElement findSubject = driver.findElement(By.name("title"));
         findSubject.sendKeys("I forgot when I take the exam");
-        WebElement findMessage = driver.findElement(By.xpath(".//*[text()[contains(.,\"Message\")]]"));
+        WebElement findMessage = driver.findElement(By.name("Message"));
         findMessage.sendKeys(" Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom");
-        WebElement findSubmitButton = driver.findElement(By.xpath(".//*[text()[contains(.,\"Submit\")]]"));
+        WebElement findSubmitButton = driver.findElement(By.cssSelector("#content > div > div > div.bg-white.col-span-3.lg\\:col-span-2.p-5.dark\\:bg-warmgray-900.dark\\:text-white > div > div > form > input");
         findSubmitButton.click();
         Allure.addAttachment("Screenshot of Contact Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
