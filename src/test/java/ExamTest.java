@@ -68,15 +68,15 @@ public class ExamTest {
     public void fillContactOnBlondeSite() throws InterruptedException {
         loginBlondeSite();
         Thread.sleep(2000);
-        WebElement findYourName = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[1]/input"));
+        WebElement findYourName = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[1]/input//div[2]"));
         findYourName.sendKeys("Neville Longbottom");
-        WebElement findEmailAddress = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[2]/input"));
+        WebElement findEmailAddress = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[1]/input//div[2]"));
         findEmailAddress.sendKeys("nevillelongbottom@roxfort.com");
-        WebElement findSubject = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[2]/input"));
+        WebElement findSubject = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[3]/input//div[2]"));
         findSubject.sendKeys("I forgot when I take the exam");
         WebElement findMessage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[4]/textarea"));
-        findSubject.sendKeys(" Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom");
-        WebElement findSubmitButton = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/input"));
+        findMessage.sendKeys(" Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom");
+        WebElement findSubmitButton = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/div/form/div[4]/textarea//div[2]"));
         findSubmitButton.click();
         Allure.addAttachment("Screenshot of Contact Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
