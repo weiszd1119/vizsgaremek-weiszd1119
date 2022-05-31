@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Tue May 31 16:12:33 GMT 2022","Tue May 31 16:13:04 GMT 2022","31271","","ExamTest","","ExamTest","navigateOnBlondeSite","navigateOnBlondeSite()","Navigation to the login page"
+"broken","Tue May 31 16:11:59 GMT 2022","Tue May 31 16:12:33 GMT 2022","34066","","ExamTest","","ExamTest","fillContactOnBlondeSite","fillContactOnBlondeSite()","Navigation to the login page"
+"passed","Tue May 31 16:13:04 GMT 2022","Tue May 31 16:13:05 GMT 2022","1147","","ExamTest","","ExamTest","loginBlondeSite","loginBlondeSite()","Navigation to the login page"
