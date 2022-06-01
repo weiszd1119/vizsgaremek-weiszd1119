@@ -13,17 +13,16 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 public class ExamTest {
-
-    public static WebDriver driver;
-
+    WebDriver driver;
     @BeforeEach
+    @Test
     @Epic("Blonde Site")
-    @Story("Start Driver")
-    @Description("Start Driver Before Each Test")
+    @Story("Login to Blonde Site")
+    @Description("Navigation to the login page and login to the site")
     @Severity(SeverityLevel.CRITICAL)
-    public void startDriver() throws InterruptedException {
-        Thread.sleep(5000);
+    public void loginBlondeSite() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
@@ -36,15 +35,6 @@ public class ExamTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-    }
-
-    @BeforeEach
-    @Test
-    @Epic("Blonde Site")
-    @Story("Login to Blonde Site")
-    @Description("Navigation to the login page and login to the site")
-    @Severity(SeverityLevel.CRITICAL)
-    public void loginBlondeSite() {
         driver.navigate().to("https://lennertamas.github.io/blondesite/");
         String inputUserName = "beckz";
         WebElement findUserName = driver.findElement(By.id("email"));
@@ -62,6 +52,26 @@ public class ExamTest {
     @Description("Navigation to the login page")
     @Severity(SeverityLevel.NORMAL)
     public void navigateOnBlondeSite() {
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--headless"); //csak a háttérben fut a Chrome
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("start-maximized");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        driver.navigate().to("https://lennertamas.github.io/blondesite/");
+        String inputUserName = "beckz";
+        WebElement findUserName = driver.findElement(By.id("email"));
+        findUserName.sendKeys(inputUserName);
+        String inputPassword = "30y123";
+        WebElement findPassword = driver.findElement(By.id("password"));
+        findPassword.sendKeys(inputPassword);
+        findPassword.sendKeys(Keys.ENTER);
         WebElement findSecondPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[2]/a"));
         findSecondPage.click();
         assertEquals("https://lennertamas.github.io/blondesite/page/2/", driver.getCurrentUrl());
@@ -77,6 +87,18 @@ public class ExamTest {
     @Description("Navigation to the login page")
     @Severity(SeverityLevel.NORMAL)
     public void fillContactOnBlondeSite() throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--headless"); //csak a háttérben fut a Chrome
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("start-maximized");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         driver.navigate().to("https://lennertamas.github.io/blondesite/contact/");
         Thread.sleep(2000);
         WebElement findYourName = driver.findElement(By.name("name"));
