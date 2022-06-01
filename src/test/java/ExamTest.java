@@ -15,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ExamTest {
 
+    public WebDriver driver;
+
     @BeforeEach
     @Epic("Blonde Site")
     @Story("Start Driver")
@@ -34,8 +36,6 @@ public class ExamTest {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
-
-    public WebDriver driver;
 
     @BeforeEach
     @Test
@@ -86,6 +86,7 @@ public class ExamTest {
         findSubject.sendKeys("I forgot when I take the exam");
         WebElement findMessage = driver.findElement(By.name("message"));
         findMessage.sendKeys(" Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom");
+        Allure.addAttachment("Screenshot of Contact Page (text shown)", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         WebElement findSubmitButton = driver.findElement(By.cssSelector("#content > div > div > div.bg-white.col-span-3.lg\\:col-span-2.p-5.dark\\:bg-warmgray-900.dark\\:text-white > div > div > form > input"));
         findSubmitButton.click();
     }
