@@ -9,6 +9,8 @@ public class SiteFactory {
         {
             case "LoginToSite":
                 return new LoginToSite(driver);
+            case "RegisterToSite":
+                return new RegisterToSite(driver);
             default:
                 return null;
         }

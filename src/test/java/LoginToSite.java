@@ -8,9 +8,9 @@ public class LoginToSite extends StartDriver {
     private static final String inputPassword = "30y123";
     private static final WebElement findUserName = driver.findElement(By.id("email"));
     private static final WebElement findPassword = driver.findElement(By.id("password"));
-    private static final WebElement findLoginButton = driver.findElement(By.xpath("//*[@id=\"login\"]/form/div[4]/button")); //Ez az alsó register
+    private static final WebElement findLoginButton = driver.findElement(By.xpath("//*[@id=\"login\"]/form/div[4]/button"));
 
-
+    //Konstruktor
     public LoginToSite(WebDriver startdriver)
     {
         super(startdriver);

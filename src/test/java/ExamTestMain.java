@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class ExamTestMain {
+        
     WebDriver driver;
 
     @BeforeEach
@@ -52,24 +53,14 @@ public class ExamTestMain {
     @Description("Navigation to the Register page and register to the site")
     @Severity(SeverityLevel.CRITICAL)
     public void registerToBlondeSite() {
-        driver.navigate().to("https://lennertamas.github.io/blondesite/");
-        WebElement findRegisterTab = driver.findElement(By.id("register-form-button")); //Ez a felső register
-        findRegisterTab.click();
-        WebElement findRegUserName = driver.findElement(By.id("register-username"));
-        String inputRegUserName = "Neville Longbottom";
-        findRegUserName.sendKeys(inputRegUserName);
-        WebElement findRegPassword = driver.findElement(By.id("register-password"));
-        String inputRegPassword = "LUnaLOvegood1119";
-        findRegPassword.sendKeys(inputRegPassword);
-        WebElement findRegEmail = driver.findElement(By.id("register-email"));
-        String inputRegEmail = "nevillelongbottom@roxfort.com";
-        findRegEmail.sendKeys(inputRegEmail);
-        WebElement findRegDescription = driver.findElement(By.id("register-description"));
-        String inputRegDescription = "Student at Roxfort";
-        findRegDescription.sendKeys(inputRegDescription);
-        Allure.addAttachment("Screenshot of Register Page (text shown)", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-        WebElement findRegisterButton = driver.findElement(By.xpath("//*[@id=\"register\"]/form/div[6]/button")); //Ez az alsó register
-        findRegisterButton.click();
+        RegisterToSite loginToSite = (RegisterToSite) SiteFactory.Create("RegisterToSite", driver);
+        RegisterToSite.navigate();
+        RegisterToSite.pushregtab();
+        RegisterToSite.writeintoreguserfield();
+        RegisterToSite.writeintoregpasswordfield();
+        RegisterToSite.writeintoregemailfield();
+        RegisterToSite.writeintoregdescriptionfield();
+        RegisterToSite.pushregbutton();
     }
 
     @Test
