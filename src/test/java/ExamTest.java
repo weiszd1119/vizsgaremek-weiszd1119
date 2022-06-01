@@ -64,7 +64,6 @@ public class ExamTest {
         WebElement findSecondPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[2]/a"));
         findSecondPage.click();
         assertEquals("https://lennertamas.github.io/blondesite/page/2/", driver.getCurrentUrl());
-        Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         WebElement findNextPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[3]/a"));
         findNextPage.click();
         assertEquals("https://lennertamas.github.io/blondesite/page/2/", driver.getCurrentUrl());
@@ -86,6 +85,7 @@ public class ExamTest {
         findSubject.sendKeys("I forgot when I take the exam");
         WebElement findMessage = driver.findElement(By.name("message"));
         findMessage.sendKeys(" Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom");
+        Allure.addAttachment("Screenshot of Contact Page, text in boxes shown", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         WebElement findSubmitButton = driver.findElement(By.cssSelector("#content > div > div > div.bg-white.col-span-3.lg\\:col-span-2.p-5.dark\\:bg-warmgray-900.dark\\:text-white > div > div > form > input"));
         findSubmitButton.click();
     }
