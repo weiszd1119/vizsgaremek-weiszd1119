@@ -27,7 +27,7 @@ public class LoginToSite extends StartDriver {
     }
     public static void writeintopasswordfield()
     {
-        findPassword.sendKeys(inputUserName);
+        findPassword.sendKeys(inputPassword);
     }
 
     public static void pressloginbutton()

@@ -44,6 +44,7 @@ public class ExamTestMain {
         LoginToSite.navigate();
         LoginToSite.writeintouserfield();
         LoginToSite.writeintopasswordfield();
+        LoginToSite.pressloginbutton();
         }
     @Test
     @Epic("Blonde Site")
