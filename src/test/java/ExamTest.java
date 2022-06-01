@@ -37,10 +37,11 @@ public class ExamTest {
 
     public WebDriver driver;
 
+    @AfterEach
     @Test
     @Epic("Blonde Site")
     @Story("Login to Blonde Site")
-    @Description("Navigation to the login page")
+    @Description("Navigation to the login page and login to the site")
     @Severity(SeverityLevel.NORMAL)
     public void loginBlondeSite() {
         driver.navigate().to("https://lennertamas.github.io/blondesite/");
@@ -52,7 +53,6 @@ public class ExamTest {
         findPassword.sendKeys(inputPassword);
         findPassword.sendKeys(Keys.ENTER);
         assertEquals("https://lennertamas.github.io/blondesite/", driver.getCurrentUrl());
-        Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
     @Test
@@ -61,7 +61,6 @@ public class ExamTest {
     @Description("Navigation to the login page")
     @Severity(SeverityLevel.NORMAL)
     public void navigateOnBlondeSite() {
-        loginBlondeSite();
         WebElement findSecondPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[2]/a"));
         findSecondPage.click();
         assertEquals("https://lennertamas.github.io/blondesite/page/2/", driver.getCurrentUrl());
@@ -69,7 +68,6 @@ public class ExamTest {
         WebElement findNextPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[3]/a"));
         findNextPage.click();
         assertEquals("https://lennertamas.github.io/blondesite/page/2/", driver.getCurrentUrl());
-        Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
     @Test
@@ -78,18 +76,6 @@ public class ExamTest {
     @Description("Navigation to the login page")
     @Severity(SeverityLevel.NORMAL)
     public void fillContactOnBlondeSite() throws InterruptedException {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--headless");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("start-maximized");
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
         driver.navigate().to("https://lennertamas.github.io/blondesite/contact/");
         Thread.sleep(2000);
         WebElement findYourName = driver.findElement(By.name("name"));
@@ -102,8 +88,6 @@ public class ExamTest {
         findMessage.sendKeys(" Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom");
         WebElement findSubmitButton = driver.findElement(By.cssSelector("#content > div > div > div.bg-white.col-span-3.lg\\:col-span-2.p-5.dark\\:bg-warmgray-900.dark\\:text-white > div > div > form > input"));
         findSubmitButton.click();
-        Allure.addAttachment("Screenshot of Contact Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-
     }
     @AfterEach
     @Epic("Blonde Site")
