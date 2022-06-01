@@ -64,6 +64,7 @@ public class ExamTest {
         WebElement findSecondPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[2]/a"));
         findSecondPage.click();
         assertEquals("https://lennertamas.github.io/blondesite/page/2/", driver.getCurrentUrl());
+        Allure.addAttachment("Screenshot of Landing Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         WebElement findNextPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[3]/a"));
         findNextPage.click();
         assertEquals("https://lennertamas.github.io/blondesite/page/2/", driver.getCurrentUrl());
