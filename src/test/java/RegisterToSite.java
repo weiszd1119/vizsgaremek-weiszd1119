@@ -8,44 +8,44 @@ public class RegisterToSite extends StartDriver {
     private static final String inputRegPassword = "Moon1119";
     private static final String inputRegEmail = "remuslupin@roxfort.com";
     private static final String inputRegDescription = "Teacher at Roxfort";
-    private static final WebElement findRegisterTab = driver.findElement(By.id("register-form-button")); //Ez a felső register
-    private static final WebElement findRegUserName = driver.findElement(By.id("register-username"));
-    private static final WebElement findRegPassword = driver.findElement(By.id("register-password"));
-    private static final WebElement findRegEmail = driver.findElement(By.id("register-email"));
-    private static final WebElement findRegDescription = driver.findElement(By.id("register-description"));
-    private static final WebElement findRegisterButton = driver.findElement(By.xpath("//*[@id=\"register\"]/form/div[6]/button"));
+    private final By findRegisterTab = By.id("register-form-button"); //Ez a felső register
+    private final By findRegUserName = By.id("register-username");
+    private final By findRegPassword = By.id("register-password");
+    private final By findRegEmail = By.id("register-email");
+    private final By findRegDescription = By.id("register-description");
+    private final By findRegisterButton = By.xpath("//*[@id=\"register\"]/form/div[6]/button");
 
     //Konstruktor
     public RegisterToSite(WebDriver startdriver) {
         super(startdriver);
     }
 
-    public static void navigate() {
+    public void navigate() {
         driver.navigate().to(url);
     }
 
-    public static void writeintoreguserfield() {
-        findRegUserName.sendKeys(inputRegUserName);
+    public void writeintoreguserfield() {
+        driver.findElement(findRegUserName).sendKeys(inputRegUserName);
     }
 
-    public static void writeintoregpasswordfield() {
-        findRegPassword.sendKeys(inputRegPassword);
+    public void writeintoregpasswordfield() {
+        driver.findElement(findRegPassword).sendKeys(inputRegPassword);
     }
 
-    public static void writeintoregemailfield() {
-        findRegEmail.sendKeys(inputRegEmail);
+    public void writeintoregemailfield() {
+        driver.findElement(findRegEmail).sendKeys(inputRegEmail);
     }
 
-    public static void writeintoregdescriptionfield() {
-        findRegDescription.sendKeys(inputRegDescription);
+    public void writeintoregdescriptionfield() {
+        driver.findElement(findRegDescription).sendKeys(inputRegDescription);
     }
 
-    public static void pushregtab() {
-        findRegisterTab.click();
+    public void pushregtab() {
+        driver.findElement(findRegisterTab).click();
     }
 
-    public static void pushregbutton() {
-        findRegisterButton.click();
+    public void pushregbutton() {
+        driver.findElement(findRegisterButton).click();
     }
 }
 

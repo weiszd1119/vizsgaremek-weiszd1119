@@ -1,4 +1,4 @@
-//Main: Driver konfiguárálása, tesztek futtatása
+//Main: Driver konfigurálása, tesztek futtatása
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class ExamTestMain {
-        
+
     WebDriver driver;
 
     @BeforeEach
@@ -53,14 +53,14 @@ public class ExamTestMain {
     @Description("Navigation to the Register page and register to the site")
     @Severity(SeverityLevel.CRITICAL)
     public void registerToBlondeSite() {
-        RegisterToSite loginToSite = (RegisterToSite) SiteFactory.Create("RegisterToSite", driver);
-        RegisterToSite.navigate();
-        RegisterToSite.pushregtab();
-        RegisterToSite.writeintoreguserfield();
-        RegisterToSite.writeintoregpasswordfield();
-        RegisterToSite.writeintoregemailfield();
-        RegisterToSite.writeintoregdescriptionfield();
-        RegisterToSite.pushregbutton();
+        RegisterToSite registerToSite = (RegisterToSite) SiteFactory.Create("RegisterToSite", driver);
+        registerToSite.navigate();
+        registerToSite.pushregtab();
+        registerToSite.writeintoreguserfield();
+        registerToSite.writeintoregpasswordfield();
+        registerToSite.writeintoregemailfield();
+        registerToSite.writeintoregdescriptionfield();
+        registerToSite.pushregbutton();
     }
 
     @Test
