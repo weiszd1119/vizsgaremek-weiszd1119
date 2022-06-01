@@ -37,12 +37,12 @@ public class ExamTest {
 
     public WebDriver driver;
 
-    @AfterEach
+    @BeforeEach
     @Test
     @Epic("Blonde Site")
     @Story("Login to Blonde Site")
     @Description("Navigation to the login page and login to the site")
-    @Severity(SeverityLevel.NORMAL)
+    @Severity(SeverityLevel.CRITICAL)
     public void loginBlondeSite() {
         driver.navigate().to("https://lennertamas.github.io/blondesite/");
         String inputUserName = "beckz";
