@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ExamTest {
     WebDriver driver;
-    @BeforeEach
     @Test
     @Epic("Blonde Site")
     @Story("Login to Blonde Site")
@@ -44,6 +43,43 @@ public class ExamTest {
         findPassword.sendKeys(inputPassword);
         findPassword.sendKeys(Keys.ENTER);
         assertEquals("https://lennertamas.github.io/blondesite/", driver.getCurrentUrl());
+    }
+    @Test
+    @Epic("Blonde Site")
+    @Story("Register to Blonde Site")
+    @Description("Navigation to the Register page and register to the site")
+    @Severity(SeverityLevel.CRITICAL)
+    public void registerToBlondeSite() {
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--headless");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("start-maximized");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        driver.navigate().to("https://lennertamas.github.io/blondesite/");
+        WebElement findRegisterTab = driver.findElement(By.id("register-form-button")); //Ez a felső register
+        findRegisterTab.click();
+        WebElement findRegUserName = driver.findElement(By.id("register-username"));
+        String inputRegUserName = "Neville Longbottom";
+        findRegUserName.sendKeys(inputRegUserName);
+        WebElement findRegPassword = driver.findElement(By.id("register-password"));
+        String inputRegPassword = "LUnaLOvegood1119";
+        findRegPassword.sendKeys(inputRegPassword);
+        WebElement findRegEmail = driver.findElement(By.id("register-email"));
+        String inputRegEmail = "nevillelongbottom@roxfort.com";
+        findRegEmail.sendKeys(inputRegEmail);
+        WebElement findRegDescription = driver.findElement(By.id("register-description"));
+        String inputRegDescription = "Student at Roxfort";
+        findRegDescription.sendKeys(inputRegDescription);
+        Allure.addAttachment("Screenshot of Register Page (text shown)", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        WebElement findRegisterButton = driver.findElement(By.xpath("//*[@id=\"register\"]/form/div[6]/button")); //Ez az alsó register
+        findRegisterButton.click();
     }
 
     @Test
