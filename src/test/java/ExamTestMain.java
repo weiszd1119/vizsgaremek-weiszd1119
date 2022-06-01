@@ -1,8 +1,10 @@
+//Main: Driver konfiguárálása, tesztek futtatása
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class ExamTest {
+public class ExamTestMain {
     WebDriver driver;
 
     @BeforeEach
@@ -38,16 +40,11 @@ public class ExamTest {
     @Description("Navigation to the login page and login to the site")
     @Severity(SeverityLevel.CRITICAL)
     public void loginBlondeSite() {
-        driver.navigate().to("https://lennertamas.github.io/blondesite/");
-        String inputUserName = "beckz";
-        WebElement findUserName = driver.findElement(By.id("email"));
-        findUserName.sendKeys(inputUserName);
-        String inputPassword = "30y123";
-        WebElement findPassword = driver.findElement(By.id("password"));
-        findPassword.sendKeys(inputPassword);
-        findPassword.sendKeys(Keys.ENTER);
-        assertEquals("https://lennertamas.github.io/blondesite/", driver.getCurrentUrl());
-    }
+        LoginToSite loginToSite = (LoginToSite) SiteFactory.Create("LoginToSite", driver);
+        LoginToSite.navigate();
+        LoginToSite.writeintouserfield();
+        LoginToSite.writeintopasswordfield();
+        }
     @Test
     @Epic("Blonde Site")
     @Story("Register to Blonde Site")
