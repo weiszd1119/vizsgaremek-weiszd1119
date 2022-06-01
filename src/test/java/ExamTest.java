@@ -15,14 +15,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ExamTest {
 
-    public WebDriver driver;
+    public static WebDriver driver;
 
     @BeforeEach
     @Epic("Blonde Site")
     @Story("Start Driver")
     @Description("Start Driver Before Each Test")
     @Severity(SeverityLevel.CRITICAL)
-    public void startDriver() {
+    public void startDriver() throws InterruptedException {
+        Thread.sleep(5000);
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
