@@ -1,5 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
@@ -12,14 +14,13 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ExamTest {
-    public WebDriver driver;
 
-    @Test
+    @BeforeEach
     @Epic("Blonde Site")
-    @Story("Login to Blonde Site")
-    @Description("Navigation to the login page")
+    @Story("Start Driver")
+    @Description("Start Driver Before Each Test")
     @Severity(SeverityLevel.CRITICAL)
-    public void loginBlondeSite() {
+    public void startDriver() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
@@ -32,6 +33,16 @@ public class ExamTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+    }
+
+    public WebDriver driver;
+
+    @Test
+    @Epic("Blonde Site")
+    @Story("Login to Blonde Site")
+    @Description("Navigation to the login page")
+    @Severity(SeverityLevel.NORMAL)
+    public void loginBlondeSite() {
         driver.navigate().to("https://lennertamas.github.io/blondesite/");
         String inputUserName = "beckz";
         WebElement findUserName = driver.findElement(By.id("email"));
@@ -48,7 +59,7 @@ public class ExamTest {
     @Epic("Blonde Site")
     @Story("Login to Blonde Site")
     @Description("Navigation to the login page")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.NORMAL)
     public void navigateOnBlondeSite() {
         loginBlondeSite();
         WebElement findSecondPage = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/nav/ul/li[2]/a"));
@@ -65,7 +76,7 @@ public class ExamTest {
     @Epic("Blonde Site")
     @Story("Login to Blonde Site")
     @Description("Navigation to the login page")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.NORMAL)
     public void fillContactOnBlondeSite() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -92,5 +103,14 @@ public class ExamTest {
         WebElement findSubmitButton = driver.findElement(By.cssSelector("#content > div > div > div.bg-white.col-span-3.lg\\:col-span-2.p-5.dark\\:bg-warmgray-900.dark\\:text-white > div > div > form > input"));
         findSubmitButton.click();
         Allure.addAttachment("Screenshot of Contact Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+    }
+    @AfterEach
+    @Epic("Blonde Site")
+    @Story("Make Screenshot")
+    @Description("Make Screenshot After Each Test")
+    @Severity(SeverityLevel.CRITICAL)
+    public void makeScreenshot() {
+        Allure.addAttachment("Screenshot of Tested Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 }
