@@ -1,4 +1,5 @@
 //Main: Driver konfigurálása, tesztek futtatása
+//Lokális futtatásnál a headless-t ki kell kapcsolni, viszont a GitHub-os futtatás csak bekapcsolt headless-szel működik
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
