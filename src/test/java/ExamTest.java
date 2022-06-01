@@ -16,24 +16,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ExamTest {
     WebDriver driver;
-    @Test
-    @Epic("Blonde Site")
-    @Story("Login to Blonde Site")
-    @Description("Navigation to the login page and login to the site")
-    @Severity(SeverityLevel.CRITICAL)
-    public void loginBlondeSite() {
+
+    @BeforeEach
+    public void setup() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-extensions");
-        options.addArguments("--headless"); //csak a háttérben fut a Chrome
+        options.addArguments("--headless");
         options.addArguments("--window-size=1920,1080");
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+    }
+    @Test
+    @Epic("Blonde Site")
+    @Story("Login to Blonde Site")
+    @Description("Navigation to the login page and login to the site")
+    @Severity(SeverityLevel.CRITICAL)
+    public void loginBlondeSite() {
         driver.navigate().to("https://lennertamas.github.io/blondesite/");
         String inputUserName = "beckz";
         WebElement findUserName = driver.findElement(By.id("email"));
@@ -50,18 +54,6 @@ public class ExamTest {
     @Description("Navigation to the Register page and register to the site")
     @Severity(SeverityLevel.CRITICAL)
     public void registerToBlondeSite() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--headless");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("start-maximized");
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
         driver.navigate().to("https://lennertamas.github.io/blondesite/");
         WebElement findRegisterTab = driver.findElement(By.id("register-form-button")); //Ez a felső register
         findRegisterTab.click();
@@ -88,18 +80,6 @@ public class ExamTest {
     @Description("Navigation to the login page")
     @Severity(SeverityLevel.NORMAL)
     public void navigateOnBlondeSite() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--headless"); //csak a háttérben fut a Chrome
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("start-maximized");
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
         driver.navigate().to("https://lennertamas.github.io/blondesite/");
         String inputUserName = "beckz";
         WebElement findUserName = driver.findElement(By.id("email"));
@@ -123,18 +103,6 @@ public class ExamTest {
     @Description("Navigation to the login page")
     @Severity(SeverityLevel.NORMAL)
     public void fillContactOnBlondeSite() throws InterruptedException {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--headless"); //csak a háttérben fut a Chrome
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("start-maximized");
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
         driver.navigate().to("https://lennertamas.github.io/blondesite/contact/");
         Thread.sleep(2000);
         WebElement findYourName = driver.findElement(By.name("name"));
