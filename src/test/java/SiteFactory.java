@@ -11,6 +11,10 @@ public class SiteFactory {
                 return new LoginToSite(driver);
             case "RegisterToSite":
                 return new RegisterToSite(driver);
+            case "NavigateOnSite":
+                return new NavigateOnSite(driver);
+            case "FillContactOnSite":
+                return new FillContactOnSite(driver);
             default:
                 return null;
         }

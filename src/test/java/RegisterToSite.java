@@ -3,11 +3,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class RegisterToSite extends StartDriver {
-    private static final String url = "https://lennertamas.github.io/blondesite/";
-    private static final String inputRegUserName = "Remus Lupin";
-    private static final String inputRegPassword = "Moon1119";
-    private static final String inputRegEmail = "remuslupin@roxfort.com";
-    private static final String inputRegDescription = "Teacher at Roxfort";
+    private final String url = "https://lennertamas.github.io/blondesite/";
+    private final String inputRegUserName = "Remus Lupin";
+    private final String inputRegPassword = "Moon1119";
+    private final String inputRegEmail = "remuslupin@roxfort.com";
+    private final String inputRegDescription = "Teacher at Roxfort";
     private final By findRegisterTab = By.id("register-form-button"); //Ez a felső register
     private final By findRegUserName = By.id("register-username");
     private final By findRegPassword = By.id("register-password");
