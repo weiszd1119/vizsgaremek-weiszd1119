@@ -15,6 +15,12 @@ public class SiteFactory {
                 return new NavigateOnSite(driver);
             case "FillContactOnSite":
                 return new FillContactOnSite(driver);
+            case "SearchOnSite":
+                return new SearchOnSite(driver);
+            case "TagsOnSite":
+                return new TagsOnSite(driver);
+            case "LinksOnSite":
+                return new LinksOnSite(driver);
             default:
                 return null;
         }

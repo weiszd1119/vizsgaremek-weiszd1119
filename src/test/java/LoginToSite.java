@@ -2,13 +2,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class LoginToSite extends StartDriver {
-    private final String url = "https://lennertamas.github.io/blondesite/";
-    private final String inputUserName = "Remus Lupin";
-    private final String inputPassword = "Moon1119";
-    private final WebElement findUserName = driver.findElement(By.id("email"));
-    private final WebElement findPassword = driver.findElement(By.id("password"));
-    private final WebElement findLoginButton = driver.findElement(By.xpath("//*[@id=\"login\"]/form/div[4]/button"));
+    private final String urlLogin = "https://lennertamas.github.io/blondesite/";
+    private final String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing.html";
+    private final String inputLoginUserName = "weiszd1119";
+    private final String inputLoginPassword = "TEmp1119";
+    private final By findLoginUserName = By.id("email");
+    private final By findLoginPassword = By.id("password");
+    private final By findLoginButton = By.xpath("//*[@id=\"login\"]/form/div[4]/button");
 
     //Konstruktor
     public LoginToSite(WebDriver startdriver) {
@@ -16,18 +19,21 @@ public class LoginToSite extends StartDriver {
     }
 
     public void navigate() {
-        driver.navigate().to(url);
+        driver.navigate().to(urlLogin);
     }
 
     public void writeintouserfield() {
-        findUserName.sendKeys(inputUserName);
+        driver.findElement(findLoginUserName).sendKeys(inputLoginUserName);
     }
 
     public void writeintopasswordfield() {
-        findPassword.sendKeys(inputPassword);
+        driver.findElement(findLoginPassword).sendKeys(inputLoginPassword);
     }
 
     public void pressloginbutton() {
-        findLoginButton.click();
+        driver.findElement(findLoginButton).click();
+    }
+    public void checkloginresult() {
+        assertEquals(expectedUrlLogin, driver.getCurrentUrl());
     }
 }

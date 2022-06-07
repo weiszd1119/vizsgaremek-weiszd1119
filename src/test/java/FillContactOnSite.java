@@ -1,9 +1,13 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class FillContactOnSite extends StartDriver {
-    private final String url = "https://lennertamas.github.io/blondesite/contact/";
+    private final String urlContact = "https://lennertamas.github.io/blondesite/contact/";
+    private final String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
     private final String inputContactYourName = "Neville Longbottom";
     private final String inputContactEmailAddress = "nevillelongbottom@roxfort.com";
     private final String inputContactSubject = "I forgot when I take the exam";
@@ -19,26 +23,46 @@ public class FillContactOnSite extends StartDriver {
     }
 
     public void navigate() {
-        driver.navigate().to(url);
+        driver.navigate().to(urlContact);
     }
+    public void navigateback() {driver.navigate().back();}
 
     public void writeintocontactyournameuserfield() {
         driver.findElement(findContactYourName).sendKeys(inputContactYourName);
+    }
+    public void deletefromcontactyournameuserfield() {
+        driver.findElement(findContactYourName).sendKeys(Keys.CONTROL,"a",Keys.DELETE);
     }
 
     public void writeintocontactemailaddress() {
         driver.findElement(findContactEmailAddress).sendKeys(inputContactEmailAddress);
     }
+    public void deletefromcontactemailaddress() {
+        driver.findElement(findContactEmailAddress).sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+    }
 
     public void writeintocontactsubject() {
         driver.findElement(findContactSubject).sendKeys(inputContactSubject);
+    }
+    public void deletefromcontactsubject() {
+        driver.findElement(findContactSubject).sendKeys(Keys.CONTROL,"a",Keys.DELETE);
     }
 
     public void writeintocontactmessage() {
         driver.findElement(findContactMessage).sendKeys(inputContactMessage);
     }
+    public void deletefromcontactmessage() {
+        driver.findElement(findContactMessage).sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+    }
 
     public void pushsubmitbutton() {
         driver.findElement(findContactSubmitButton).click();
     }
-}
+    public void checkcontactresult() {
+        assertEquals(expectedUrlContact, driver.getCurrentUrl());
+    }
+    /*
+    public void deletecontactresult() {
+    */
+
+    }

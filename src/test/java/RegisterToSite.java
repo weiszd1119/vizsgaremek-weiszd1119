@@ -1,13 +1,18 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class RegisterToSite extends StartDriver {
-    private final String url = "https://lennertamas.github.io/blondesite/";
-    private final String inputRegUserName = "Remus Lupin";
-    private final String inputRegPassword = "Moon1119";
-    private final String inputRegEmail = "remuslupin@roxfort.com";
-    private final String inputRegDescription = "Teacher at Roxfort";
+    private final String urlReg = "https://lennertamas.github.io/blondesite/";
+    private final String inputRegUserName = "weiszd1119";
+    private final String inputRegPassword = "TEmp1119";
+    private final String inputRegEmail = "yaraclen@gmail.com";
+    private final String inputRegDescription = "Test User in CC-TA";
+    private final String inputRegUserNameInvalid = "we1";
+    private final String inputRegPasswordInvalid = "a";
+    private final String inputRegEmailInvalid = "tz@@tz.com";
+    private final String inputRegDescriptionInvalid = "";
     private final By findRegisterTab = By.id("register-form-button"); //Ez a felső register
     private final By findRegUserName = By.id("register-username");
     private final By findRegPassword = By.id("register-password");
@@ -21,25 +26,39 @@ public class RegisterToSite extends StartDriver {
     }
 
     public void navigate() {
-        driver.navigate().to(url);
+        driver.navigate().to(urlReg);
     }
 
     public void writeintoreguserfield() {
         driver.findElement(findRegUserName).sendKeys(inputRegUserName);
     }
+    public void writeintoreguserfieldinvalid() {
+        driver.findElement(findRegUserName).sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+        driver.findElement(findRegUserName).sendKeys(inputRegUserNameInvalid);
+    }
 
     public void writeintoregpasswordfield() {
         driver.findElement(findRegPassword).sendKeys(inputRegPassword);
     }
+    public void writeintoregpasswordfieldinvalid() {
+        driver.findElement(findRegPassword).sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+        driver.findElement(findRegPassword).sendKeys(inputRegPasswordInvalid);
 
+    }
     public void writeintoregemailfield() {
         driver.findElement(findRegEmail).sendKeys(inputRegEmail);
     }
-
+    public void writeintoregemailfieldinvalid() {
+        driver.findElement(findRegEmail).sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+        driver.findElement(findRegEmail).sendKeys(inputRegEmailInvalid);
+    }
     public void writeintoregdescriptionfield() {
         driver.findElement(findRegDescription).sendKeys(inputRegDescription);
     }
-
+    public void writeintoregdescriptionfieldinvalid() {
+        driver.findElement(findRegDescription).sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+        driver.findElement(findRegDescription).sendKeys(inputRegDescriptionInvalid);
+    }
     public void pushregtab() {
         driver.findElement(findRegisterTab).click();
     }
@@ -48,27 +67,3 @@ public class RegisterToSite extends StartDriver {
         driver.findElement(findRegisterButton).click();
     }
 }
-
-
-
-
-    /*
-    driver.navigate().to("https://lennertamas.github.io/blondesite/");
-        WebElement findRegisterTab = driver.findElement(By.id("register-form-button")); //Ez a felső register
-        findRegisterTab.click();
-        WebElement findRegUserName = driver.findElement(By.id("register-username"));
-        String inputRegUserName = "Neville Longbottom";
-        findRegUserName.sendKeys(inputRegUserName);
-        WebElement findRegPassword = driver.findElement(By.id("register-password"));
-        String inputRegPassword = "LUnaLOvegood1119";
-        findRegPassword.sendKeys(inputRegPassword);
-        WebElement findRegEmail = driver.findElement(By.id("register-email"));
-        String inputRegEmail = "nevillelongbottom@roxfort.com";
-        findRegEmail.sendKeys(inputRegEmail);
-        WebElement findRegDescription = driver.findElement(By.id("register-description"));
-        String inputRegDescription = "Student at Roxfort";
-        findRegDescription.sendKeys(inputRegDescription);
-        Allure.addAttachment("Screenshot of Register Page (text shown)", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-        WebElement findRegisterButton = driver.findElement(By.xpath("//*[@id=\"register\"]/form/div[6]/button")); //Ez az alsó register
-        findRegisterButton.click();
-     */
