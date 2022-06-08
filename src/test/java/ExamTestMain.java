@@ -163,7 +163,16 @@ public class ExamTestMain {
         PagesOnSite pagesOnSite = (PagesOnSite) SiteFactory.Create("PagesOnSite", driver);
         Thread.sleep(5000);
         pagesOnSite.navigate();
-        pagesOnSite.clickonpagesbuttonandcheckresult();
+        pagesOnSite.clickonpagebutton();
+        pagesOnSite.checkresult();
+        pagesOnSite.clickonpagebutton();
+        pagesOnSite.checkresult();
+        pagesOnSite.clickonpagebutton();
+        pagesOnSite.checkresult();
+        pagesOnSite.clickonpagebutton();
+        pagesOnSite.checkresult();
+        pagesOnSite.clickonpagebutton();
+        pagesOnSite.checkresult();
     }
     @AfterEach
     @Epic("Blonde Site")
