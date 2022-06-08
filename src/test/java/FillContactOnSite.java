@@ -1,7 +1,11 @@
+//TODO findAlertMessage
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,11 +16,15 @@ public class FillContactOnSite extends StartDriver {
     private final String inputContactEmailAddress = "nevillelongbottom@roxfort.com";
     private final String inputContactSubject = "I forgot when I take the exam";
     private final String inputContactMessage = "Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom";
+    private final String inputAlertMessage = "Füllen Sie diese aus!";
     private final By findContactYourName = By.name("name");
     private final By findContactEmailAddress = By.name("mail");
     private final By findContactSubject = By.name("title");
     private final By findContactMessage = By.name("message");
     private final By findContactSubmitButton = By.cssSelector("#content > div > div > div.bg-white.col-span-3.lg\\:col-span-2.p-5.dark\\:bg-warmgray-900.dark\\:text-white > div > div > form > input");
+
+    // Figyelmeztető üzenet üres mező esetén
+    private final By findAlertMessageButton = By.xpath("//input[@id='lstNm']");
 
     public FillContactOnSite(WebDriver startdriver) {
         super(startdriver);
@@ -60,6 +68,11 @@ public class FillContactOnSite extends StartDriver {
     }
     public void checkcontactresult() {
         assertEquals(expectedUrlContact, driver.getCurrentUrl());
+    }
+
+    public void checkalertmessage() {
+        driver.findElement(findAlertMessageButton);
+        assertEquals(inputAlertMessage, new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='submitNext' and @value='Next']"))));
     }
     /*
     public void deletecontactresult() {

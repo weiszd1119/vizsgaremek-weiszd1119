@@ -104,6 +104,7 @@ public class ExamTestMain {
         fillContactOnSite.deletefromcontactsubject();
         fillContactOnSite.deletefromcontactmessage();
         fillContactOnSite.pushsubmitbutton();
+        // fillContactOnSite.checkalertmessage();
         // fillContactOnSite.deletecontactresult();
     }
     @Test
@@ -139,7 +140,7 @@ public class ExamTestMain {
         LinksOnSite linksOnSite = (LinksOnSite) SiteFactory.Create("LinksOnSite", driver);
         linksOnSite.navigate();
         Thread.sleep(5000);
-        //linksOnSite.writeintosearchfield();
+        linksOnSite.clickonlinksandcheckresult();
     }
 
     @Disabled
