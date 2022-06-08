@@ -21,6 +21,10 @@ public class SiteFactory {
                 return new TagsOnSite(driver);
             case "LinksOnSite":
                 return new LinksOnSite(driver);
+            case "ImageTest":
+                return new ImageTest(driver);
+            case "PagesOnSite":
+                return new PagesOnSite(driver);
             default:
                 return null;
         }

@@ -3,10 +3,7 @@
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -143,6 +140,30 @@ public class ExamTestMain {
         linksOnSite.navigate();
         Thread.sleep(5000);
         //linksOnSite.writeintosearchfield();
+    }
+
+    @Disabled
+    @Test
+    @Epic("Blonde Site")
+    @Story("Search on Blonde Site")
+    @Description("Search some expressions the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void imageOnBlondeSite() throws InterruptedException {
+        ImageTest imageTest = (ImageTest) SiteFactory.Create("ImageTest", driver);
+        imageTest.navigate();
+        Thread.sleep(5000);
+    }
+
+    @Test
+    @Epic("Blonde Site")
+    @Story("Search on Blonde Site")
+    @Description("Search some expressions the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void pagesOnBlondeSite() throws InterruptedException {
+        PagesOnSite pagesOnSite = (PagesOnSite) SiteFactory.Create("PagesOnSite", driver);
+        Thread.sleep(5000);
+        pagesOnSite.navigate();
+        pagesOnSite.clickonpagesbuttonandcheckresult();
     }
     @AfterEach
     @Epic("Blonde Site")
