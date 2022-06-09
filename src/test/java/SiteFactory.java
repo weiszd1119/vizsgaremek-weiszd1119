@@ -25,6 +25,10 @@ public class SiteFactory {
                 return new ImageTest(driver);
             case "PagesOnSite":
                 return new PagesOnSite(driver);
+            case "CssStyleTest":
+                return new CssStyleTest(driver);
+            case "TablesTest":
+                return new TablesTest(driver);
             default:
                 return null;
         }

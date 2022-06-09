@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.w3c.dom.css.CSSStyleSheet;
 
 import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
@@ -162,8 +163,8 @@ public class ExamTestMain {
     @Severity(SeverityLevel.NORMAL)
     public void pagesOnBlondeSite() throws InterruptedException {
         PagesOnSite pagesOnSite = (PagesOnSite) SiteFactory.Create("PagesOnSite", driver);
-        Thread.sleep(5000);
         pagesOnSite.navigate();
+        Thread.sleep(5000);
         pagesOnSite.clickonpagebutton();
         pagesOnSite.checkresult();
         pagesOnSite.clickonpagebutton();
@@ -175,6 +176,31 @@ public class ExamTestMain {
         pagesOnSite.clickonpagebutton();
         pagesOnSite.checkresult();
     }
+    @Test
+    @Epic("Blonde Site")
+    @Story("Search on Blonde Site")
+    @Description("Search some expressions the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void cssStyleOnBlondeSite() throws InterruptedException {
+        CssStyleTest cssStyleTest = (CssStyleTest) SiteFactory.Create("CssStyleTest", driver);
+        cssStyleTest.navigate();
+        Thread.sleep(5000);
+        cssStyleTest.clickonsetbutton();
+        // cssStyleTest.checkiconchange();
+    }
+
+    @Test
+    @Epic("Blonde Site")
+    @Story("Search on Blonde Site")
+    @Description("Search some expressions the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void tablesTestOnBlondeSite() throws InterruptedException {
+        TablesTest tablesTest = (TablesTest) SiteFactory.Create("TablesTest", driver);
+        tablesTest.navigate();
+        Thread.sleep(5000);
+        tablesTest.getNameTable();
+        tablesTest.checktableresult();
+        }
     @AfterEach
     @Epic("Blonde Site")
     @Story("Make Screenshot")
