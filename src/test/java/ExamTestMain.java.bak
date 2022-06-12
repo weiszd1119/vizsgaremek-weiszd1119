@@ -2,6 +2,7 @@
 // Lokális futtatásnál a headless-t ki kell kapcsolni, viszont a GitHub-os futtatás csak bekapcsolt headless-szel működik
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.*;
 import jdk.jfr.ContentType;
 import okhttp3.Response;
 import org.junit.jupiter.api.*;
