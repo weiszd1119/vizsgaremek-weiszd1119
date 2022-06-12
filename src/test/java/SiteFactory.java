@@ -21,14 +21,20 @@ public class SiteFactory {
                 return new TagsOnSite(driver);
             case "LinksOnSite":
                 return new LinksOnSite(driver);
-            case "ImageTest":
-                return new ImageTest(driver);
             case "PagesOnSite":
                 return new PagesOnSite(driver);
             case "CssStyleTest":
                 return new CssStyleTest(driver);
             case "TablesTest":
                 return new TablesTest(driver);
+            case "WebServiceTest":
+                return new WebServiceTest(driver);
+            case "YoutubeTest":
+                return new YoutubeTest(driver);
+            case "ListTest":
+                return new ListTest(driver);
+            case "SaveImageTest":
+                return new SaveImageTest(driver);
             default:
                 return null;
         }

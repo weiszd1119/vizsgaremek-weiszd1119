@@ -3,17 +3,18 @@
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
+import jdk.jfr.ContentType;
+import okhttp3.Response;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.w3c.dom.css.CSSStyleSheet;
-
+import javax.annotation.CheckReturnValue;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 public class ExamTestMain {
 
@@ -34,6 +35,15 @@ public class ExamTestMain {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
+    @RepeatedTest(5)
+    @Epic("Blonde Site")
+    @Story("Web Service Test at Blonde Site")
+    @Description("Web Service Test at Blonde Site")
+    @Severity(SeverityLevel.CRITICAL)
+    public void webServiceTestAtBlondeSite() throws InterruptedException {
+        WebServiceTest webServiceTest = (WebServiceTest) SiteFactory.Create("WebServiceTest", driver);
+        webServiceTest.sendingresponsecodeoktest();
+        }
     @Test
     @Epic("Blonde Site")
     @Story("Login to Blonde Site")
@@ -144,18 +154,6 @@ public class ExamTestMain {
         linksOnSite.clickonlinksandcheckresult();
     }
 
-    @Disabled
-    @Test
-    @Epic("Blonde Site")
-    @Story("Search on Blonde Site")
-    @Description("Search some expressions the Blonde Site")
-    @Severity(SeverityLevel.NORMAL)
-    public void imageOnBlondeSite() throws InterruptedException {
-        ImageTest imageTest = (ImageTest) SiteFactory.Create("ImageTest", driver);
-        imageTest.navigate();
-        Thread.sleep(5000);
-    }
-
     @Test
     @Epic("Blonde Site")
     @Story("Search on Blonde Site")
@@ -200,6 +198,43 @@ public class ExamTestMain {
         Thread.sleep(5000);
         tablesTest.getNameTable();
         tablesTest.checktableresult();
+        }
+
+    @Test
+    @Epic("Blonde Site")
+    @Story("List on Blonde Site")
+    @Description("List on the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void listTestOnBlondeSite() throws InterruptedException {
+        ListTest listTest = (ListTest) SiteFactory.Create("ListTest", driver);
+        listTest.navigate();
+        Thread.sleep(5000);
+        listTest.getOrderedList();
+        listTest.checklistresult();
+    }
+    @Test
+    @Epic("Blonde Site")
+    @Story("Embedded Youtube Videos on Blonde Site")
+    @Description("Testing embedded Youtube videos and video control functions on the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void youtubeTestOnBlondeSite() throws InterruptedException {
+        YoutubeTest youtubeTest = (YoutubeTest) SiteFactory.Create("YoutubeTest", driver);
+        youtubeTest.navigate();
+        Thread.sleep(10000);
+        youtubeTest.pressfirstvideoplaybutton();
+    }
+
+    @Test
+    @Epic("Blonde Site")
+    @Story("Save Image fron Blonde Site")
+    @Description("Saving Image from the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void savingImageFromBlondeSite() throws InterruptedException, IOException {
+        SaveImageTest saveImageTest = (SaveImageTest) SiteFactory.Create("SaveImageTest", driver);
+        saveImageTest.navigate();
+        Thread.sleep(5000);
+        saveImageTest.saveimage();
+        saveImageTest.checksaveimageresult();
         }
     @AfterEach
     @Epic("Blonde Site")

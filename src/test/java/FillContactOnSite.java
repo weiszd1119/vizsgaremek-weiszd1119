@@ -7,11 +7,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FillContactOnSite extends StartDriver {
     private final String urlContact = "https://lennertamas.github.io/blondesite/contact/";
     private final String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
+
     private final String inputContactYourName = "Neville Longbottom";
     private final String inputContactEmailAddress = "nevillelongbottom@roxfort.com";
     private final String inputContactSubject = "I forgot when I take the exam";
@@ -33,6 +38,7 @@ public class FillContactOnSite extends StartDriver {
     public void navigate() {
         driver.navigate().to(urlContact);
     }
+
     public void navigateback() {driver.navigate().back();}
 
     public void writeintocontactyournameuserfield() {

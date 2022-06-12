@@ -10,8 +10,6 @@ public class TablesTest extends StartDriver {
 
     private final By NameTable = By.xpath("//*[@id=\"tables\"]/tbody/tr/td[1]");
 
-    private final String[] actualtablecolumnnames = getNameTable();
-
     private final String[] expectedtablecolumnnames = {"Bob", "Alice"};
 
     public TablesTest(WebDriver startdriver) {
@@ -23,26 +21,17 @@ public class TablesTest extends StartDriver {
     }
 
     public String[] getNameTable() {
-        String[] namelist = null;
         List<WebElement> tds = driver.findElements(NameTable);
+        String[] namelist;
         namelist = new String[tds.size()];
         for (int i = 0; i < tds.size(); i++) {
             namelist[i] = tds.get(i).getText();
         }
+        Assertions.assertArrayEquals(expectedtablecolumnnames, namelist);
         return namelist;
     }
 
     public void checktableresult() {
-        Assertions.assertArrayEquals(expectedtablecolumnnames, actualtablecolumnnames);
+
     }
 }
-
-
-
-/*PageBase first = new PageBase(driver);
-        first.navigate();
-                first.search("new york");
-                String[] actual = first.readTable();
-                String[] expected = {"B. Williamson","C. Vance","G. Little","J. Caldwell","P. Byrd","Y. Berry"};
-                Assertions.assertArrayEquals(expected, actual);
- */
