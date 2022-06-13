@@ -1,1 +1,1 @@
-[{"uid":"204796d2d226b5cd","name":"fillContactOnBlondeSite()","time":{"start":1654058790499,"stop":1654058790527,"duration":28},"status":"broken","severity":"normal"},{"uid":"5a546687b7abf036","name":"navigateOnBlondeSite()","time":{"start":1654058790586,"stop":1654058790589,"duration":3},"status":"broken","severity":"normal"},{"uid":"16b0e4de2cfb55b8","name":"loginBlondeSite()","time":{"start":1654058790595,"stop":1654058790597,"duration":2},"status":"broken","severity":"critical"}]
+[]
