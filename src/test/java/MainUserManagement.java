@@ -1,20 +1,16 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
 
 @Tag("usermanagement")
-public class MainUserManagement extends ExamTestMain{
+public class MainUserManagement {
 
     WebDriver driver;
 
@@ -46,7 +42,10 @@ public class MainUserManagement extends ExamTestMain{
         loginToSite.writeintouserfield();
         loginToSite.writeintopasswordfield();
         loginToSite.pressloginbutton();
-        loginToSite.checkloginresult();
+        // Assertions
+        String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing/";
+        String actualUrlLogin = loginToSite.checkloginresult();
+        Assertions.assertEquals(expectedUrlLogin, actualUrlLogin);
     }
 
     @Test
@@ -64,13 +63,17 @@ public class MainUserManagement extends ExamTestMain{
         registerToSite.writeintoregemailfield();
         registerToSite.writeintoregdescriptionfield();
         registerToSite.pushregbutton();
+        // Assertions (nem ez fog kelleni, hanem ki kell szedni a regisztráció után a megjelenő szöveget
+        String expectedUrlRegister = "https://lennertamas.github.io/blondesite/landing/";
+        String actualUrlRegister = registerToSite.checkregisterresult();
+        Assertions.assertEquals(expectedUrlRegister, actualUrlRegister);
+        // Második tesztbe kiszervezni
         registerToSite.writeintoreguserfieldinvalid();
         registerToSite.writeintoregpasswordfieldinvalid();
         registerToSite.writeintoregemailfieldinvalid();
         registerToSite.writeintoregdescriptionfieldinvalid();
         registerToSite.pushregbutton();
     }
-
     @AfterEach
     @Epic("Blonde Site")
     @Story("Make Screenshot")

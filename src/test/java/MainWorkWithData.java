@@ -1,9 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +12,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @Tag("workwithdata")
-public class MainWorkWithData extends ExamTestMain {
+public class MainWorkWithData {
 
     WebDriver driver;
 
@@ -27,7 +24,7 @@ public class MainWorkWithData extends ExamTestMain {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-extensions");
-        options.addArguments("--headless");
+        // options.addArguments("--headless");
         options.addArguments("--window-size=1920,1080");
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
@@ -49,7 +46,11 @@ public class MainWorkWithData extends ExamTestMain {
         fillContactOnSite.writeintocontactsubject();
         fillContactOnSite.writeintocontactmessage();
         fillContactOnSite.pushsubmitbutton();
-        fillContactOnSite.checkcontactresult();
+        // Assertions
+        String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
+        String actualUrlContact = fillContactOnSite.checkcontactresult();
+        Assertions.assertEquals(expectedUrlContact, actualUrlContact);
+        // Folytatás, ez legyen új tesztben
         fillContactOnSite.navigateback();
         fillContactOnSite.deletefromcontactyournameuserfield();
         fillContactOnSite.deletefromcontactemailaddress();
@@ -76,11 +77,10 @@ public class MainWorkWithData extends ExamTestMain {
     @Description("Search some expressions the Blonde Site")
     @Severity(SeverityLevel.NORMAL)
     public void tablesTestOnBlondeSite() throws InterruptedException {
-        TablesTest tablesTest = (TablesTest) SiteFactory.Create("TablesTest", driver);
+        Tables tablesTest = (Tables) SiteFactory.Create("TablesTest", driver);
         tablesTest.navigate();
         Thread.sleep(5000);
         tablesTest.getNameTable();
-        tablesTest.checktableresult();
     }
     @Test
     @Epic("Blonde Site")
@@ -88,11 +88,11 @@ public class MainWorkWithData extends ExamTestMain {
     @Description("List on the Blonde Site")
     @Severity(SeverityLevel.NORMAL)
     public void listTestOnBlondeSite() throws InterruptedException {
-        ListTest listTest = (ListTest) SiteFactory.Create("ListTest", driver);
+        List listTest = (List) SiteFactory.Create("ListTest", driver);
         listTest.navigate();
         Thread.sleep(5000);
         listTest.getOrderedList();
-        listTest.checklistresult();
+        // listTest.checklistresult();
     }
     @Test
     @Epic("Blonde Site")
@@ -100,11 +100,12 @@ public class MainWorkWithData extends ExamTestMain {
     @Description("Saving Image from the Blonde Site")
     @Severity(SeverityLevel.NORMAL)
     public void savingImageFromBlondeSite() throws InterruptedException, IOException {
-        SaveImageTest saveImageTest = (SaveImageTest) SiteFactory.Create("SaveImageTest", driver);
+        SaveImage saveImageTest = (SaveImage) SiteFactory.Create("SaveImageTest", driver);
         saveImageTest.navigate();
         Thread.sleep(5000);
         saveImageTest.saveimage();
-        saveImageTest.checksaveimageresult();
+        boolean actualResultImageTest = saveImageTest.checksaveimageresult(); //Assertion résznek a tesztben kell lennie
+        Assertions.assertTrue(actualResultImageTest);
     }
 
     @AfterEach
