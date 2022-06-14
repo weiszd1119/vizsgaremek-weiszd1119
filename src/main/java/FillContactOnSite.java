@@ -18,15 +18,12 @@ public class FillContactOnSite extends StartDriver {
     private final String inputContactEmailAddress = "nevillelongbottom@roxfort.com";
     private final String inputContactSubject = "I forgot when I take the exam";
     private final String inputContactMessage = "Dear Teacher!\n Please let me know when the herbology exam for first-year students will be.\n Sincerely,\n Neville Longbottom";
-    // private final String inputAlertMessage = "Füllen Sie diese aus!";
+
     private final By findContactYourName = By.name("name");
     private final By findContactEmailAddress = By.name("mail");
     private final By findContactSubject = By.name("title");
     private final By findContactMessage = By.name("message");
     private final By findContactSubmitButton = By.cssSelector("#content > div > div > div.bg-white.col-span-3.lg\\:col-span-2.p-5.dark\\:bg-warmgray-900.dark\\:text-white > div > div > form > input");
-
-    // Figyelmeztető üzenet üres mező esetén
-    // private final By findAlertMessageButton = By.xpath("//input[@id='lstNm']");
 
     public FillContactOnSite(WebDriver startdriver) {
         super(startdriver);
@@ -73,6 +70,12 @@ public class FillContactOnSite extends StartDriver {
         String currentUrlContact = driver.getCurrentUrl();
         return currentUrlContact;
         }
+
+        // Fülle dieses Feld aus keresése
+    public void warningmessage () {
+        String actualTooltip = driver.findElement(By.name("name")).getAttribute("validationMessage");
+        System.out.println(actualTooltip);
+    }
 
     /*
     public void checkalertmessage() {

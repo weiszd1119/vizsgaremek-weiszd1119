@@ -1,9 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -41,6 +39,7 @@ public class MainWorkWithData {
         FillContactOnSite fillContactOnSite = (FillContactOnSite) SiteFactory.Create("FillContactOnSite", driver);
         fillContactOnSite.navigate();
         Thread.sleep(5000);
+        // Mezők kitöltése
         fillContactOnSite.writeintocontactyournameuserfield();
         fillContactOnSite.writeintocontactemailaddress();
         fillContactOnSite.writeintocontactsubject();
@@ -57,7 +56,8 @@ public class MainWorkWithData {
         fillContactOnSite.deletefromcontactsubject();
         fillContactOnSite.deletefromcontactmessage();
         fillContactOnSite.pushsubmitbutton();
-        // fillContactOnSite.checkalertmessage();
+        // Figyelmeztető szöveg keresése
+        fillContactOnSite.warningmessage();
         // fillContactOnSite.deletecontactresult();
     }
     @Test
