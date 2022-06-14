@@ -11,8 +11,8 @@ public class SiteFactory {
                 return new LoginToSite(driver);
             case "RegisterToSite":
                 return new RegisterToSite(driver);
-            case "FillContactOnSite":
-                return new FillContactOnSite(driver);
+            case "ContactOnSite":
+                return new ContactOnSite(driver);
             case "SearchOnSite":
                 return new SearchOnSite(driver);
             case "TagsOnSite":

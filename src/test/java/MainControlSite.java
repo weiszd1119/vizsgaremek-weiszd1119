@@ -39,7 +39,7 @@ public class MainControlSite {
         TagsOnSite tagsOnSite = (TagsOnSite) SiteFactory.Create("TagsOnSite", driver);
         tagsOnSite.navigate();
         Thread.sleep(5000);
-        // tagsOnSite.clickonfindcsstagandcheckresult();
+        //tagsOnSite.clickonfindcsstagandcheckresult();
     }
 
     @Test

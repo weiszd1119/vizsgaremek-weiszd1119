@@ -28,6 +28,7 @@ public class MainWebService {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+
     }
     @RepeatedTest(5)
     @Epic("Blonde Site")

@@ -36,29 +36,48 @@ public class MainWorkWithData {
     @Description("Fill Contact the Blonde Site")
     @Severity(SeverityLevel.NORMAL)
     public void fillContactOnBlondeSite() throws InterruptedException {
-        FillContactOnSite fillContactOnSite = (FillContactOnSite) SiteFactory.Create("FillContactOnSite", driver);
-        fillContactOnSite.navigate();
+        ContactOnSite contactOnSite = (ContactOnSite) SiteFactory.Create("ContactOnSite", driver);
+        contactOnSite.navigate();
         Thread.sleep(5000);
         // Mezők kitöltése
-        fillContactOnSite.writeintocontactyournameuserfield();
-        fillContactOnSite.writeintocontactemailaddress();
-        fillContactOnSite.writeintocontactsubject();
-        fillContactOnSite.writeintocontactmessage();
-        fillContactOnSite.pushsubmitbutton();
+        contactOnSite.writeintocontactyournameuserfield();
+        contactOnSite.writeintocontactemailaddress();
+        contactOnSite.writeintocontactsubject();
+        contactOnSite.writeintocontactmessage();
+        contactOnSite.pushsubmitbutton();
         // Assertions
         String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
-        String actualUrlContact = fillContactOnSite.checkcontactresult();
+        String actualUrlContact = contactOnSite.currentcontactresult();
         Assertions.assertEquals(expectedUrlContact, actualUrlContact);
-        // Folytatás, ez legyen új tesztben
-        fillContactOnSite.navigateback();
-        fillContactOnSite.deletefromcontactyournameuserfield();
-        fillContactOnSite.deletefromcontactemailaddress();
-        fillContactOnSite.deletefromcontactsubject();
-        fillContactOnSite.deletefromcontactmessage();
-        fillContactOnSite.pushsubmitbutton();
+    }
+
+    @Test
+    @Epic("Blonde Site")
+    @Story("Delete inputs from Contact on Blonde Site")
+    @Description("Delete inputs from Fill Contact the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void deleteInputFromContactOnBlondeSite() throws InterruptedException {
+        ContactOnSite contactOnSite = (ContactOnSite) SiteFactory.Create("ContactOnSite", driver);
+        contactOnSite.navigate();
+        Thread.sleep(5000);
+        // Mezők kitöltése
+        contactOnSite.writeintocontactyournameuserfield();
+        contactOnSite.writeintocontactemailaddress();
+        contactOnSite.writeintocontactsubject();
+        contactOnSite.writeintocontactmessage();
+        // Mezők törlése
+        contactOnSite.deletefromcontactyournameuserfield();
+        contactOnSite.deletefromcontactemailaddress();
+        contactOnSite.deletefromcontactsubject();
+        contactOnSite.deletefromcontactmessage();
+        contactOnSite.pushsubmitbutton();
         // Figyelmeztető szöveg keresése
-        fillContactOnSite.warningmessage();
-        // fillContactOnSite.deletecontactresult();
+        contactOnSite.currentwarningmessageresult();
+        // Assertions
+        String expectedWarningMessage = "Fülle dieses Feld aus.";
+        String actualWarningMessage = contactOnSite.currentwarningmessageresult();
+        Assertions.assertEquals(expectedWarningMessage, actualWarningMessage);
+
     }
     @Test
     @Epic("Blonde Site")
