@@ -7,12 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 public class CssStyle extends StartDriver {
     private final String urlCss = "https://lennertamas.github.io/blondesite/about/";
-
-    //Attribútum kiolvasásához (az icon2 class-ét kéri, amit tartalmazza az icon-moon szöveget, ez változik icon-sun-ra)
-    private final String expectedValueCss = "hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2 icon-sun";
-
-    // private final String attributeValueCss = driver.findElement(By.id("icon")).getAttribute("class");
-    private final By findSetButton = By.className("icon-moon inline-flex align-middle leading-normal text-lg text-white");
+    private final By findSetButton = By.className("focus:outline-none mr-1");
     public CssStyle(WebDriver startdriver) {
         super(startdriver);
     }
@@ -25,11 +20,12 @@ public class CssStyle extends StartDriver {
         driver.findElement(findSetButton).click();
     }
 
-    /*
-    public void checkiconchange() {
-        assertEquals(expectedValueCss, attributeValueCss);
-    }
-    */
+    public String currentcssstyle() {
+        String currentattributevaluecss = driver.findElement(By.id("icon")).getAttribute("class");
+        System.out.println(currentattributevaluecss);
+        return currentattributevaluecss;
+        }
+
 }
 
 

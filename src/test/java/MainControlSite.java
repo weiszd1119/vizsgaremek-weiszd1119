@@ -94,44 +94,44 @@ public class MainControlSite {
         // Apache Licence 2.0
         linksOnSite.clickonlinkfirst();
         String expectedUrlLinkFirst = "https://github.com/gohugoio/hugo/blob/master/LICENSE";
-        String actualUrlRegisterFirst = linksOnSite.checklinkresultfirst();
-        Assertions.assertEquals(expectedUrlLinkFirst, actualUrlRegisterFirst);
-
+        String actualUrlLinkFirst = linksOnSite.checklinkresultfirst();
+        Assertions.assertEquals(expectedUrlLinkFirst, actualUrlLinkFirst);
+        // Goldmark
         linksOnSite.navigateback();
         linksOnSite.clickonlinksecond();
         String expectedUrlLinkSecond = "https://github.com/yuin/goldmark";
-        String actualUrlRegisterSecond = linksOnSite.checklinkresultsecond();
-        Assertions.assertEquals(expectedUrlLinkSecond, actualUrlRegisterSecond);
-
+        String actualUrlLinkSecond = linksOnSite.checklinkresultsecond();
+        Assertions.assertEquals(expectedUrlLinkSecond, actualUrlLinkSecond);
+        // Chroma
         linksOnSite.navigateback();
         linksOnSite.clickonlinkthird();
         String expectedUrlLinkThird = "https://github.com/alecthomas/chroma";
-        String actualUrlRegisterThird = linksOnSite.checklinkresultthird();
-        Assertions.assertEquals(expectedUrlLinkThird, actualUrlRegisterThird);
-
+        String actualUrlLinkThird = linksOnSite.checklinkresultthird();
+        Assertions.assertEquals(expectedUrlLinkThird, actualUrlLinkThird);
+        // Smartcrop
         linksOnSite.navigateback();
         linksOnSite.clickonlinkfourth();
         String expectedUrlLinkFourth = "https://github.com/muesli/smartcrop";
-        String actualUrlRegisterFourth = linksOnSite.checklinkresultfourth();
-        Assertions.assertEquals(expectedUrlLinkFourth, actualUrlRegisterFourth);
-
+        String actualUrlLinkFourth = linksOnSite.checklinkresultfourth();
+        Assertions.assertEquals(expectedUrlLinkFourth, actualUrlLinkFourth);
+        // Cobra
         linksOnSite.navigateback();
         linksOnSite.clickonlinkfifth();
         String expectedUrlLinkFifth = "https://github.com/spf13/cobra";
-        String actualUrlRegisterFifth = linksOnSite.checklinkresultfifth();
-        Assertions.assertEquals(expectedUrlLinkFifth, actualUrlRegisterFifth);
-
+        String actualUrlLinkFifth = linksOnSite.checklinkresultfifth();
+        Assertions.assertEquals(expectedUrlLinkFifth, actualUrlLinkFifth);
+        // Viper
         linksOnSite.navigateback();
         linksOnSite.clickonlinksixth();
         String expectedUrlLinkSixth = "https://github.com/spf13/viper";
-        String actualUrlRegisterSixth = linksOnSite.checklinkresultsixth();
-        Assertions.assertEquals(expectedUrlLinkSixth, actualUrlRegisterSixth);
-
+        String actualUrlLinkSixth = linksOnSite.checklinkresultsixth();
+        Assertions.assertEquals(expectedUrlLinkSixth, actualUrlLinkSixth);
+        // Gohugoio
         linksOnSite.navigateback();
         linksOnSite.clickonlinkseventh();
         String expectedUrlLinkSeventh = "https://github.com/gohugoio";
-        String actualUrlRegisterSeventh = linksOnSite.checklinkresultseventh();
-        Assertions.assertEquals(expectedUrlLinkSeventh, actualUrlRegisterSeventh);
+        String actualUrlLinkSeventh = linksOnSite.checklinkresultseventh();
+        Assertions.assertEquals(expectedUrlLinkSeventh, actualUrlLinkSeventh);
     }
 
     @Test
@@ -144,15 +144,30 @@ public class MainControlSite {
         pagesOnSite.navigate();
         Thread.sleep(5000);
         pagesOnSite.clickonpagebutton();
-        // pagesOnSite.checkresult();
+        // Assertions
+        String expectedUrlPageMath = "https://lennertamas.github.io/blondesite/post/math-typesetting/";
+        String actualUrlPageMath = driver.getCurrentUrl();
+        Assertions.assertEquals(expectedUrlPageMath, actualUrlPageMath);
         pagesOnSite.clickonpagebutton();
-        // pagesOnSite.checkresult();
+        //
+        String expectedUrlPlaceholder = "https://lennertamas.github.io/blondesite/post/placeholder-text/";
+        String actualUrlPlaceholder = driver.getCurrentUrl();
+        Assertions.assertEquals(expectedUrlPlaceholder, actualUrlPlaceholder);
         pagesOnSite.clickonpagebutton();
-        // pagesOnSite.checkresult();
+        //
+        String expectedUrlRichContent = "https://lennertamas.github.io/blondesite/post/rich-content/";
+        String actualUrlRichContent = driver.getCurrentUrl();
+        Assertions.assertEquals(expectedUrlRichContent, actualUrlRichContent);
         pagesOnSite.clickonpagebutton();
-        // pagesOnSite.checkresult();
+        //
+        String expectedUrlMarkdown = "https://lennertamas.github.io/blondesite/post/markdown-syntax/";
+        String actualUrlMarkdown = driver.getCurrentUrl();
+        Assertions.assertEquals(expectedUrlMarkdown, actualUrlMarkdown);
         pagesOnSite.clickonpagebutton();
-        // pagesOnSite.checkresult();
+        //
+        String expectedUrlImage = "https://lennertamas.github.io/blondesite/post/image-test/";
+        String actualUrlImage = driver.getCurrentUrl();
+        Assertions.assertEquals(expectedUrlImage, actualUrlImage);
         }
 
     @Test
@@ -165,7 +180,7 @@ public class MainControlSite {
         cssStyleTest.navigate();
         Thread.sleep(5000);
         cssStyleTest.clickonsetbutton();
-        // cssStyleTest.checkiconchange();
+        cssStyleTest.currentcssstyle();
     }
 
     @Test

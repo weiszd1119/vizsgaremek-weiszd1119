@@ -28,9 +28,28 @@ public class MainUserManagement {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-
     }
-
+    @Test
+    @Epic("Blonde Site")
+    @Story("Register to Blonde Site")
+    @Description("Navigation to the Register page and register to the site")
+    @Severity(SeverityLevel.CRITICAL)
+    public void registerToBlondeSite() throws InterruptedException {
+        RegisterToSite registerToSite = (RegisterToSite) SiteFactory.Create("RegisterToSite", driver);
+        registerToSite.navigate();
+        Thread.sleep(5000);
+        registerToSite.pushregtab();
+        registerToSite.writeintoreguserfield();
+        registerToSite.writeintoregpasswordfield();
+        registerToSite.writeintoregemailfield();
+        registerToSite.writeintoregdescriptionfield();
+        registerToSite.pushregbutton();
+        // Assertions
+        String expectedRegisterMessage = "User registered!";
+        String actualUrlRegister = registerToSite.currentregistermessageresult();
+        Assertions.assertEquals(expectedRegisterMessage, actualUrlRegister);
+        // Invalid register?
+    }
     @Test
     @Epic("Blonde Site")
     @Story("Login to Blonde Site")
@@ -49,32 +68,6 @@ public class MainUserManagement {
         Assertions.assertEquals(expectedUrlLogin, actualUrlLogin);
     }
 
-    @Test
-    @Epic("Blonde Site")
-    @Story("Register to Blonde Site")
-    @Description("Navigation to the Register page and register to the site")
-    @Severity(SeverityLevel.CRITICAL)
-    public void registerToBlondeSite() throws InterruptedException {
-        RegisterToSite registerToSite = (RegisterToSite) SiteFactory.Create("RegisterToSite", driver);
-        registerToSite.navigate();
-        Thread.sleep(5000);
-        registerToSite.pushregtab();
-        registerToSite.writeintoreguserfield();
-        registerToSite.writeintoregpasswordfield();
-        registerToSite.writeintoregemailfield();
-        registerToSite.writeintoregdescriptionfield();
-        registerToSite.pushregbutton();
-        // Assertions (nem ez fog kelleni, hanem ki kell szedni a regisztráció után a megjelenő szöveget
-        String expectedUrlRegister = "https://lennertamas.github.io/blondesite/landing/";
-        String actualUrlRegister = registerToSite.checkregisterresult();
-        Assertions.assertEquals(expectedUrlRegister, actualUrlRegister);
-        // Második tesztbe kiszervezni
-        registerToSite.writeintoreguserfieldinvalid();
-        registerToSite.writeintoregpasswordfieldinvalid();
-        registerToSite.writeintoregemailfieldinvalid();
-        registerToSite.writeintoregdescriptionfieldinvalid();
-        registerToSite.pushregbutton();
-    }
     @AfterEach
     @Epic("Blonde Site")
     @Story("Make Screenshot")
