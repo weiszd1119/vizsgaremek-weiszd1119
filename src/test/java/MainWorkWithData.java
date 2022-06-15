@@ -49,6 +49,27 @@ public class MainWorkWithData {
         String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
         String actualUrlContact = contactOnSite.currentcontactresult();
         Assertions.assertEquals(expectedUrlContact, actualUrlContact);
+        }
+
+    @Test
+    @Epic("Blonde Site")
+    @Story("Fill Contact on Blonde Site")
+    @Description("Fill Contact the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void fillContactFromFileOnBlondeSite() throws InterruptedException, IOException {
+        ContactOnSite contactOnSite = (ContactOnSite) SiteFactory.Create("ContactOnSite", driver);
+        contactOnSite.navigate();
+        Thread.sleep(5000);
+        // Mezők kitöltése file-ból
+        contactOnSite.writeintocontactyournameuserfieldfromfile();
+        contactOnSite.writeintocontactemailaddressfromfile();
+        contactOnSite.writeintocontactsubjectfromfile();
+        contactOnSite.writeintocontactmessagefromfile(); //A filebeolvasás üres sor esetén leáll
+        contactOnSite.pushsubmitbutton();
+        // Assertions
+        String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
+        String actualUrlContact = contactOnSite.currentcontactresult();
+        Assertions.assertEquals(expectedUrlContact, actualUrlContact);
     }
 
     @Test
