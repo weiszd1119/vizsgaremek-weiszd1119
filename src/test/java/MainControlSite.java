@@ -39,7 +39,46 @@ public class MainControlSite {
         TagsOnSite tagsOnSite = (TagsOnSite) SiteFactory.Create("TagsOnSite", driver);
         tagsOnSite.navigate();
         Thread.sleep(5000);
-        //tagsOnSite.clickonfindcsstagandcheckresult();
+        // Assertions
+        tagsOnSite.clickontagcss();
+        String expectedUrlTagCss = "https://lennertamas.github.io/blondesite/tags/css/";
+        String actualUrlTagCss = tagsOnSite.checklinktagcss();
+        Assertions.assertEquals(expectedUrlTagCss, actualUrlTagCss);
+        //
+        tagsOnSite.clickontagemoji();
+        String expectedUrlTagEmoji = "https://lennertamas.github.io/blondesite/tags/emoji/";
+        String actualUrlTagEmoji = tagsOnSite.checklinktagemoji();
+        Assertions.assertEquals(expectedUrlTagEmoji, actualUrlTagEmoji);
+        //
+        tagsOnSite.clickontaghtml();
+        String expectedUrlTagHtml = "https://lennertamas.github.io/blondesite/tags/html/";
+        String actualUrlTagHtml = tagsOnSite.checklinktaghtml();
+        Assertions.assertEquals(expectedUrlTagHtml, actualUrlTagHtml);
+        //
+        tagsOnSite.clickontagmarkdown();
+        String expectedUrlTagMarkdown = "https://lennertamas.github.io/blondesite/tags/markdown/";
+        String actualUrlTagMarkdown = tagsOnSite.checklinktagmarkdown();
+        Assertions.assertEquals(expectedUrlTagMarkdown, actualUrlTagMarkdown);
+        //
+        tagsOnSite.clickontagprivacy();
+        String expectedUrlTagPrivacy = "https://lennertamas.github.io/blondesite/tags/privacy/";
+        String actualUrlTagPrivacy = tagsOnSite.checklinktagprivacy();
+        Assertions.assertEquals(expectedUrlTagPrivacy, actualUrlTagPrivacy);
+        //
+        tagsOnSite.clickontagshortcodes();
+        String expectedUrlTagShortcodes = "https://lennertamas.github.io/blondesite/tags/shortcodes/";
+        String actualUrlTagShortcodes = tagsOnSite.checklinktagshortcodes();
+        Assertions.assertEquals(expectedUrlTagShortcodes, actualUrlTagShortcodes);
+        //
+        tagsOnSite.clickontagtext();
+        String expectedUrlTagText = "https://lennertamas.github.io/blondesite/tags/text/";
+        String actualUrlTagText = tagsOnSite.checklinktagtext();
+        Assertions.assertEquals(expectedUrlTagText, actualUrlTagText);
+        //
+        tagsOnSite.clickontagthemes();
+        String expectedUrlTagThemes = "https://lennertamas.github.io/blondesite/tags/themes/";
+        String actualUrlTagThemes = tagsOnSite.checklinktagthemes();
+        Assertions.assertEquals(expectedUrlTagThemes, actualUrlTagThemes);
     }
 
     @Test
