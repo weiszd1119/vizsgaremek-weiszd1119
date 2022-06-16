@@ -38,15 +38,15 @@ public class MainUserManagement {
         RegisterToSite registerToSite = (RegisterToSite) SiteFactory.Create("RegisterToSite", driver);
         registerToSite.navigate();
         Thread.sleep(5000);
-        registerToSite.pushregtab();
-        registerToSite.writeintoreguserfield();
-        registerToSite.writeintoregpasswordfield();
-        registerToSite.writeintoregemailfield();
-        registerToSite.writeintoregdescriptionfield();
-        registerToSite.pushregbutton();
+        registerToSite.pushRegTab();
+        registerToSite.writeIntoRegUserField();
+        registerToSite.writeIntoRegPasswordField();
+        registerToSite.writeIntoRegEmailField();
+        registerToSite.writeIntoRegDescriptionField();
+        registerToSite.pushRegButton();
         // Assertions
         String expectedRegisterMessage = "User registered!";
-        String actualUrlRegister = registerToSite.currentregistermessageresult();
+        String actualUrlRegister = registerToSite.currentRegisterMessageResult();
         Assertions.assertEquals(expectedRegisterMessage, actualUrlRegister);
         // Invalid register?
     }
@@ -59,12 +59,12 @@ public class MainUserManagement {
         LoginToSite loginToSite = (LoginToSite) SiteFactory.Create("LoginToSite", driver);
         loginToSite.navigate();
         Thread.sleep(5000);
-        loginToSite.writeintouserfield();
-        loginToSite.writeintopasswordfield();
-        loginToSite.pressloginbutton();
+        loginToSite.writeIntoUserField();
+        loginToSite.writeIntoPasswordField();
+        loginToSite.pressLoginButton();
         // Assertions
         String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing/";
-        String actualUrlLogin = loginToSite.checkloginresult();
+        String actualUrlLogin = loginToSite.checkLoginResult();
         Assertions.assertEquals(expectedUrlLogin, actualUrlLogin);
     }
 

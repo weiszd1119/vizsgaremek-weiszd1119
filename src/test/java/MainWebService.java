@@ -45,7 +45,8 @@ public class MainWebService {
                     .extract()
                     .response();
              int code = response.statusCode();
-             Assertions.assertEquals(200, code); //Status Code 200 = HTTP OK
+             //Status Code 200 = HTTP OK
+             Assertions.assertEquals(200, code);
         }
     @RepeatedTest(5)
     @Epic("Blonde Site")
@@ -62,7 +63,8 @@ public class MainWebService {
                 .extract()
                 .response();
         int code = response.statusCode();
-        Assertions.assertEquals(404, code); //Status Code 404 = HTTP Not Found
+        //Status Code 404 = HTTP Not Found
+        Assertions.assertEquals(404, code);
     }
     @AfterEach
     @Epic("Blonde Site")

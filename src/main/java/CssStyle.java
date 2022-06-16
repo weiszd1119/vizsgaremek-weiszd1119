@@ -7,27 +7,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 public class CssStyle extends StartDriver {
     private final String urlCss = "https://lennertamas.github.io/blondesite/about/";
-    private final By findSetButton = By.className("focus:outline-none mr-1");
+    private final By findSetButton = By.xpath("//*[@class=\"py-2\"]/button");
     public CssStyle(WebDriver startdriver) {
         super(startdriver);
     }
-
+    
+    
     public void navigate() {
         driver.navigate().to(urlCss);
     }
 
-    public void clickonsetbutton() {
+    public void clickOnSetButton() {
         driver.findElement(findSetButton).click();
     }
 
-    public String currentcssstyle() {
-        String currentattributevaluecss = driver.findElement(By.id("icon")).getAttribute("class");
-        System.out.println(currentattributevaluecss);
-        return currentattributevaluecss;
+    public String currentCssStyle() {
+        String currentAttributeValueCss = driver.findElement(By.id("icon")).getAttribute("class");
+        System.out.println(currentAttributeValueCss);
+        return currentAttributeValueCss;
         }
 
 }
-
-
-
-
