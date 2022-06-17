@@ -1,0 +1,64 @@
+Main
+
+	@Test
+	@Epic("Tags")
+	@Story("Tags on Blonde Site")
+	@Description("Tags some expressions the Blonde Site")
+	@Severity(SeverityLevel.NORMAL)
+	public void tagsOnBlondeSite() throws InterruptedException {
+		TagsOnSite tagsOnSite = (TagsOnSite) SiteFactory.Create("TagsOnSite", driver);
+		tagsOnSite.navigate();
+		Thread.sleep(5000);
+		// Assertions
+		tagsOnSite.getTagList();
+		tagsOnSite.clickOnAllTags();
+		String[] expectedUrlAllTags = {"https://lennertamas.github.io/blondesite/tags/themes/", "https://lennertamas.github.io/blondesite/tags/themes/"};
+		String[] actualUrlAllTags = tagsOnSite.currentTagsaHrefResult();
+		Assertions.assertArrayEquals(expectedUrlAllTags, actualUrlAllTags);
+	}
+
+Class
+
+// TODO full xpath töröl
+// TODO for i-vel végigjárni a findTag-eken (?)
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+
+public class TagsOnSite extends StartDriver {
+	private final String urlTags = "https://lennertamas.github.io/blondesite/about/";
+	
+	private String[] aHrefList;
+	private final By findAllTags = By.xpath("//*[@id=\"content\"]/div/div/div[2]/div[4]/div/a");
+	public TagsOnSite(WebDriver startdriver) {
+		super(startdriver);
+	}
+	
+	public void navigate() {
+		driver.navigate().to(urlTags);
+	}
+	
+	public String[] getTagList() {
+		List<WebElement> ahrefs = driver.findElements(findAllTags);
+		String[] aHrefList;
+		aHrefList = new String[ahrefs.size()];
+		for (int i = 0; i < ahrefs.size(); i++) {
+			WebElement ahref = ahrefs.get(i).findElement(By.xpath("./a[1]"));
+			aHrefList[i] = ahref.getText();
+		}
+		return aHrefList;
+	}
+	
+	public void clickOnAllTags() {
+		driver.findElement(findAllTags).click();
+	}
+	
+	public String[] currentTagsaHrefResult() {
+		String[] currentaHrefList = aHrefList;
+		return aHrefList;
+	}
+}

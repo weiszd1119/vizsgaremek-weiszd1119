@@ -4,7 +4,10 @@
 //Nem találom a gombot
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 public class CssStyle extends StartDriver {
     private final String urlCss = "https://lennertamas.github.io/blondesite/about/";
     private final By findSetButton = By.xpath("//*[@class=\"py-2\"]/button");
@@ -18,8 +21,10 @@ public class CssStyle extends StartDriver {
     }
 
     public void clickOnSetButton() {
-        driver.findElement(findSetButton).click();
-    }
+        WebElement waitForVisible = driver.findElement(findSetButton);
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].click();", waitForVisible);
+        }
 
     public String currentCssStyle() {
         String currentAttributeValueCss = driver.findElement(By.id("icon")).getAttribute("class");

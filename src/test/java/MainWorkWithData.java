@@ -134,12 +134,31 @@ public class MainWorkWithData {
 	@Story("Search on Blonde Site")
 	@Description("Search some expressions the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
-	public void tablesTestOnBlondeSite() throws InterruptedException {
-		Tables tablesTest = (Tables) SiteFactory.Create("TablesTest", driver);
-		tablesTest.navigate();
+	public void tablesNameTestOnBlondeSite() throws InterruptedException {
+		Tables tables = (Tables) SiteFactory.Create("TablesTest", driver);
+		tables.navigate();
 		Thread.sleep(5000);
-		tablesTest.getNameTable();
-		// TODO Not work yet, Assertions
+		// Assertion
+		tables.currentNameResult();
+		String[] expectedTableColumnNames = {"Bob", "Alice"};
+		String[] actualNameList = tables.getNameTable();
+		Assertions.assertArrayEquals(expectedTableColumnNames, actualNameList);
+	}
+	
+	@Test
+	@Epic("Blonde Site")
+	@Story("Search on Blonde Site")
+	@Description("Search some expressions the Blonde Site")
+	@Severity(SeverityLevel.NORMAL)
+	public void tablesAgeTestOnBlondeSite() throws InterruptedException {
+		Tables tables = (Tables) SiteFactory.Create("TablesTest", driver);
+		tables.navigate();
+		Thread.sleep(5000);
+		// Assertion
+		tables.currentAgeResult();
+		String[] expectedTableColumnAges = {"27", "23"};
+		String[] actualAgeList = tables.getAgeTable();
+		Assertions.assertArrayEquals(expectedTableColumnAges, actualAgeList);
 	}
 	
 	@Test

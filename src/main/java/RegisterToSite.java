@@ -3,7 +3,6 @@ import org.openqa.selenium.WebDriver;
 
 
 public class RegisterToSite extends StartDriver {
-	private final String urlRegister = "https://lennertamas.github.io/blondesite/";
 	private final String inputRegUserName = "weiszd1119";
 	private final String inputRegPassword = "TEmp1119";
 	private final String inputRegEmail = "yaraclen@gmail.com";
@@ -18,10 +17,6 @@ public class RegisterToSite extends StartDriver {
 	//Konstruktor
 	public RegisterToSite(WebDriver startdriver) {
 		super(startdriver);
-	}
-	
-	public void navigate() {
-		driver.navigate().to(urlRegister);
 	}
 	
 	public void writeIntoRegUserField() {
@@ -50,7 +45,6 @@ public class RegisterToSite extends StartDriver {
 	
 	public String currentRegisterMessageResult() {
 		String currentRegisterMessage = driver.findElement(By.id("register-alert")).getText();
-		System.out.println(currentRegisterMessage);
 		return currentRegisterMessage;
 	}
 }

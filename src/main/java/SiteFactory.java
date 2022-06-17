@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 public class SiteFactory {
 	public static StartDriver Create(String name, WebDriver driver) {
 		switch (name) {
+			case "AcceptContract":
+				return new AcceptContract(driver);
 			case "LoginToSite":
 				return new LoginToSite(driver);
 			case "RegisterToSite":

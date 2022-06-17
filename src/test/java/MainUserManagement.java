@@ -22,7 +22,7 @@ public class MainUserManagement {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-extensions");
-        options.addArguments("--headless");
+        // options.addArguments("--headless");
         options.addArguments("--window-size=1920,1080");
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
@@ -34,9 +34,45 @@ public class MainUserManagement {
     @Story("Register to Blonde Site")
     @Description("Navigation to the Register page and register to the site")
     @Severity(SeverityLevel.CRITICAL)
+    public void acceptContractOnBlondeSite() throws InterruptedException {
+        AcceptContract acceptContract = (AcceptContract) SiteFactory.Create("AcceptContract", driver);
+        acceptContract.navigate();
+        Thread.sleep(5000);
+        acceptContract.clickOnAcceptButton();
+        // Assertions
+        /*
+        String expectedRegisterMessage = "User registered!";
+        String actualUrlRegister = registerToSite.currentRegisterMessageResult();
+        Assertions.assertEquals(expectedRegisterMessage, actualUrlRegister);
+        */
+        }
+    
+    @Test
+    @Epic("Blonde Site")
+    @Story("Register to Blonde Site")
+    @Description("Navigation to the Register page and register to the site")
+    @Severity(SeverityLevel.CRITICAL)
+    public void closeContractOnBlondeSite() throws InterruptedException {
+        AcceptContract acceptContract = (AcceptContract) SiteFactory.Create("AcceptContract", driver);
+        acceptContract.navigate();
+        Thread.sleep(5000);
+        acceptContract.clickOnCloseButton();
+        // Assertions
+        /*
+        String expectedRegisterMessage = "User registered!";
+        String actualUrlRegister = registerToSite.currentRegisterMessageResult();
+        Assertions.assertEquals(expectedRegisterMessage, actualUrlRegister);
+        */
+    }
+    
+    @Test
+    @Epic("Blonde Site")
+    @Story("Register to Blonde Site")
+    @Description("Navigation to the Register page and register to the site")
+    @Severity(SeverityLevel.CRITICAL)
     public void registerToBlondeSite() throws InterruptedException {
+        acceptContractOnBlondeSite();
         RegisterToSite registerToSite = (RegisterToSite) SiteFactory.Create("RegisterToSite", driver);
-        registerToSite.navigate();
         Thread.sleep(5000);
         registerToSite.pushRegTab();
         registerToSite.writeIntoRegUserField();
@@ -49,6 +85,15 @@ public class MainUserManagement {
         String actualUrlRegister = registerToSite.currentRegisterMessageResult();
         Assertions.assertEquals(expectedRegisterMessage, actualUrlRegister);
         // Invalid register?
+        System.out.println("Test results are:");
+        System.out.println("Expected result was: " + expectedRegisterMessage);
+        System.out.println("Actual result is: " + actualUrlRegister);
+        if (expectedRegisterMessage.equals(actualUrlRegister)) {
+            System.out.println("Test passed!");
+        }
+            else {
+                System.out.println("Test failed!");
+            }
     }
     @Test
     @Epic("Blonde Site")
@@ -56,9 +101,10 @@ public class MainUserManagement {
     @Description("Navigation to the login page and login to the site")
     @Severity(SeverityLevel.CRITICAL)
     public void loginToBlondeSite() throws InterruptedException {
+        registerToBlondeSite();
         LoginToSite loginToSite = (LoginToSite) SiteFactory.Create("LoginToSite", driver);
-        loginToSite.navigate();
         Thread.sleep(5000);
+        loginToSite.pushLoginTab();
         loginToSite.writeIntoUserField();
         loginToSite.writeIntoPasswordField();
         loginToSite.pressLoginButton();
@@ -66,6 +112,15 @@ public class MainUserManagement {
         String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing/";
         String actualUrlLogin = loginToSite.checkLoginResult();
         Assertions.assertEquals(expectedUrlLogin, actualUrlLogin);
+        System.out.println("Test results are:");
+        System.out.println("Expected result was: " + expectedUrlLogin);
+        System.out.println("Actual result is: " + actualUrlLogin);
+        if (expectedUrlLogin.equals(actualUrlLogin)) {
+            System.out.println("Test passed!");
+        }
+        else {
+            System.out.println("Test failed!");
+        }
     }
 
     @AfterEach
