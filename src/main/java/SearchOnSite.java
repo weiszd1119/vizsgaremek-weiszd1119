@@ -26,5 +26,4 @@ public class SearchOnSite extends StartDriver {
 		System.out.println(currentUrlSearch);
 		return currentUrlSearch;
 	}
-	
 }

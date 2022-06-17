@@ -179,11 +179,24 @@ public class MainControlSite {
 	@Description("Search some expressions the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void cssStyleOnBlondeSite() throws InterruptedException {
-		CssStyle cssStyleTest = (CssStyle) SiteFactory.Create("CssStyleTest", driver);
-		cssStyleTest.navigate();
+		CssStyle cssStyle = (CssStyle) SiteFactory.Create("CssStyleTest", driver);
+		cssStyle.navigate();
 		Thread.sleep(5000);
-		cssStyleTest.clickOnSetButton();
-		cssStyleTest.currentCssStyle();
+		cssStyle.clickOnSetButton();
+		cssStyle.currentCssStyle();
+		//Assertion: azt ellenőrizzük, hogy a gomb megváltozott-e
+		String expectedCssStyleClass = "inline-flex align-middle leading-normal text-lg text-white icon-sun";
+		String actualCssStyleClass = cssStyle.currentCssStyle();
+		Assertions.assertEquals(expectedCssStyleClass, actualCssStyleClass);
+		// Print
+		System.out.println("Test results are:");
+		System.out.println("Expected result was: " + expectedCssStyleClass);
+		System.out.println("Actual result is: " + actualCssStyleClass);
+		if (expectedCssStyleClass.equals(actualCssStyleClass)) {
+			System.out.println("Test passed!");
+		} else {
+			System.out.println("Test failed!");
+		}
 	}
 	
 	@Test

@@ -28,7 +28,6 @@ public class CssStyle extends StartDriver {
 
     public String currentCssStyle() {
         String currentAttributeValueCss = driver.findElement(By.id("icon")).getAttribute("class");
-        System.out.println(currentAttributeValueCss);
         return currentAttributeValueCss;
         }
 

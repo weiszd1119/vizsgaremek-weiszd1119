@@ -40,11 +40,6 @@ public class MainUserManagement {
         Thread.sleep(5000);
         acceptContract.clickOnAcceptButton();
         // Assertions
-        /*
-        String expectedRegisterMessage = "User registered!";
-        String actualUrlRegister = registerToSite.currentRegisterMessageResult();
-        Assertions.assertEquals(expectedRegisterMessage, actualUrlRegister);
-        */
         }
     
     @Test
@@ -53,16 +48,11 @@ public class MainUserManagement {
     @Description("Navigation to the Register page and register to the site")
     @Severity(SeverityLevel.CRITICAL)
     public void closeContractOnBlondeSite() throws InterruptedException {
-        AcceptContract acceptContract = (AcceptContract) SiteFactory.Create("AcceptContract", driver);
-        acceptContract.navigate();
-        Thread.sleep(5000);
-        acceptContract.clickOnCloseButton();
-        // Assertions
-        /*
-        String expectedRegisterMessage = "User registered!";
-        String actualUrlRegister = registerToSite.currentRegisterMessageResult();
-        Assertions.assertEquals(expectedRegisterMessage, actualUrlRegister);
-        */
+	    AcceptContract acceptContract = (AcceptContract) SiteFactory.Create("AcceptContract", driver);
+	    acceptContract.navigate();
+	    Thread.sleep(5000);
+	    acceptContract.clickOnCloseButton();
+	    // Assertions
     }
     
     @Test
@@ -112,7 +102,8 @@ public class MainUserManagement {
         String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing/";
         String actualUrlLogin = loginToSite.checkLoginResult();
         Assertions.assertEquals(expectedUrlLogin, actualUrlLogin);
-        System.out.println("Test results are:");
+        // Print results
+		System.out.println("Test results are:");
         System.out.println("Expected result was: " + expectedUrlLogin);
         System.out.println("Actual result is: " + actualUrlLogin);
         if (expectedUrlLogin.equals(actualUrlLogin)) {

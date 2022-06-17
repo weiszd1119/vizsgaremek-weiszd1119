@@ -49,6 +49,16 @@ public class MainWorkWithData {
 		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
 		String actualUrlContact = contactOnSite.currentContactResult();
 		Assertions.assertEquals(expectedUrlContact, actualUrlContact);
+		// Print results
+		System.out.println("Test results are:");
+		System.out.println("Expected result was: " + expectedUrlContact);
+		System.out.println("Actual result is: " + actualUrlContact);
+		if (expectedUrlContact.equals(actualUrlContact)) {
+			System.out.println("Test passed!");
+		}
+		else {
+			System.out.println("Test failed!");
+		}
 	}
 	
 	@Test
@@ -70,6 +80,16 @@ public class MainWorkWithData {
 		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
 		String actualUrlContact = contactOnSite.currentContactResult();
 		Assertions.assertEquals(expectedUrlContact, actualUrlContact);
+		// Print results
+		System.out.println("Test results are:");
+		System.out.println("Expected result was: " + expectedUrlContact);
+		System.out.println("Actual result is: " + actualUrlContact);
+		if (expectedUrlContact.equals(actualUrlContact)) {
+			System.out.println("Test passed!");
+		}
+		else {
+			System.out.println("Test failed!");
+		}
 	}
 	
 	@Test
@@ -98,7 +118,16 @@ public class MainWorkWithData {
 		String expectedWarningMessage = "Fülle dieses Feld aus.";
 		String actualWarningMessage = contactOnSite.currentWarningMessageResult();
 		Assertions.assertEquals(expectedWarningMessage, actualWarningMessage);
-		
+		// Print results
+		System.out.println("Test results are:");
+		System.out.println("Expected result was: " + expectedWarningMessage);
+		System.out.println("Actual result is: " + actualWarningMessage);
+		if (expectedWarningMessage.equals(actualWarningMessage)) {
+			System.out.println("Test passed!");
+		}
+		else {
+			System.out.println("Test failed!");
+		}
 	}
 	
 	@Test
@@ -115,18 +144,16 @@ public class MainWorkWithData {
 		String expectedUrlSearch = "https://www.google.com/search?q=syntax&sitesearch=https%3A%2F%2Flennertamas.github.io%2Fblondesite%2F";
 		String actualUrlSearch = searchOnSite.currentSearchResult();
 		Assertions.assertEquals(expectedUrlSearch, actualUrlSearch);
-	}
-	
-	@Test
-	@Epic("Blonde Site")
-	@Story("Search on Blonde Site")
-	@Description("Search some expressions the Blonde Site")
-	@Severity(SeverityLevel.NORMAL)
-	public void searchFromExcelOnBlondeSite() throws InterruptedException {
-		SearchOnSite searchOnSite = (SearchOnSite) SiteFactory.Create("SearchOnSite", driver);
-		searchOnSite.navigate();
-		Thread.sleep(5000);
-		// TODO Assertions
+		// Print results
+		System.out.println("Test results are:");
+		System.out.println("Expected result was: " + expectedUrlSearch);
+		System.out.println("Actual result is: " + actualUrlSearch);
+		if (expectedUrlSearch.equals(actualUrlSearch)) {
+			System.out.println("Test passed!");
+		}
+		else {
+			System.out.println("Test failed!");
+		}
 	}
 	
 	@Test
@@ -141,8 +168,18 @@ public class MainWorkWithData {
 		// Assertion
 		tables.currentNameResult();
 		String[] expectedTableColumnNames = {"Bob", "Alice"};
-		String[] actualNameList = tables.getNameTable();
-		Assertions.assertArrayEquals(expectedTableColumnNames, actualNameList);
+		String[] actualTableColumnNames = tables.getNameTable();
+		Assertions.assertArrayEquals(expectedTableColumnNames, actualTableColumnNames);
+		// Print results
+		System.out.println("Test results are:");
+		System.out.println("Expected result was: " + expectedTableColumnNames);
+		System.out.println("Actual result is: " + actualTableColumnNames);
+		if (expectedTableColumnNames.equals(actualTableColumnNames)) {
+			System.out.println("Test passed!");
+		}
+		else {
+			System.out.println("Test failed!");
+		}
 	}
 	
 	@Test
@@ -157,8 +194,18 @@ public class MainWorkWithData {
 		// Assertion
 		tables.currentAgeResult();
 		String[] expectedTableColumnAges = {"27", "23"};
-		String[] actualAgeList = tables.getAgeTable();
-		Assertions.assertArrayEquals(expectedTableColumnAges, actualAgeList);
+		String[] actualTableColumnAges = tables.getAgeTable();
+		Assertions.assertArrayEquals(expectedTableColumnAges, actualTableColumnAges);
+		// Print results
+		System.out.println("Test results are:");
+		System.out.println("Expected result was: " + expectedTableColumnAges);
+		System.out.println("Actual result is: " + actualTableColumnAges);
+		if (expectedTableColumnAges.equals(actualTableColumnAges)) {
+			System.out.println("Test passed!");
+		}
+		else {
+			System.out.println("Test failed!");
+		}
 	}
 	
 	@Test
@@ -176,7 +223,7 @@ public class MainWorkWithData {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("Save Image fron Blonde Site")
+	@Story("Save Image from Blonde Site")
 	@Description("Saving Image from the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void savingImageFromBlondeSite() throws InterruptedException, IOException {
@@ -184,8 +231,19 @@ public class MainWorkWithData {
 		saveImageTest.navigate();
 		Thread.sleep(5000);
 		saveImageTest.saveImage();
+		boolean expectedResultImageTest = true; // Azt vizsgáljuk, hogy a mentés után létezik-e a fájl
 		boolean actualResultImageTest = saveImageTest.checkSaveImageResult();
 		Assertions.assertTrue(actualResultImageTest);
+		// Print results
+		System.out.println("Test results are:");
+		System.out.println("Expected result was: " + expectedResultImageTest);
+		System.out.println("Actual result is: " + actualResultImageTest);
+		if (expectedResultImageTest == actualResultImageTest) {
+			System.out.println("Test passed!");
+		}
+		else {
+			System.out.println("Test failed!");
+		}
 	}
 	
 	@AfterEach
