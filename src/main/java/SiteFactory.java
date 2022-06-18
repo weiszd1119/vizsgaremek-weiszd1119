@@ -7,20 +7,20 @@ public class SiteFactory {
 		switch (name) {
 			case "AcceptContract":
 				return new AcceptContract(driver);
-			case "LoginToSite":
-				return new LoginToSite(driver);
-			case "RegisterToSite":
-				return new RegisterToSite(driver);
-			case "ContactOnSite":
-				return new ContactOnSite(driver);
-			case "SearchOnSite":
-				return new SearchOnSite(driver);
-			case "TagsOnSite":
-				return new TagsOnSite(driver);
-			case "LinksOnSite":
-				return new LinksOnSite(driver);
-			case "PagesOnSite":
-				return new PagesOnSite(driver);
+			case "Login":
+				return new Login(driver);
+			case "Register":
+				return new Register(driver);
+			case "Contact":
+				return new Contact(driver);
+			case "Search":
+				return new Search(driver);
+			case "Tags":
+				return new Tags(driver);
+			case "Links":
+				return new Links(driver);
+			case "Pages":
+				return new Pages(driver);
 			case "CssStyleTest":
 				return new CssStyle(driver);
 			case "TablesTest":
@@ -29,7 +29,7 @@ public class SiteFactory {
 				return new WebService(driver);
 			case "YoutubeTest":
 				return new Youtube(driver);
-			case "ListTest":
+			case "List":
 				return new List(driver);
 			case "SaveImageTest":
 				return new SaveImage(driver);

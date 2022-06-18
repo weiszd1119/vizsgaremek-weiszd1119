@@ -2,7 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
-public class RegisterToSite extends StartDriver {
+public class Register extends StartDriver {
 	private final String inputRegUserName = "weiszd1119";
 	private final String inputRegPassword = "TEmp1119";
 	private final String inputRegEmail = "yaraclen@gmail.com";
@@ -15,7 +15,7 @@ public class RegisterToSite extends StartDriver {
 	private final By findRegisterButton = By.xpath("//*[@id=\"register\"]/form/div[6]/button");
 	
 	//Konstruktor
-	public RegisterToSite(WebDriver startdriver) {
+	public Register(WebDriver startdriver) {
 		super(startdriver);
 	}
 	

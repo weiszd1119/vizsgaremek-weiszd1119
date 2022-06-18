@@ -62,17 +62,17 @@ public class MainUserManagement {
     @Severity(SeverityLevel.CRITICAL)
     public void registerToBlondeSite() throws InterruptedException {
         acceptContractOnBlondeSite();
-        RegisterToSite registerToSite = (RegisterToSite) SiteFactory.Create("RegisterToSite", driver);
+        Register register = (Register) SiteFactory.Create("Register", driver);
         Thread.sleep(5000);
-        registerToSite.pushRegTab();
-        registerToSite.writeIntoRegUserField();
-        registerToSite.writeIntoRegPasswordField();
-        registerToSite.writeIntoRegEmailField();
-        registerToSite.writeIntoRegDescriptionField();
-        registerToSite.pushRegButton();
+        register.pushRegTab();
+        register.writeIntoRegUserField();
+        register.writeIntoRegPasswordField();
+        register.writeIntoRegEmailField();
+        register.writeIntoRegDescriptionField();
+        register.pushRegButton();
         // Assertions
         String expectedRegisterMessage = "User registered!";
-        String actualUrlRegister = registerToSite.currentRegisterMessageResult();
+        String actualUrlRegister = register.currentRegisterMessageResult();
         Assertions.assertEquals(expectedRegisterMessage, actualUrlRegister);
         // Invalid register?
         System.out.println("Test results are:");
@@ -92,7 +92,7 @@ public class MainUserManagement {
     @Severity(SeverityLevel.CRITICAL)
     public void loginToBlondeSite() throws InterruptedException {
         registerToBlondeSite();
-        LoginToSite loginToSite = (LoginToSite) SiteFactory.Create("LoginToSite", driver);
+        Login loginToSite = (Login) SiteFactory.Create("Login", driver);
         Thread.sleep(5000);
         loginToSite.pushLoginTab();
         loginToSite.writeIntoUserField();

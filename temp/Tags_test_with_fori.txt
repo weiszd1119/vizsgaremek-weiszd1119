@@ -6,14 +6,14 @@ Main
 	@Description("Tags some expressions the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void tagsOnBlondeSite() throws InterruptedException {
-		TagsOnSite tagsOnSite = (TagsOnSite) SiteFactory.Create("TagsOnSite", driver);
-		tagsOnSite.navigate();
+		Tags tags = (Tags) SiteFactory.Create("Tags", driver);
+		tags.navigate();
 		Thread.sleep(5000);
 		// Assertions
-		tagsOnSite.getTagList();
-		tagsOnSite.clickOnAllTags();
+		tags.getTagList();
+		tags.clickOnAllTags();
 		String[] expectedUrlAllTags = {"https://lennertamas.github.io/blondesite/tags/themes/", "https://lennertamas.github.io/blondesite/tags/themes/"};
-		String[] actualUrlAllTags = tagsOnSite.currentTagsaHrefResult();
+		String[] actualUrlAllTags = tags.currentTagsaHrefResult();
 		Assertions.assertArrayEquals(expectedUrlAllTags, actualUrlAllTags);
 	}
 
@@ -29,12 +29,12 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class TagsOnSite extends StartDriver {
+public class Tags extends StartDriver {
 	private final String urlTags = "https://lennertamas.github.io/blondesite/about/";
 	
 	private String[] aHrefList;
 	private final By findAllTags = By.xpath("//*[@id=\"content\"]/div/div/div[2]/div[4]/div/a");
-	public TagsOnSite(WebDriver startdriver) {
+	public Tags(WebDriver startdriver) {
 		super(startdriver);
 	}
 	

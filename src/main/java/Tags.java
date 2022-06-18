@@ -5,7 +5,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class TagsOnSite extends StartDriver {
+public class Tags extends StartDriver {
 	private final String urlTags = "https://lennertamas.github.io/blondesite/about/";
 	
 	private final By findCssTag = By.xpath("//*[@id=\"content\"]/div/div/div[2]/div[4]/div/a[1]");
@@ -17,7 +17,7 @@ public class TagsOnSite extends StartDriver {
 	private final By findTextTag = By.xpath("//*[@id=\"content\"]/div/div/div[2]/div[4]/div/a[7]");
 	private final By findThemesTag = By.xpath("//*[@id=\"content\"]/div/div/div[2]/div[4]/div/a[8]");
 	
-	public TagsOnSite(WebDriver startdriver) {
+	public Tags(WebDriver startdriver) {
 		super(startdriver);
 	}
 	

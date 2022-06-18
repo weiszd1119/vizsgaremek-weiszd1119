@@ -37,49 +37,49 @@ public class MainControlSite {
 	@Description("Tags some expressions the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void tagsOnBlondeSite() throws InterruptedException {
-		TagsOnSite tagsOnSite = (TagsOnSite) SiteFactory.Create("TagsOnSite", driver);
-		tagsOnSite.navigate();
+		Tags tags = (Tags) SiteFactory.Create("Tags", driver);
+		tags.navigate();
 		Thread.sleep(5000);
 		// Assertions
 		// css
-		tagsOnSite.clickOnTagCss();
+		tags.clickOnTagCss();
 		String expectedUrlTagCss = "https://lennertamas.github.io/blondesite/tags/css/";
-		String actualUrlTagCss = tagsOnSite.checkLinkTagCss();
+		String actualUrlTagCss = tags.checkLinkTagCss();
 		Assertions.assertEquals(expectedUrlTagCss, actualUrlTagCss);
 		// emoji
-		tagsOnSite.clickOnTagEmoji();
+		tags.clickOnTagEmoji();
 		String expectedUrlTagEmoji = "https://lennertamas.github.io/blondesite/tags/emoji/";
-		String actualUrlTagEmoji = tagsOnSite.checkLinkTagEmoji();
+		String actualUrlTagEmoji = tags.checkLinkTagEmoji();
 		Assertions.assertEquals(expectedUrlTagEmoji, actualUrlTagEmoji);
 		// html
-		tagsOnSite.clickOnTagHtml();
+		tags.clickOnTagHtml();
 		String expectedUrlTagHtml = "https://lennertamas.github.io/blondesite/tags/html/";
-		String actualUrlTagHtml = tagsOnSite.checkLinkTagHtml();
+		String actualUrlTagHtml = tags.checkLinkTagHtml();
 		Assertions.assertEquals(expectedUrlTagHtml, actualUrlTagHtml);
 		// markdown
-		tagsOnSite.clickOnTagMarkdown();
+		tags.clickOnTagMarkdown();
 		String expectedUrlTagMarkdown = "https://lennertamas.github.io/blondesite/tags/markdown/";
-		String actualUrlTagMarkdown = tagsOnSite.checkLinkTagMarkdown();
+		String actualUrlTagMarkdown = tags.checkLinkTagMarkdown();
 		Assertions.assertEquals(expectedUrlTagMarkdown, actualUrlTagMarkdown);
 		// privacy
-		tagsOnSite.clickOnTagPrivacy();
+		tags.clickOnTagPrivacy();
 		String expectedUrlTagPrivacy = "https://lennertamas.github.io/blondesite/tags/privacy/";
-		String actualUrlTagPrivacy = tagsOnSite.checkLinkTagPrivacy();
+		String actualUrlTagPrivacy = tags.checkLinkTagPrivacy();
 		Assertions.assertEquals(expectedUrlTagPrivacy, actualUrlTagPrivacy);
 		// shortcodes
-		tagsOnSite.clickOnTagShortcodes();
+		tags.clickOnTagShortcodes();
 		String expectedUrlTagShortcodes = "https://lennertamas.github.io/blondesite/tags/shortcodes/";
-		String actualUrlTagShortcodes = tagsOnSite.checkLinkTagShortcodes();
+		String actualUrlTagShortcodes = tags.checkLinkTagShortcodes();
 		Assertions.assertEquals(expectedUrlTagShortcodes, actualUrlTagShortcodes);
 		// text
-		tagsOnSite.clickOnTagText();
+		tags.clickOnTagText();
 		String expectedUrlTagText = "https://lennertamas.github.io/blondesite/tags/text/";
-		String actualUrlTagText = tagsOnSite.checkLinkTagText();
+		String actualUrlTagText = tags.checkLinkTagText();
 		Assertions.assertEquals(expectedUrlTagText, actualUrlTagText);
 		// themes
-		tagsOnSite.clickOnTagThemes();
+		tags.clickOnTagThemes();
 		String expectedUrlTagThemes = "https://lennertamas.github.io/blondesite/tags/themes/";
-		String actualUrlTagThemes = tagsOnSite.checkLinkTagThemes();
+		String actualUrlTagThemes = tags.checkLinkTagThemes();
 		Assertions.assertEquals(expectedUrlTagThemes, actualUrlTagThemes);
 	}
 	
@@ -89,50 +89,50 @@ public class MainControlSite {
 	@Description("Test all external links")
 	@Severity(SeverityLevel.NORMAL)
 	public void linksOnBlondeSite() throws InterruptedException {
-		LinksOnSite linksOnSite = (LinksOnSite) SiteFactory.Create("LinksOnSite", driver);
-		linksOnSite.navigate();
+		Links links = (Links) SiteFactory.Create("Links", driver);
+		links.navigate();
 		Thread.sleep(5000);
 		// Assertions
 		// Apache Licence 2.0
-		linksOnSite.clickOnLinkFirst();
+		links.clickOnLinkFirst();
 		String expectedUrlLinkFirst = "https://github.com/gohugoio/hugo/blob/master/LICENSE";
-		String actualUrlLinkFirst = linksOnSite.checkLinkResultFirst();
+		String actualUrlLinkFirst = links.checkLinkResultFirst();
 		Assertions.assertEquals(expectedUrlLinkFirst, actualUrlLinkFirst);
 		// Goldmark
-		linksOnSite.navigateback();
-		linksOnSite.clickOnLinkSecond();
+		links.navigateback();
+		links.clickOnLinkSecond();
 		String expectedUrlLinkSecond = "https://github.com/yuin/goldmark";
-		String actualUrlLinkSecond = linksOnSite.checkLinkResultSecond();
+		String actualUrlLinkSecond = links.checkLinkResultSecond();
 		Assertions.assertEquals(expectedUrlLinkSecond, actualUrlLinkSecond);
 		// Chroma
-		linksOnSite.navigateback();
-		linksOnSite.clickOnLinkThird();
+		links.navigateback();
+		links.clickOnLinkThird();
 		String expectedUrlLinkThird = "https://github.com/alecthomas/chroma";
-		String actualUrlLinkThird = linksOnSite.checkLinkResultThird();
+		String actualUrlLinkThird = links.checkLinkResultThird();
 		Assertions.assertEquals(expectedUrlLinkThird, actualUrlLinkThird);
 		// Smartcrop
-		linksOnSite.navigateback();
-		linksOnSite.clickOnLinkFourth();
+		links.navigateback();
+		links.clickOnLinkFourth();
 		String expectedUrlLinkFourth = "https://github.com/muesli/smartcrop";
-		String actualUrlLinkFourth = linksOnSite.checkLinkResultFourth();
+		String actualUrlLinkFourth = links.checkLinkResultFourth();
 		Assertions.assertEquals(expectedUrlLinkFourth, actualUrlLinkFourth);
 		// Cobra
-		linksOnSite.navigateback();
-		linksOnSite.clickOnLinkFifth();
+		links.navigateback();
+		links.clickOnLinkFifth();
 		String expectedUrlLinkFifth = "https://github.com/spf13/cobra";
-		String actualUrlLinkFifth = linksOnSite.checkLinkResultFifth();
+		String actualUrlLinkFifth = links.checkLinkResultFifth();
 		Assertions.assertEquals(expectedUrlLinkFifth, actualUrlLinkFifth);
 		// Viper
-		linksOnSite.navigateback();
-		linksOnSite.clickOnLinkSixth();
+		links.navigateback();
+		links.clickOnLinkSixth();
 		String expectedUrlLinkSixth = "https://github.com/spf13/viper";
-		String actualUrlLinkSixth = linksOnSite.checkLinkResultSixth();
+		String actualUrlLinkSixth = links.checkLinkResultSixth();
 		Assertions.assertEquals(expectedUrlLinkSixth, actualUrlLinkSixth);
 		// Gohugoio
-		linksOnSite.navigateback();
-		linksOnSite.clickOnLinkSeventh();
+		links.navigateback();
+		links.clickOnLinkSeventh();
 		String expectedUrlLinkSeventh = "https://github.com/gohugoio";
-		String actualUrlLinkSeventh = linksOnSite.checkLinkResultSeventh();
+		String actualUrlLinkSeventh = links.checkLinkResultSeventh();
 		Assertions.assertEquals(expectedUrlLinkSeventh, actualUrlLinkSeventh);
 	}
 	
@@ -142,31 +142,31 @@ public class MainControlSite {
 	@Description("Search some expressions the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void pagesOnBlondeSite() throws InterruptedException {
-		PagesOnSite pagesOnSite = (PagesOnSite) SiteFactory.Create("PagesOnSite", driver);
-		pagesOnSite.navigate();
+		Pages pages = (Pages) SiteFactory.Create("Pages", driver);
+		pages.navigate();
 		Thread.sleep(5000);
-		pagesOnSite.clickOnPageButton();
+		pages.clickOnPageButton();
 		// Assertions
 		// Math Typesetting
 		String expectedUrlPageMath = "https://lennertamas.github.io/blondesite/post/math-typesetting/";
 		String actualUrlPageMath = driver.getCurrentUrl();
 		Assertions.assertEquals(expectedUrlPageMath, actualUrlPageMath);
-		pagesOnSite.clickOnPageButton();
+		pages.clickOnPageButton();
 		// Placeholder Text
 		String expectedUrlPlaceholder = "https://lennertamas.github.io/blondesite/post/placeholder-text/";
 		String actualUrlPlaceholder = driver.getCurrentUrl();
 		Assertions.assertEquals(expectedUrlPlaceholder, actualUrlPlaceholder);
-		pagesOnSite.clickOnPageButton();
+		pages.clickOnPageButton();
 		// Rich Content
 		String expectedUrlRichContent = "https://lennertamas.github.io/blondesite/post/rich-content/";
 		String actualUrlRichContent = driver.getCurrentUrl();
 		Assertions.assertEquals(expectedUrlRichContent, actualUrlRichContent);
-		pagesOnSite.clickOnPageButton();
+		pages.clickOnPageButton();
 		// Markdown Syntax
 		String expectedUrlMarkdown = "https://lennertamas.github.io/blondesite/post/markdown-syntax/";
 		String actualUrlMarkdown = driver.getCurrentUrl();
 		Assertions.assertEquals(expectedUrlMarkdown, actualUrlMarkdown);
-		pagesOnSite.clickOnPageButton();
+		pages.clickOnPageButton();
 		// Image Test
 		String expectedUrlImage = "https://lennertamas.github.io/blondesite/post/image-test/";
 		String actualUrlImage = driver.getCurrentUrl();

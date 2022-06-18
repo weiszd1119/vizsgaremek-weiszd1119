@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ContactOnSite extends StartDriver {
+public class Contact extends StartDriver {
 	private final String urlContact = "https://lennertamas.github.io/blondesite/contact/";
 	private final String inputContactYourName = "Neville Longbottom";
 	private final String inputContactEmailAddress = "nevillelongbottom@roxfort.com";
@@ -18,7 +18,7 @@ public class ContactOnSite extends StartDriver {
 	private final By findContactMessage = By.name("message");
 	private final By findContactSubmitButton = By.cssSelector("#content > div > div > div.bg-white.col-span-3.lg\\:col-span-2.p-5.dark\\:bg-warmgray-900.dark\\:text-white > div > div > form > input");
 	
-	public ContactOnSite(WebDriver startdriver) {
+	public Contact(WebDriver startdriver) {
 		super(startdriver);
 	}
 	
@@ -33,7 +33,7 @@ public class ContactOnSite extends StartDriver {
 	public void writeIntoContactYourNameUserFieldFromFile() throws IOException {
 		//Reading from file.
 		//Create Object of java FileReader and BufferedReader class.
-		String testFile_1 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\ContactOnSite_sources\\dataSourceFromFile_1.txt";
+		String testFile_1 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\Contact_sources\\dataSourceFromFile_1.txt";
 		FileReader fileReader = new FileReader(testFile_1);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		String contentOfTestFile_1 = "";
@@ -55,7 +55,7 @@ public class ContactOnSite extends StartDriver {
 	}
 	
 	public void writeIntoContactEmailAddressFromFile() throws IOException {
-		String testFile_2 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\ContactOnSite_sources\\dataSourceFromFile_2.txt";
+		String testFile_2 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\Contact_sources\\dataSourceFromFile_2.txt";
 		FileReader fileReader = new FileReader(testFile_2);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		String contentOfTestFile_2 = "";
@@ -76,7 +76,7 @@ public class ContactOnSite extends StartDriver {
 	}
 	
 	public void writeIntoContactSubjectFromFile() throws IOException {
-		String testFile_3 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\ContactOnSite_sources\\dataSourceFromFile_3.txt";
+		String testFile_3 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\Contact_sources\\dataSourceFromFile_3.txt";
 		FileReader fileReader = new FileReader(testFile_3);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		String contentOfTestFile_3 = "";
@@ -97,7 +97,7 @@ public class ContactOnSite extends StartDriver {
 	}
 	
 	public void writeIntoContactMessageFromFile() throws IOException {
-		String testFile_4 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\ContactOnSite_sources\\dataSourceFromFile_4.txt";
+		String testFile_4 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\Contact_sources\\dataSourceFromFile_4.txt";
 		FileReader fileReader = new FileReader(testFile_4);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		String contentOfTestFile_4 = "";

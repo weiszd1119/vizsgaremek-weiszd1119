@@ -3,7 +3,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LinksOnSite extends StartDriver {
+public class Links extends StartDriver {
 	private final String urlLinks = "https://lennertamas.github.io/blondesite/about/";
 	private final By findLinkFirst = By.linkText("Apache Licence 2.0.");
 	private final By findLinkSecond = By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/ul/li[1]/a");
@@ -13,7 +13,7 @@ public class LinksOnSite extends StartDriver {
 	private final By findLinkSixth = By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/ul/li[5]/a");
 	private final By findLinkSeventh = By.linkText("GitHub");
 	
-	public LinksOnSite(WebDriver startdriver) {
+	public Links(WebDriver startdriver) {
 		super(startdriver);
 	}
 	

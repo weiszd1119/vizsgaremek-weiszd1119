@@ -3,7 +3,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LoginToSite extends StartDriver {
+public class Login extends StartDriver {
 	private final String inputLoginUserName = "weiszd1119";
 	private final String inputLoginPassword = "TEmp1119";
 	private final By findLoginUserName = By.id("email");
@@ -13,7 +13,7 @@ public class LoginToSite extends StartDriver {
 	private final By findLoginButton = By.xpath("//*[@id=\"login\"]/form/div[4]/button");
 	
 	//Konstruktor
-	public LoginToSite(WebDriver startdriver) {
+	public Login(WebDriver startdriver) {
 		super(startdriver);
 	}
 	

@@ -1,7 +1,9 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -36,18 +38,18 @@ public class MainWorkWithData {
 	@Description("Fill Contact the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void fillContactOnBlondeSite() throws InterruptedException {
-		ContactOnSite contactOnSite = (ContactOnSite) SiteFactory.Create("ContactOnSite", driver);
-		contactOnSite.navigate();
+		Contact contact = (Contact) SiteFactory.Create("Contact", driver);
+		contact.navigate();
 		Thread.sleep(5000);
 		// Mezők kitöltése
-		contactOnSite.writeIntoContactYourNameUserField();
-		contactOnSite.writeIntoContactEmailAddress();
-		contactOnSite.writeIntoContactSubject();
-		contactOnSite.writeIntoContactMessage();
-		contactOnSite.pushSubmitButton();
+		contact.writeIntoContactYourNameUserField();
+		contact.writeIntoContactEmailAddress();
+		contact.writeIntoContactSubject();
+		contact.writeIntoContactMessage();
+		contact.pushSubmitButton();
 		// Assertions
 		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
-		String actualUrlContact = contactOnSite.currentContactResult();
+		String actualUrlContact = contact.currentContactResult();
 		Assertions.assertEquals(expectedUrlContact, actualUrlContact);
 		// Print results
 		System.out.println("Test results are:");
@@ -67,18 +69,18 @@ public class MainWorkWithData {
 	@Description("Fill Contact the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void fillContactFromFileOnBlondeSite() throws InterruptedException, IOException {
-		ContactOnSite contactOnSite = (ContactOnSite) SiteFactory.Create("ContactOnSite", driver);
-		contactOnSite.navigate();
+		Contact contact = (Contact) SiteFactory.Create("Contact", driver);
+		contact.navigate();
 		Thread.sleep(5000);
 		// Mezők kitöltése file-ból
-		contactOnSite.writeIntoContactYourNameUserFieldFromFile();
-		contactOnSite.writeIntoContactEmailAddressFromFile();
-		contactOnSite.writeIntoContactSubjectFromFile();
-		contactOnSite.writeIntoContactMessageFromFile(); //A filebeolvasás üres sor esetén leáll
-		contactOnSite.pushSubmitButton();
+		contact.writeIntoContactYourNameUserFieldFromFile();
+		contact.writeIntoContactEmailAddressFromFile();
+		contact.writeIntoContactSubjectFromFile();
+		contact.writeIntoContactMessageFromFile(); //A filebeolvasás üres sor esetén leáll
+		contact.pushSubmitButton();
 		// Assertions
 		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
-		String actualUrlContact = contactOnSite.currentContactResult();
+		String actualUrlContact = contact.currentContactResult();
 		Assertions.assertEquals(expectedUrlContact, actualUrlContact);
 		// Print results
 		System.out.println("Test results are:");
@@ -98,25 +100,25 @@ public class MainWorkWithData {
 	@Description("Delete inputs from Fill Contact the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void deleteInputFromContactOnBlondeSite() throws InterruptedException {
-		ContactOnSite contactOnSite = (ContactOnSite) SiteFactory.Create("ContactOnSite", driver);
-		contactOnSite.navigate();
+		Contact contact = (Contact) SiteFactory.Create("Contact", driver);
+		contact.navigate();
 		Thread.sleep(5000);
 		// Mezők kitöltése
-		contactOnSite.writeIntoContactYourNameUserField();
-		contactOnSite.writeIntoContactEmailAddress();
-		contactOnSite.writeIntoContactSubject();
-		contactOnSite.writeIntoContactMessage();
+		contact.writeIntoContactYourNameUserField();
+		contact.writeIntoContactEmailAddress();
+		contact.writeIntoContactSubject();
+		contact.writeIntoContactMessage();
 		// Mezők törlése
-		contactOnSite.deleteFromContactYourNameUserField();
-		contactOnSite.deleteFromContactEmailAddress();
-		contactOnSite.deleteFromContactSubject();
-		contactOnSite.deleteFromContactMessage();
-		contactOnSite.pushSubmitButton();
+		contact.deleteFromContactYourNameUserField();
+		contact.deleteFromContactEmailAddress();
+		contact.deleteFromContactSubject();
+		contact.deleteFromContactMessage();
+		contact.pushSubmitButton();
 		// Figyelmeztető szöveg keresése
-		contactOnSite.currentWarningMessageResult();
+		contact.currentWarningMessageResult();
 		// Assertions
 		String expectedWarningMessage = "Fülle dieses Feld aus.";
-		String actualWarningMessage = contactOnSite.currentWarningMessageResult();
+		String actualWarningMessage = contact.currentWarningMessageResult();
 		Assertions.assertEquals(expectedWarningMessage, actualWarningMessage);
 		// Print results
 		System.out.println("Test results are:");
@@ -135,20 +137,21 @@ public class MainWorkWithData {
 	@Story("Search on Blonde Site")
 	@Description("Search some expressions the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
-	public void searchOnBlondeSite() throws InterruptedException {
-		SearchOnSite searchOnSite = (SearchOnSite) SiteFactory.Create("SearchOnSite", driver);
-		searchOnSite.navigate();
+	public void searchOnBlondeSite() throws InterruptedException, IOException {
+		Search search = (Search) SiteFactory.Create("Search", driver);
+		search.navigate();
 		Thread.sleep(5000);
-		searchOnSite.writeIntoSearchField();
-		// Azt kéne megnézni, hogy az url-be beírja-e a beírt keresőszót, a "q" paramétert kéne kiszedni
-		String expectedUrlSearch = "https://www.google.com/search?q=syntax&sitesearch=https%3A%2F%2Flennertamas.github.io%2Fblondesite%2F";
-		String actualUrlSearch = searchOnSite.currentSearchResult();
-		Assertions.assertEquals(expectedUrlSearch, actualUrlSearch);
+		search.writeIntoSearchField();
+		// Assertions
+		// Azt ellenőrizzük, hogy az URL megkapja-e a "q" paramétert a keresőmezőből
+		String expectedUrlQParameter = "";
+		String actualUrlQParameter = search.currentSearchResult();
+		Assertions.assertEquals(expectedUrlQParameter, actualUrlQParameter);
 		// Print results
 		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedUrlSearch);
-		System.out.println("Actual result is: " + actualUrlSearch);
-		if (expectedUrlSearch.equals(actualUrlSearch)) {
+		System.out.println("Expected result was: " + expectedUrlQParameter);
+		System.out.println("Actual result is: " + actualUrlQParameter);
+		if (expectedUrlQParameter.equals(actualUrlQParameter)) {
 			System.out.println("Test passed!");
 		}
 		else {
@@ -213,12 +216,24 @@ public class MainWorkWithData {
 	@Story("List on Blonde Site")
 	@Description("List on the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
-	public void listTestOnBlondeSite() throws InterruptedException {
-		List listTest = (List) SiteFactory.Create("ListTest", driver);
-		listTest.navigate();
+	public void orderedListTestOnBlondeSite() throws InterruptedException {
+		List list = (List) SiteFactory.Create("List", driver);
+		list.navigate();
 		Thread.sleep(5000);
-		listTest.getOrderedList();
-		// TODO not work yet, Assertions
+		list.currentOrderedResult();
+		String[] expectedOrderedListElements = {"First Item, Second Item, Third Item"};
+		String[] actualOrderedListElements = list.getOrderedList();
+		Assertions.assertArrayEquals(expectedOrderedListElements, actualOrderedListElements);
+		// Print results
+		System.out.println("Test results are:");
+		System.out.println("Expected result was: " + expectedOrderedListElements);
+		System.out.println("Actual result is: " + actualOrderedListElements);
+		if (expectedOrderedListElements.equals(actualOrderedListElements)) {
+			System.out.println("Test passed!");
+		}
+		else {
+			System.out.println("Test failed!");
+		}
 	}
 	
 	@Test
