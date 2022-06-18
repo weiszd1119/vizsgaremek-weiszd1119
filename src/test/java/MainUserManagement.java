@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @Tag("usermanagement")
@@ -113,6 +115,34 @@ public class MainUserManagement {
             System.out.println("Test failed!");
         }
     }
+    
+    @Test
+    @Epic("Blonde Site")
+    @Story("Login to Blonde Site")
+    @Description("Navigation to the login page and login to the site")
+    @Severity(SeverityLevel.CRITICAL)
+    public void loginFromJSONFileToBlondeSite() throws InterruptedException, IOException, ParseException {
+        acceptContractOnBlondeSite();
+        Login loginToSite = (Login) SiteFactory.Create("Login", driver);
+        Thread.sleep(5000);
+        loginToSite.navigate();
+        loginToSite.writeIntoUserAndPasswordFieldFromFile();
+        // Assertions
+        String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing/";
+        String actualUrlLogin = loginToSite.checkLoginResult();
+        Assertions.assertEquals(expectedUrlLogin, actualUrlLogin);
+        // Print results
+        System.out.println("Test results are:");
+        System.out.println("Expected result was: " + expectedUrlLogin);
+        System.out.println("Actual result is: " + actualUrlLogin);
+        if (expectedUrlLogin.equals(actualUrlLogin)) {
+            System.out.println("Test passed!");
+        }
+        else {
+            System.out.println("Test failed!");
+        }
+    }
+    
 
     @AfterEach
     @Epic("Blonde Site")
