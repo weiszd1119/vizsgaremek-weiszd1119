@@ -138,8 +138,8 @@ public class MainControlSite {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("Search on Blonde Site")
-	@Description("Search some expressions the Blonde Site")
+	@Story("Pages on Blonde Site")
+	@Description("Pages the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void pagesOnBlondeSite() throws InterruptedException {
 		Pages pages = (Pages) SiteFactory.Create("Pages", driver);
@@ -175,8 +175,8 @@ public class MainControlSite {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("Search on Blonde Site")
-	@Description("Search some expressions the Blonde Site")
+	@Story("Css on Blonde Site")
+	@Description("Css on the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void cssStyleOnBlondeSite() throws InterruptedException {
 		CssStyle cssStyle = (CssStyle) SiteFactory.Create("CssStyleTest", driver);

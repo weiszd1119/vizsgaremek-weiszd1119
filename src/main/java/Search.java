@@ -15,6 +15,8 @@ public class Search extends StartDriver {
 	private final String urlSearch = "https://lennertamas.github.io/blondesite/about/";
 	private final By findSearchBox = By.name("q");
 	
+	private final By findAcceptButton = By.id("L2AGLb"); //A keresés után felugrik egy Google-s adatkezelő nyilatkozat
+	
 	public Search(WebDriver startdriver) {
 		super(startdriver);
 	}
@@ -27,16 +29,17 @@ public class Search extends StartDriver {
 		// A textfile sorainak számának lekérdezése ahhoz, hogy csak addig fusson le a fori (i < linesDataSourceTxt) Path path = Paths.get(fileName);
 		int linesDataSource = 0;
 		try {
-			linesDataSource = (int) Files.lines(Path.of(("C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\Search_sources\\dataSource.txt"))).count();
+			linesDataSource = (int) Files.lines(Path.of(("searchSource.txt"))).count();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		System.out.println("Text file long was: " + linesDataSource + " line");
 		for (int i = 0; i < linesDataSource; i++) {
 			// Sorok beolvasása
-			String inputActualLine = Files.readAllLines(Paths.get("C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\Search_sources\\dataSource.txt")).get(i);
+			String inputActualLine = Files.readAllLines(Paths.get("searchSource.txt")).get(i);
 			// Sorok elküldése
 			driver.findElement(findSearchBox).sendKeys(inputActualLine, Keys.ENTER);
+			driver.findElement(findAcceptButton);
 			// "q" paraméter kiolvasása az URL-ből
 			String currentUrlSearch = driver.getCurrentUrl();
 			URL urlSearchResultGetQParameter;

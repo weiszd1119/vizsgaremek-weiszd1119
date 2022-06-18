@@ -1,5 +1,13 @@
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+
+import java.io.FileReader;
+import java.io.IOException;
 
 
 public class Register extends StartDriver {
@@ -41,6 +49,33 @@ public class Register extends StartDriver {
 	
 	public void pushRegButton() {
 		driver.findElement(findRegisterButton).click();
+	}
+	
+	public void writeIntoAllFieldsFromFile() throws IOException, ParseException {
+		// Read JSON file
+		JSONParser jsonParser = new JSONParser();
+		FileReader reader = new FileReader("registerSource.json");
+		Object object = jsonParser.parse(reader);
+		JSONArray usersList = (JSONArray) object;
+		for (int i = 0 ; i < usersList.size() ; i++) {
+			JSONObject usersOfJSON = (JSONObject) usersList.get(i);
+			JSONObject user = (JSONObject) usersOfJSON.get("users");
+			String username = (String) user.get("username");
+			String password = (String) user.get("password");
+			String email = (String) user.get("email");
+			String description = (String) user.get("description");
+			driver.findElement(findRegUserName).sendKeys(username);
+			//Először ezeket be kell regisztrálni
+			driver.findElement(findRegPassword).sendKeys(password);
+			// push login, navigate back
+			driver.findElement(findRegEmail).sendKeys(email);
+			driver.findElement(findRegDescription).sendKeys(description);
+			driver.findElement(findRegisterButton).click();
+			driver.findElement(findRegUserName).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+			driver.findElement(findRegPassword).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+			driver.findElement(findRegEmail).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+			driver.findElement(findRegDescription).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+		}
 	}
 	
 	public String currentRegisterMessageResult() {

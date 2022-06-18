@@ -92,17 +92,44 @@ public class MainUserManagement {
     @Story("Login to Blonde Site")
     @Description("Navigation to the login page and login to the site")
     @Severity(SeverityLevel.CRITICAL)
+    public void registerFromJSONFileToBlondeSite() throws InterruptedException, IOException, ParseException {
+        acceptContractOnBlondeSite();
+        Register register = (Register) SiteFactory.Create("Register", driver);
+        Thread.sleep(5000);
+        register.pushRegTab();
+        register.writeIntoAllFieldsFromFile();
+        // Assertions
+        String expectedRegisterMessage = "User registered!";
+        String actualUrlRegister = register.currentRegisterMessageResult();
+        Assertions.assertEquals(expectedRegisterMessage, actualUrlRegister);
+        // Invalid register?
+        System.out.println("Test results are:");
+        System.out.println("Expected result was: " + expectedRegisterMessage);
+        System.out.println("Actual result is: " + actualUrlRegister);
+        if (expectedRegisterMessage.equals(actualUrlRegister)) {
+            System.out.println("Test passed!");
+        }
+        else {
+            System.out.println("Test failed!");
+        }
+    }
+    
+    @Test
+    @Epic("Blonde Site")
+    @Story("Login to Blonde Site")
+    @Description("Navigation to the login page and login to the site")
+    @Severity(SeverityLevel.CRITICAL)
     public void loginToBlondeSite() throws InterruptedException {
         registerToBlondeSite();
-        Login loginToSite = (Login) SiteFactory.Create("Login", driver);
+        Login login = (Login) SiteFactory.Create("Login", driver);
         Thread.sleep(5000);
-        loginToSite.pushLoginTab();
-        loginToSite.writeIntoUserField();
-        loginToSite.writeIntoPasswordField();
-        loginToSite.pressLoginButton();
+        login.pushLoginTab();
+        login.writeIntoUserField();
+        login.writeIntoPasswordField();
+        login.pressLoginButton();
         // Assertions
         String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing/";
-        String actualUrlLogin = loginToSite.checkLoginResult();
+        String actualUrlLogin = login.checkLoginResult();
         Assertions.assertEquals(expectedUrlLogin, actualUrlLogin);
         // Print results
 		System.out.println("Test results are:");
@@ -122,14 +149,14 @@ public class MainUserManagement {
     @Description("Navigation to the login page and login to the site")
     @Severity(SeverityLevel.CRITICAL)
     public void loginFromJSONFileToBlondeSite() throws InterruptedException, IOException, ParseException {
-        acceptContractOnBlondeSite();
-        Login loginToSite = (Login) SiteFactory.Create("Login", driver);
+        registerFromJSONFileToBlondeSite();
+        Login login = (Login) SiteFactory.Create("Login", driver);
         Thread.sleep(5000);
-        loginToSite.navigate();
-        loginToSite.writeIntoUserAndPasswordFieldFromFile();
+        login.navigate();
+        login.writeIntoAllFieldsFromFile();
         // Assertions
         String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing/";
-        String actualUrlLogin = loginToSite.checkLoginResult();
+        String actualUrlLogin = login.checkLoginResult();
         Assertions.assertEquals(expectedUrlLogin, actualUrlLogin);
         // Print results
         System.out.println("Test results are:");
@@ -143,7 +170,6 @@ public class MainUserManagement {
         }
     }
     
-
     @AfterEach
     @Epic("Blonde Site")
     @Story("Make Screenshot")

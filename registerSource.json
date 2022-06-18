@@ -1,0 +1,42 @@
+[
+  {
+    "users":{
+      "username":"weiszd1119",
+      "password":"TEmp1119",
+      "email":"yaraclen@gmail.com",	
+      "description":"CC-TA Test User"
+    }
+  },
+  {
+    "users":{
+      "username":"nevillelongbottom",
+      "password":"LUna17",
+      "email":"neville.longbottom@roxfort.com",	
+      "description":"Roxfort-Gryffindor Test User"
+    }
+  },
+  {
+    "users":{
+      "username":"lupin.remus",
+      "password":"ExPecto0515",
+      "email":"lupin.remus@roxfort.com",	
+      "description":"Roxfort-Teachers Test User"
+    }
+  }
+  {
+    "users":{
+      "username":"prof.flitwick",
+      "password":"VingardiumLeviosa",
+      "email":"filius.flitwick",	
+      "description":"Roxfort-Teachers Test User"	
+    }
+  }
+  {
+    "users":{
+      "username":"director.roxfort",
+      "password":"Fawkes1100",
+       "email":"director@roxfort.com",	
+      "description":"Roxfort-Director Test User"
+    }
+  }
+]  
