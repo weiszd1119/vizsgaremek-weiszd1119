@@ -1,1 +1,1 @@
-{"uid":"83edc06c07f9ae9e47eb6dd1b683e4e2","children":[{"name":"ExamTestMain","children":[{"name":"registerToBlondeSite","uid":"44250921a35bac02","parentUid":"fb2e715a6199174ada10b968a67e455f","status":"passed","time":{"start":1654086839562,"stop":1654086900635,"duration":61073},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":[]}],"uid":"fb2e715a6199174ada10b968a67e455f"}],"name":"packages"}
+{"uid":"83edc06c07f9ae9e47eb6dd1b683e4e2","children":[],"name":"packages"}
