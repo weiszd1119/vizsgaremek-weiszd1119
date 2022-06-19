@@ -207,7 +207,7 @@ public class MainControlSite {
 	public void youtubeTestOnBlondeSite() throws InterruptedException {
 		Youtube youtubeTest = (Youtube) SiteFactory.Create("YoutubeTest", driver);
 		youtubeTest.navigate();
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		youtubeTest.pressFirstVideoPlayButton();
 	}
 	

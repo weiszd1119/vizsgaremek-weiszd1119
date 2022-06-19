@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -68,16 +69,43 @@ public class MainWorkWithData {
 	@Story("Fill Contact on Blonde Site")
 	@Description("Fill Contact the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
-	public void fillContactFromFileOnBlondeSite() throws InterruptedException, IOException {
+	public void fillContactFromTxtFileOnBlondeSite() throws InterruptedException, IOException {
 		Contact contact = (Contact) SiteFactory.Create("Contact", driver);
 		contact.navigate();
 		Thread.sleep(5000);
 		// Mezők kitöltése file-ból
-		contact.writeIntoContactYourNameUserFieldFromFile();
-		contact.writeIntoContactEmailAddressFromFile();
-		contact.writeIntoContactSubjectFromFile();
-		contact.writeIntoContactMessageFromFile(); //A filebeolvasás üres sor esetén leáll
+		contact.writeIntoContactYourNameUserFieldFromTxtFile();
+		contact.writeIntoContactEmailAddressFromTxtFile();
+		contact.writeIntoContactSubjectFromTxtFile();
+		contact.writeIntoContactMessageFromTxtFile(); //A filebeolvasás üres sor esetén leáll
 		contact.pushSubmitButton();
+		// Assertions
+		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
+		String actualUrlContact = contact.currentContactResult();
+		Assertions.assertEquals(expectedUrlContact, actualUrlContact);
+		// Print results
+		System.out.println("Test results are:");
+		System.out.println("Expected result was: " + expectedUrlContact);
+		System.out.println("Actual result is: " + actualUrlContact);
+		if (expectedUrlContact.equals(actualUrlContact)) {
+			System.out.println("Test passed!");
+		}
+		else {
+			System.out.println("Test failed!");
+		}
+	}
+	
+	@Test
+	@Epic("Blonde Site")
+	@Story("Fill Contact on Blonde Site")
+	@Description("Fill Contact the Blonde Site")
+	@Severity(SeverityLevel.NORMAL)
+	public void fillContactFromJSONFileOnBlondeSite() throws InterruptedException, IOException, ParseException {
+		Contact contact = (Contact) SiteFactory.Create("Contact", driver);
+		contact.navigate();
+		Thread.sleep(5000);
+		// Mezők kitöltése file-ból
+		contact.writeIntoAllFieldsFromJSONFile();
 		// Assertions
 		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
 		String actualUrlContact = contact.currentContactResult();
@@ -221,7 +249,7 @@ public class MainWorkWithData {
 		list.navigate();
 		Thread.sleep(5000);
 		list.currentOrderedResult();
-		String[] expectedOrderedListElements = {"First Item, Second Item, Third Item"};
+		String[] expectedOrderedListElements = {"First item", "Second item", "Third item"};
 		String[] actualOrderedListElements = list.getOrderedList();
 		Assertions.assertArrayEquals(expectedOrderedListElements, actualOrderedListElements);
 		// Print results

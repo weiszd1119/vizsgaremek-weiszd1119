@@ -1,0 +1,42 @@
+[
+  {
+    "users":{
+      "yourname":"Remus Lupin",
+      "email":"remuslupin@roxfort.com",
+      "subject":"Exam from Defence Against the Dark Arts at 20.06.2022 09:00 a.m.",	
+      "message":"Dear 2nd year students!\n The exam for this year's Defence Against Dark Spells will be held on the date indicated in the subject. Please make sure you bring your wands.\n Good luck for the exam!\n Remus Lupin"
+    }
+  },
+  {
+    "users":{
+      "yourname":"Luna Lovegood",
+      "email":"lunalovegood@roxfort.com",
+      "subject":"'The Quibbler' newspapers for sale",	
+      "message":"Hello!\n I have a few newspapers for sale, you can ask me every weekday after the last hour in the main hall.\n Luna"
+    }
+  },
+  {
+    "users":{
+      "yourname":"Albus Dumbledore",
+      "email":"director.roxfort@roxfort.com",
+      "subject":"Rules for this school year",	
+      "message":"Dear Students!\n I am sending you a list of what you need to know this year:\n -- The Forbidden Forest is forbidden limits to all students!\n -- End of year exams will be at the end of the year!\n -- No hopping in Hogwarts, except for me!"
+    }
+  },
+  {
+    "users":{
+      "yourname":"Flivius Flitwick",
+      "email":"prof.flitwick@roxfort.com",
+      "subject":"'Vingardium Leviosa' spell practice twice a week",	
+      "message":"Dear Students!\n The practice classes are held every Tuesday and Thursday at 2 p.m. in the classroom next to the Room of Requirement.\n Professor Flitwick"
+    }
+  },
+  {
+    "users":{
+      "yourname":"Neville Longbottom",
+      "email":"nevillelongbottom@roxfort.com",
+      "subject":"I forgot again...",	
+      "message":"I forgot what I wanted to write..."
+    }
+  },
+  ]

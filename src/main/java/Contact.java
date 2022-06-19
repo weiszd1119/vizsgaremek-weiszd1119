@@ -1,3 +1,7 @@
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -30,18 +34,18 @@ public class Contact extends StartDriver {
 		driver.findElement(findContactYourName).sendKeys(inputContactYourName);
 	}
 	
-	public void writeIntoContactYourNameUserFieldFromFile() throws IOException {
+	public void writeIntoContactYourNameUserFieldFromTxtFile() throws IOException {
 		//Reading from file.
 		//Create Object of java FileReader and BufferedReader class.
-		String testFile_1 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\Contact_sources\\dataSourceFromFile_1.txt";
-		FileReader fileReader = new FileReader(testFile_1);
+		String testFileYourName = "contactSourceYourName.txt";
+		FileReader fileReader = new FileReader(testFileYourName);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
-		String contentOfTestFile_1 = "";
+		String contentOfTestYourName = "";
 		
 		//Loop to read all lines one by one from file, content saved in a variable, and send keys from this variable.
 		String inputContactYourNameFromFile = null;
-		while ((contentOfTestFile_1 = bufferedReader.readLine()) != null) {
-			inputContactYourNameFromFile = contentOfTestFile_1;
+		while ((contentOfTestYourName = bufferedReader.readLine()) != null) {
+			inputContactYourNameFromFile = contentOfTestYourName;
 		}
 		driver.findElement(findContactYourName).sendKeys(inputContactYourNameFromFile);
 	}
@@ -54,15 +58,15 @@ public class Contact extends StartDriver {
 		driver.findElement(findContactEmailAddress).sendKeys(inputContactEmailAddress);
 	}
 	
-	public void writeIntoContactEmailAddressFromFile() throws IOException {
-		String testFile_2 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\Contact_sources\\dataSourceFromFile_2.txt";
-		FileReader fileReader = new FileReader(testFile_2);
+	public void writeIntoContactEmailAddressFromTxtFile() throws IOException {
+		String testFileEmailAddress = "contactSourceEmailAddress.txt";
+		FileReader fileReader = new FileReader(testFileEmailAddress);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
-		String contentOfTestFile_2 = "";
+		String contentOftestFileEmailAddress = "";
 		
 		String inputContactEmailAddressFromFile = null;
-		while ((contentOfTestFile_2 = bufferedReader.readLine()) != null) {
-			inputContactEmailAddressFromFile = contentOfTestFile_2;
+		while ((contentOftestFileEmailAddress = bufferedReader.readLine()) != null) {
+			inputContactEmailAddressFromFile = contentOftestFileEmailAddress;
 		}
 		driver.findElement(findContactEmailAddress).sendKeys(inputContactEmailAddressFromFile);
 	}
@@ -75,15 +79,15 @@ public class Contact extends StartDriver {
 		driver.findElement(findContactSubject).sendKeys(inputContactSubject);
 	}
 	
-	public void writeIntoContactSubjectFromFile() throws IOException {
-		String testFile_3 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\Contact_sources\\dataSourceFromFile_3.txt";
-		FileReader fileReader = new FileReader(testFile_3);
+	public void writeIntoContactSubjectFromTxtFile() throws IOException {
+		String testFileSubject = "contactSourceSubject.txt";
+		FileReader fileReader = new FileReader(testFileSubject);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
-		String contentOfTestFile_3 = "";
+		String contentOfTestFileSubject = "";
 		
 		String inputContactSubjectFromFile = null;
-		while ((contentOfTestFile_3 = bufferedReader.readLine()) != null) {
-			inputContactSubjectFromFile = contentOfTestFile_3;
+		while ((contentOfTestFileSubject = bufferedReader.readLine()) != null) {
+			inputContactSubjectFromFile = contentOfTestFileSubject;
 		}
 		driver.findElement(findContactSubject).sendKeys(inputContactSubjectFromFile);
 	}
@@ -96,17 +100,43 @@ public class Contact extends StartDriver {
 		driver.findElement(findContactMessage).sendKeys(inputContactMessage);
 	}
 	
-	public void writeIntoContactMessageFromFile() throws IOException {
-		String testFile_4 = "C:\\Users\\Felhasználó\\IdeaProjects\\vizsgaremek-weiszd1119\\src\\main\\java\\Contact_sources\\dataSourceFromFile_4.txt";
-		FileReader fileReader = new FileReader(testFile_4);
+	public void writeIntoContactMessageFromTxtFile() throws IOException {
+		String testFileMessage = "contactSourceMessage.txt";
+		FileReader fileReader = new FileReader(testFileMessage);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
-		String contentOfTestFile_4 = "";
+		String contentOftestFileMessage = "";
 		
 		String inputContactMessageFromFile = null;
-		while ((contentOfTestFile_4 = bufferedReader.readLine()) != null) {
-			inputContactMessageFromFile = contentOfTestFile_4;
+		while ((contentOftestFileMessage = bufferedReader.readLine()) != null) {
+			inputContactMessageFromFile = contentOftestFileMessage;
 		}
 		driver.findElement(findContactMessage).sendKeys(inputContactMessageFromFile);
+	}
+	
+	public void writeIntoAllFieldsFromJSONFile() throws IOException, ParseException {
+		// Read JSON file
+		JSONParser jsonParser = new JSONParser();
+		FileReader reader = new FileReader("contactSource.json");
+		Object object = jsonParser.parse(reader);
+		JSONArray usersList = (JSONArray) object;
+		for (int i = 0 ; i < usersList.size() ; i++) {
+			JSONObject usersOfJSON = (JSONObject) usersList.get(i);
+			JSONObject user = (JSONObject) usersOfJSON.get("users");
+			String yourname = (String) user.get("yourname");
+			String email = (String) user.get("email");
+			String subject = (String) user.get("subject");
+			String message = (String) user.get("message");
+			driver.findElement(findContactYourName).sendKeys(yourname);
+			driver.findElement(findContactEmailAddress).sendKeys(email);
+			driver.findElement(findContactSubject).sendKeys(subject);
+			driver.findElement(findContactMessage).sendKeys(message);
+			driver.findElement(findContactSubmitButton).click();
+			driver.navigate().back();
+			driver.findElement(findContactYourName).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+			driver.findElement(findContactEmailAddress).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+			driver.findElement(findContactSubject).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+			driver.findElement(findContactMessage).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+		}
 	}
 	
 	public void deleteFromContactMessage() {

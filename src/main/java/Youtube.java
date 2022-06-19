@@ -5,7 +5,7 @@ import org.openqa.selenium.*;
 public class Youtube extends StartDriver {
 	private final String urlYoutube = "https://lennertamas.github.io/blondesite/post/rich-content/";
 	
-	private final By YoutubeVideo = By.cssSelector("#content > div > div > div.col-span-3.lg\\:col-span-2.dark\\:text-white > div:nth-child(1) > div > div:nth-child(3)");
+	private final By findYoutubePlayButton = By.xpath("//*[@id=\"movie_player\"]/div[4]/button");
 	
 	public Youtube(WebDriver startdriver) {
 		super(startdriver);
@@ -18,7 +18,9 @@ public class Youtube extends StartDriver {
 	public void pressFirstVideoPlayButton() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,450)", "");
-		driver.findElement(YoutubeVideo).sendKeys(Keys.SPACE);
+		WebElement waitForVisible = driver.findElement(findYoutubePlayButton);
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("arguments[0].click();", waitForVisible);
 	}
 	
 }

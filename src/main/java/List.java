@@ -23,7 +23,7 @@ public class List extends StartDriver {
 		String[] orderedList;
 		orderedList = new String[lis.size()];
 		for (int i = 0; i < lis.size(); i++) {
-			WebElement li = lis.get(i).findElement(By.xpath("./li[1]"));
+			WebElement li = lis.get(i).findElement(By.xpath("./*"));
 			orderedList[i] = li.getText();
 		}
 		return orderedList;
