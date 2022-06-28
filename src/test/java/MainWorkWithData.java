@@ -289,6 +289,18 @@ public class MainWorkWithData {
 		}
 	}
 	
+	@Test
+	@Epic("Blonde Site")
+	@Story("Save Image from Blonde Site")
+	@Description("Saving Text from the Blonde Site")
+	@Severity(SeverityLevel.NORMAL)
+	public void saveTextFromBlondeSite() throws InterruptedException, IOException {
+		SaveText saveText = (SaveText) SiteFactory.Create("SaveText", driver);
+		saveText.navigate();
+		Thread.sleep(5000);
+		saveText.saveTextToTXTFile();
+	}
+	
 	@AfterEach
 	@Epic("Blonde Site")
 	@Story("Make Screenshot")

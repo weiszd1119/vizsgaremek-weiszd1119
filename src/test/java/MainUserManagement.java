@@ -89,7 +89,7 @@ public class MainUserManagement {
     }
     @Test
     @Epic("Blonde Site")
-    @Story("Login to Blonde Site")
+    @Story("LoginLogout to Blonde Site")
     @Description("Navigation to the login page and login to the site")
     @Severity(SeverityLevel.CRITICAL)
     public void registerFromJSONFileToBlondeSite() throws InterruptedException, IOException, ParseException {
@@ -116,20 +116,20 @@ public class MainUserManagement {
     
     @Test
     @Epic("Blonde Site")
-    @Story("Login to Blonde Site")
+    @Story("LoginLogout to Blonde Site")
     @Description("Navigation to the login page and login to the site")
     @Severity(SeverityLevel.CRITICAL)
     public void loginToBlondeSite() throws InterruptedException {
         registerToBlondeSite();
-        Login login = (Login) SiteFactory.Create("Login", driver);
+        LoginLogout loginLogout = (LoginLogout) SiteFactory.Create("LoginLogout", driver);
         Thread.sleep(5000);
-        login.pushLoginTab();
-        login.writeIntoUserField();
-        login.writeIntoPasswordField();
-        login.pressLoginButton();
+        loginLogout.pushLoginTab();
+        loginLogout.writeIntoUserField();
+        loginLogout.writeIntoPasswordField();
+        loginLogout.pressLoginButton();
         // Assertions
-        String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing/";
-        String actualUrlLogin = login.checkLoginResult();
+        String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing.html";
+        String actualUrlLogin = loginLogout.checkLoginResult();
         Assertions.assertEquals(expectedUrlLogin, actualUrlLogin);
         // Print results
 		System.out.println("Test results are:");
@@ -145,18 +145,18 @@ public class MainUserManagement {
     
     @Test
     @Epic("Blonde Site")
-    @Story("Login to Blonde Site")
+    @Story("LoginLogout to Blonde Site")
     @Description("Navigation to the login page and login to the site")
     @Severity(SeverityLevel.CRITICAL)
     public void loginFromJSONFileToBlondeSite() throws InterruptedException, IOException, ParseException {
         registerFromJSONFileToBlondeSite();
-        Login login = (Login) SiteFactory.Create("Login", driver);
+        LoginLogout loginLogout = (LoginLogout) SiteFactory.Create("LoginLogout", driver);
         Thread.sleep(5000);
-        login.navigate();
-        login.writeIntoAllFieldsFromFile();
+        loginLogout.navigate();
+        loginLogout.writeIntoAllFieldsFromFile();
         // Assertions
         String expectedUrlLogin = "https://lennertamas.github.io/blondesite/landing/";
-        String actualUrlLogin = login.checkLoginResult();
+        String actualUrlLogin = loginLogout.checkLoginResult();
         Assertions.assertEquals(expectedUrlLogin, actualUrlLogin);
         // Print results
         System.out.println("Test results are:");
@@ -168,6 +168,57 @@ public class MainUserManagement {
         else {
             System.out.println("Test failed!");
         }
+    }
+    
+    @Test
+    @Epic("Blonde Site")
+    @Story("LoginLogout to Blonde Site")
+    @Description("Navigation to the login page and login to the site")
+    @Severity(SeverityLevel.CRITICAL)
+    public void logoutFromBlondeSite() throws InterruptedException {
+        loginToBlondeSite();
+        LoginLogout loginLogout = (LoginLogout) SiteFactory.Create("LoginLogout", driver);
+        Thread.sleep(5000);
+        loginLogout.pressLogoutButton();
+        //Assertions
+        //A login oldalra lép vissza
+    }
+    
+    @Test
+    @Epic("Blonde Site")
+    @Story("Save Image from Blonde Site")
+    @Description("Saving Image from the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void modifyDataOnBlondeSite() throws InterruptedException {
+        loginToBlondeSite();
+        ModifyData modifyData = (ModifyData) SiteFactory.Create("ModifyData", driver);
+        Thread.sleep(5000);
+        modifyData.clickOnProfileLink();
+        modifyData.writeIntoNameField();
+        modifyData.writeIntoBioField();
+        modifyData.writeIntoPhoneField();
+        modifyData.clickOnSaveProfileButton();
+        // Assertions
+        String expectedModifyrMessage = "Profile Edited!";
+        String actualModifyMessage = modifyData.currentModifyMessageResult();
+        Assertions.assertEquals(expectedModifyrMessage, actualModifyMessage);
+        }
+    
+    @Test
+    @Epic("Blonde Site")
+    @Story("Save Image from Blonde Site")
+    @Description("Saving Image from the Blonde Site")
+    @Severity(SeverityLevel.NORMAL)
+    public void deleteAccountFromBlondeSite() throws InterruptedException {
+        loginToBlondeSite();
+        ModifyData modifyData = (ModifyData) SiteFactory.Create("ModifyData", driver);
+        Thread.sleep(5000);
+        modifyData.clickOnProfileLink();
+        modifyData.clickOnDeleteAccountButton();
+        modifyData.clickOnDeleteAccountSureButton();
+        
+        // Assertions
+        // Visszatért a login oldalra, üzenet nincs
     }
     
     @AfterEach

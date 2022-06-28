@@ -179,7 +179,7 @@ public class MainControlSite {
 	@Description("Css on the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void cssStyleOnBlondeSite() throws InterruptedException {
-		CssStyle cssStyle = (CssStyle) SiteFactory.Create("CssStyleTest", driver);
+		CssStyle cssStyle = (CssStyle) SiteFactory.Create("CssStyle", driver);
 		cssStyle.navigate();
 		Thread.sleep(5000);
 		cssStyle.clickOnSetButton();
@@ -205,10 +205,10 @@ public class MainControlSite {
 	@Description("Testing embedded Youtube videos and video control functions on the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void youtubeTestOnBlondeSite() throws InterruptedException {
-		Youtube youtubeTest = (Youtube) SiteFactory.Create("YoutubeTest", driver);
-		youtubeTest.navigate();
+		Youtube youtube = (Youtube) SiteFactory.Create("Youtube", driver);
+		youtube.navigate();
 		Thread.sleep(5000);
-		youtubeTest.pressFirstVideoPlayButton();
+		youtube.pressFirstVideoPlayButton();
 	}
 	
 	@AfterEach

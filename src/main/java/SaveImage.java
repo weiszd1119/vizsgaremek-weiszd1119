@@ -33,6 +33,4 @@ public class SaveImage extends StartDriver {
 		File savedImageFile = new File(saveFileName);
 		return savedImageFile.exists();
 	}
-	
-	
 }

@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Login extends StartDriver {
+public class LoginLogout extends StartDriver {
 	private final String inputLoginUserName = "weiszd1119";
 	private final String inputLoginPassword = "TEmp1119";
 	private final By findLoginUserName = By.id("email");
@@ -22,7 +22,7 @@ public class Login extends StartDriver {
 	private final By findLogoutButton = By.xpath("//*[@id=\"mobileMenu\"]/div[2]/a[5]");
 	
 	//Konstruktor
-	public Login(WebDriver startdriver) {
+	public LoginLogout(WebDriver startdriver) {
 		super(startdriver);
 	}
 	
@@ -63,6 +63,10 @@ public class Login extends StartDriver {
 	
 	public void pressLoginButton() {
 		driver.findElement(findLoginButton).click();
+	}
+	
+	public void pressLogoutButton() {
+		driver.findElement(findLogoutButton).click();
 	}
 	
 	public String checkLoginResult() {

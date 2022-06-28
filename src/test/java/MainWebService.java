@@ -36,7 +36,7 @@ public class MainWebService {
     @Description("Web Service Test at Blonde Site")
     @Severity(SeverityLevel.CRITICAL)
     public void webServiceTestOkAtBlondeSite() throws InterruptedException {
-        WebService webService = (WebService) SiteFactory.Create("WebServiceTest", driver);
+        WebService webService = (WebService) SiteFactory.Create("WebService", driver);
              Response response = RestAssured
                     .when()
                     .get(webService.getUrlOkString())
@@ -54,7 +54,7 @@ public class MainWebService {
     @Description("Web Service Test at Blonde Site")
     @Severity(SeverityLevel.CRITICAL)
     public void webServiceTestNotFountAtBlondeSite() throws InterruptedException {
-        WebService webService = (WebService) SiteFactory.Create("WebServiceTest", driver);
+        WebService webService = (WebService) SiteFactory.Create("WebService", driver);
         Response response = RestAssured
                 .when()
                 .get(webService.getUrlNotFoundString())
