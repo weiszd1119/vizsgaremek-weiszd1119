@@ -3,6 +3,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.ArrayList;
+
 public class Links extends StartDriver {
 	private final String urlLinks = "https://lennertamas.github.io/blondesite/about/";
 	private final By findLinkFirst = By.linkText("Apache Licence 2.0.");

@@ -1,9 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -144,33 +142,15 @@ public class MainControlSite {
 	public void pagesOnBlondeSite() throws InterruptedException {
 		Pages pages = (Pages) SiteFactory.Create("Pages", driver);
 		pages.navigate();
-		Thread.sleep(5000);
-		pages.clickOnPageButton();
+		int isArrowButtonExists = driver.findElements(By.className("icon-keyboard_arrow_right")).size(); //Azt nézi, hogy az jobb oldal next arrow button létezik-e még
+		int i = 0;
+		while (isArrowButtonExists != 0) { // Addig kéne menni, ameddig létezik a gomb, de nem állt le
+			Thread.sleep(5000);
+			pages.getTitle();
+			pages.clickOnPageButton();
+			i++;
+		}
 		// Assertions
-		// Math Typesetting
-		String expectedUrlPageMath = "https://lennertamas.github.io/blondesite/post/math-typesetting/";
-		String actualUrlPageMath = driver.getCurrentUrl();
-		Assertions.assertEquals(expectedUrlPageMath, actualUrlPageMath);
-		pages.clickOnPageButton();
-		// Placeholder Text
-		String expectedUrlPlaceholder = "https://lennertamas.github.io/blondesite/post/placeholder-text/";
-		String actualUrlPlaceholder = driver.getCurrentUrl();
-		Assertions.assertEquals(expectedUrlPlaceholder, actualUrlPlaceholder);
-		pages.clickOnPageButton();
-		// Rich Content
-		String expectedUrlRichContent = "https://lennertamas.github.io/blondesite/post/rich-content/";
-		String actualUrlRichContent = driver.getCurrentUrl();
-		Assertions.assertEquals(expectedUrlRichContent, actualUrlRichContent);
-		pages.clickOnPageButton();
-		// Markdown Syntax
-		String expectedUrlMarkdown = "https://lennertamas.github.io/blondesite/post/markdown-syntax/";
-		String actualUrlMarkdown = driver.getCurrentUrl();
-		Assertions.assertEquals(expectedUrlMarkdown, actualUrlMarkdown);
-		pages.clickOnPageButton();
-		// Image Test
-		String expectedUrlImage = "https://lennertamas.github.io/blondesite/post/image-test/";
-		String actualUrlImage = driver.getCurrentUrl();
-		Assertions.assertEquals(expectedUrlImage, actualUrlImage);
 	}
 	
 	@Test
