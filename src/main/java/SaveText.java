@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
@@ -9,12 +10,8 @@ import java.util.Date;
 public class SaveText extends StartDriver{
 	
 	private final String urlTextTest = "https://lennertamas.github.io/blondesite/post/math-typesetting/";
-	
-	private final String textToFile = "Write to file";
-	
-	
-	
 	private final String metaTxtFile = new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss").format(new Date());
+	
 	
 	public SaveText(WebDriver startdriver) {
 		super(startdriver);
@@ -25,9 +22,9 @@ public class SaveText extends StartDriver{
 	}
 	
 	public void saveTextToTXTFile() throws IOException {
+		String textToFile = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/div[1]/div/p[1]/text()")).getText();
 		
 		File file = new File("Filename" + metaTxtFile + ".txt");
-		
 		{
 			FileWriter fw;
 			try {

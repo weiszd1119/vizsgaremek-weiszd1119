@@ -7,8 +7,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
@@ -147,18 +145,20 @@ public class MainControlSite {
 	public void pagesOnBlondeSite() throws InterruptedException {
 		Pages pages = (Pages) SiteFactory.Create("Pages", driver);
 		pages.navigate();
-		try { // Addig fut le, ameddig létezik a gomb
+		boolean arrowButtonExist = driver.findElement(By.className("icon-keyboard_arrow_right")).isDisplayed();
+		while (arrowButtonExist == true) // Addig fut le, ameddig létezik a gomb
+		{
+			if (arrowButtonExist == false) {
+				System.out.println("Assert");
+				break;
+			}
 			Thread.sleep(5000);
-			WebDriverWait wait = new WebDriverWait(driver,3);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.className("icon-keyboard_arrow_right")));
 			pages.getTitle();
 			pages.clickOnPageButton();
-			// Assertions
-		} finally {
-			System.out.println("Assert");
 		}
-	}
+		
 		// Assertions
+	}
 	
 	@Test
 	@Epic("Blonde Site")

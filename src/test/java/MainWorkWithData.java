@@ -299,6 +299,7 @@ public class MainWorkWithData {
 		saveText.navigate();
 		Thread.sleep(5000);
 		saveText.saveTextToTXTFile();
+		//Assertions
 	}
 	
 	@AfterEach
