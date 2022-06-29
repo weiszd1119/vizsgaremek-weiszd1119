@@ -1,10 +1,13 @@
-name: Execute Test Run
+name: Test Allure Report
 
 on:
-  workflow_dispatch:
+  push:
+	branches: [ master ]
+  pull_request:
+	branches: [ master ]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,7 +16,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1.4.3
         with:
-          java-version: '11.0.8'
+          java-version: '16'
 
       - name: Compile
         run: sbt compile
