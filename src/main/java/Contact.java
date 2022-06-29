@@ -22,6 +22,8 @@ public class Contact extends StartDriver {
 	private final By findContactMessage = By.name("message");
 	private final By findContactSubmitButton = By.cssSelector("#content > div > div > div.bg-white.col-span-3.lg\\:col-span-2.p-5.dark\\:bg-warmgray-900.dark\\:text-white > div > div > form > input");
 	
+	private final By formMessage = By.xpath("/html/body/div/div[1]/h1");
+	
 	public Contact(WebDriver startdriver) {
 		super(startdriver);
 	}
@@ -126,19 +128,26 @@ public class Contact extends StartDriver {
 			String email = (String) user.get("email");
 			String subject = (String) user.get("subject");
 			String message = (String) user.get("message");
-			driver.findElement(findContactYourName).sendKeys(yourname);
-			driver.findElement(findContactEmailAddress).sendKeys(email);
-			driver.findElement(findContactSubject).sendKeys(subject);
-			driver.findElement(findContactMessage).sendKeys(message);
-			driver.findElement(findContactSubmitButton).click();
-			driver.navigate().back();
-			driver.findElement(findContactYourName).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
-			driver.findElement(findContactEmailAddress).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
-			driver.findElement(findContactSubject).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
-			driver.findElement(findContactMessage).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
 		}
 	}
 	
+	public void fillAllFieldFromJSONFile (String yourname, String email, String subject, String message) {
+		driver.findElement(findContactYourName).sendKeys(yourname);
+		driver.findElement(findContactEmailAddress).sendKeys(email);
+		driver.findElement(findContactSubject).sendKeys(subject);
+		driver.findElement(findContactMessage).sendKeys(message);
+	}
+	
+	public void deleteAllFieldWithJSONFile() {
+		driver.findElement(findContactYourName).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+		driver.findElement(findContactEmailAddress).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+		driver.findElement(findContactSubject).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+		driver.findElement(findContactMessage).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+	}
+	
+	public void navigateBack() {
+		driver.navigate().back();
+	}
 	public void deleteFromContactMessage() {
 		driver.findElement(findContactMessage).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
 	}
@@ -148,8 +157,8 @@ public class Contact extends StartDriver {
 	}
 	
 	public String currentContactResult() {
-		String currentUrlContact = driver.getCurrentUrl();
-		return currentUrlContact;
+		String currentFormMessage = driver.findElement(formMessage).getText();
+		return currentFormMessage;
 	}
 	
 	// Fülle dieses Feld aus keresése

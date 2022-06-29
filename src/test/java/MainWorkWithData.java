@@ -1,5 +1,8 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.OutputType;
@@ -9,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -105,22 +109,31 @@ public class MainWorkWithData {
 		contact.navigate();
 		Thread.sleep(5000);
 		// Mezők kitöltése file-ból
-		contact.writeIntoAllFieldsFromJSONFile();
-		// Assertions
-		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
-		String actualUrlContact = contact.currentContactResult();
-		Assertions.assertEquals(expectedUrlContact, actualUrlContact);
-		// Print results
-		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedUrlContact);
-		System.out.println("Actual result is: " + actualUrlContact);
-		if (expectedUrlContact.equals(actualUrlContact)) {
-			System.out.println("Test passed!");
-		}
-		else {
-			System.out.println("Test failed!");
+		// Read JSON file
+		JSONParser jsonParser = new JSONParser();
+		FileReader reader = new FileReader("contactSource.json");
+		Object object = jsonParser.parse(reader);
+		JSONArray usersList = (JSONArray) object;
+		for (int i = 0; i < usersList.size(); i++) {
+			JSONObject usersOfJSON = (JSONObject) usersList.get(i);
+			JSONObject user = (JSONObject) usersOfJSON.get("users");
+			String yourname = (String) user.get("yourname");
+			String email = (String) user.get("email");
+			String subject = (String) user.get("subject");
+			String message = (String) user.get("message");
+			contact.fillAllFieldFromJSONFile(yourname, email, subject, message);
+			contact.pushSubmitButton();
+			Thread.sleep(5000);
+			//Assertions
+			String expectedFormMessage = "Send successful!";
+			String actualFormMessage = contact.currentContactResult();
+			Assertions.assertEquals(expectedFormMessage, actualFormMessage);
+			//
+			contact.navigateBack();
+			contact.deleteAllFieldWithJSONFile();
 		}
 	}
+	
 	
 	@Test
 	@Epic("Blonde Site")
