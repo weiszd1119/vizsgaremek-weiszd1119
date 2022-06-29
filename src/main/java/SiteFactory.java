@@ -21,14 +21,12 @@ public class SiteFactory {
 				return new Links(driver);
 			case "Pages":
 				return new Pages(driver);
-			case "CssStyleTest":
+			case "CssStyle":
 				return new CssStyle(driver);
 			case "Tables":
 				return new Tables(driver);
 			case "WebService":
 				return new WebService(driver);
-			case "Youtube":
-				return new Youtube(driver);
 			case "List":
 				return new List(driver);
 			case "SaveImageTest":

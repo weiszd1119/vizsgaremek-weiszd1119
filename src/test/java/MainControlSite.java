@@ -186,18 +186,6 @@ public class MainControlSite {
 		}
 	}
 	
-	@Test
-	@Epic("Blonde Site")
-	@Story("Embedded Youtube Videos on Blonde Site")
-	@Description("Testing embedded Youtube videos and video control functions on the Blonde Site")
-	@Severity(SeverityLevel.NORMAL)
-	public void youtubeTestOnBlondeSite() throws InterruptedException {
-		Youtube youtube = (Youtube) SiteFactory.Create("Youtube", driver);
-		youtube.navigate();
-		Thread.sleep(5000);
-		youtube.pressFirstVideoPlayButton();
-	}
-	
 	@AfterEach
 	@Epic("Blonde Site")
 	@Story("Make Screenshot")

@@ -193,7 +193,7 @@ public class MainWorkWithData {
 	@Description("Search some expressions the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void tablesNameTestOnBlondeSite() throws InterruptedException {
-		Tables tables = (Tables) SiteFactory.Create("TablesTest", driver);
+		Tables tables = (Tables) SiteFactory.Create("Tables", driver);
 		tables.navigate();
 		Thread.sleep(5000);
 		// Assertion
@@ -219,7 +219,7 @@ public class MainWorkWithData {
 	@Description("Search some expressions the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void tablesAgeTestOnBlondeSite() throws InterruptedException {
-		Tables tables = (Tables) SiteFactory.Create("TablesTest", driver);
+		Tables tables = (Tables) SiteFactory.Create("Tables", driver);
 		tables.navigate();
 		Thread.sleep(5000);
 		// Assertion
