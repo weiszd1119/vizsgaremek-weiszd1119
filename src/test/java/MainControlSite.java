@@ -1,9 +1,14 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
@@ -142,16 +147,18 @@ public class MainControlSite {
 	public void pagesOnBlondeSite() throws InterruptedException {
 		Pages pages = (Pages) SiteFactory.Create("Pages", driver);
 		pages.navigate();
-		int isArrowButtonExists = driver.findElements(By.className("icon-keyboard_arrow_right")).size(); //Azt nézi, hogy az jobb oldal next arrow button létezik-e még
-		int i = 0;
-		while (isArrowButtonExists != 0) { // Addig kéne menni, ameddig létezik a gomb, de nem állt le
+		try { // Addig fut le, ameddig létezik a gomb
 			Thread.sleep(5000);
+			WebDriverWait wait = new WebDriverWait(driver,3);
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.className("icon-keyboard_arrow_right")));
 			pages.getTitle();
 			pages.clickOnPageButton();
-			i++;
+			// Assertions
+		} finally {
+			System.out.println("Assert");
 		}
-		// Assertions
 	}
+		// Assertions
 	
 	@Test
 	@Epic("Blonde Site")
