@@ -9,26 +9,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CssStyle extends StartDriver {
-    private final String urlCss = "https://lennertamas.github.io/blondesite/about/";
-    private final By findSetButton = By.xpath("//*[@class=\"py-2\"]/button");
-    public CssStyle(WebDriver startdriver) {
-        super(startdriver);
-    }
-    
-    
-    public void navigate() {
-        driver.navigate().to(urlCss);
-    }
-
-    public void clickOnSetButton() {
-        WebElement waitForVisible = driver.findElement(findSetButton);
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].click();", waitForVisible);
-        }
-
-    public String currentCssStyle() {
-        String currentAttributeValueCss = driver.findElement(By.id("icon")).getAttribute("class");
-        return currentAttributeValueCss;
-        }
-
+	private final String urlCss = "https://lennertamas.github.io/blondesite/about/";
+	private final By findSetButton = By.xpath("//*[@class=\"py-2\"]/button");
+	
+	public CssStyle(WebDriver startdriver) {
+		super(startdriver);
+	}
+	
+	
+	public void navigate() {
+		driver.navigate().to(urlCss);
+	}
+	
+	public void clickOnSetButton() {
+		WebElement waitForVisible = driver.findElement(findSetButton);
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("arguments[0].click();", waitForVisible);
+	}
+	
+	public String currentCssStyle() {
+		String currentAttributeValueCss = driver.findElement(By.id("icon")).getAttribute("class");
+		return currentAttributeValueCss;
+	}
+	
 }

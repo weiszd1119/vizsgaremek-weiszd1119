@@ -15,7 +15,7 @@ public class Links extends StartDriver {
 	private final By findLinkSixth = By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/ul/li[5]/a");
 	private final By findLinkSeventh = By.linkText("GitHub");
 	
-	private ArrayList<String> linksTitlesArrayList = new ArrayList<String>(); // Lista létrehozása a megjelenő linkek-nek
+	private final ArrayList<String> linksTitlesArrayList = new ArrayList<String>(); // Lista létrehozása a megjelenő linkek-nek
 	
 	public Links(WebDriver startdriver) {
 		super(startdriver);

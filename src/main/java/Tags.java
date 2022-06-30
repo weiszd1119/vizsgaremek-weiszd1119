@@ -19,7 +19,8 @@ public class Tags extends StartDriver {
 	private final By findTextTag = By.xpath("//*[@id=\"content\"]/div/div/div[2]/div[4]/div/a[7]");
 	private final By findThemesTag = By.xpath("//*[@id=\"content\"]/div/div/div[2]/div[4]/div/a[8]");
 	
-	private ArrayList<String> tagsTitlesArrayList = new ArrayList<String>(); // Lista létrehozása a megjelenő tagek-nek
+	private final ArrayList<String> tagsTitlesArrayList = new ArrayList<String>(); // Lista létrehozása a megjelenő tagek-nek
+	
 	public Tags(WebDriver startdriver) {
 		super(startdriver);
 	}

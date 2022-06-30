@@ -3,7 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class List extends StartDriver {
-	private final String urlList= "https://lennertamas.github.io/blondesite/post/markdown-syntax/";
+	private final String urlList = "https://lennertamas.github.io/blondesite/post/markdown-syntax/";
 	
 	private final By orderedList = By.xpath("//*[@id=\"content\"]/div/div/div[1]/div[1]/div/ol");
 	

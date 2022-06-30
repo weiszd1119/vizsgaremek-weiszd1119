@@ -7,7 +7,7 @@ public class Pages extends StartDriver {
 	private final String urlPages = "https://lennertamas.github.io/blondesite/post/emoji-support/";
 	private final By findArrowButton = By.className("icon-keyboard_arrow_right");
 	
-	private ArrayList<String> pagesTitlesArrayList = new ArrayList<String>(); // Lista létrehozása a megjelenő tagek-nek
+	private final ArrayList<String> pagesTitlesArrayList = new ArrayList<String>(); // Lista létrehozása a megjelenő tagek-nek
 	
 	public Pages(WebDriver startdriver) {
 		super(startdriver);
@@ -22,6 +22,7 @@ public class Pages extends StartDriver {
 		pagesTitlesArrayList.add(pagesTitleString);
 		return pagesTitlesArrayList;
 	}
+	
 	public void clickOnPageButton() {
 		driver.findElement(findArrowButton).click();
 	}

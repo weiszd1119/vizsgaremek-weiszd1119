@@ -1,7 +1,3 @@
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -115,23 +111,7 @@ public class Contact extends StartDriver {
 		driver.findElement(findContactMessage).sendKeys(inputContactMessageFromFile);
 	}
 	
-	public void writeIntoAllFieldsFromJSONFile() throws IOException, ParseException {
-		// Read JSON file
-		JSONParser jsonParser = new JSONParser();
-		FileReader reader = new FileReader("contactSource.json");
-		Object object = jsonParser.parse(reader);
-		JSONArray usersList = (JSONArray) object;
-		for (int i = 0 ; i < usersList.size() ; i++) {
-			JSONObject usersOfJSON = (JSONObject) usersList.get(i);
-			JSONObject user = (JSONObject) usersOfJSON.get("users");
-			String yourname = (String) user.get("yourname");
-			String email = (String) user.get("email");
-			String subject = (String) user.get("subject");
-			String message = (String) user.get("message");
-		}
-	}
-	
-	public void fillAllFieldFromJSONFile (String yourname, String email, String subject, String message) {
+	public void fillAllFieldFromJSONFile(String yourname, String email, String subject, String message) {
 		driver.findElement(findContactYourName).sendKeys(yourname);
 		driver.findElement(findContactEmailAddress).sendKeys(email);
 		driver.findElement(findContactSubject).sendKeys(subject);
@@ -148,6 +128,7 @@ public class Contact extends StartDriver {
 	public void navigateBack() {
 		driver.navigate().back();
 	}
+	
 	public void deleteFromContactMessage() {
 		driver.findElement(findContactMessage).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
 	}

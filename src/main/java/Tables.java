@@ -43,14 +43,14 @@ public class Tables extends StartDriver {
 		}
 		return ageList;
 	}
-		
-		public String[] currentNameResult() {
-			String[] currentNameList = nameList;
-			return currentNameList;
-		}
 	
-		public String[] currentAgeResult() {
-			String[] currentAgeList = ageList;
-			return currentAgeList;
+	public String[] currentNameResult() {
+		String[] currentNameList = nameList;
+		return currentNameList;
 	}
+	
+	public String[] currentAgeResult() {
+		String[] currentAgeList = ageList;
+		return currentAgeList;
 	}
+}

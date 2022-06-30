@@ -45,7 +45,10 @@ public class ModifyData extends StartDriver {
 		driver.findElement(findDeleteAccountButton).click();
 	}
 	
-	public void clickOnDeleteAccountSureButton() { driver.findElement(findDeleteAccountSureButton); }
+	public void clickOnDeleteAccountSureButton() {
+		driver.findElement(findDeleteAccountSureButton);
+	}
+	
 	public void writeIntoNameField() {
 		driver.findElement(findModifyName).sendKeys(inputModifyName);
 	}

@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -222,6 +223,7 @@ public class MainWorkWithData {
 		Assertions.assertTrue(actualResultImageTest);
 	}
 	
+	
 	@Test
 	@Epic("Blonde Site")
 	@Story("Save Image from Blonde Site")
@@ -232,7 +234,21 @@ public class MainWorkWithData {
 		saveText.navigate();
 		Thread.sleep(5000);
 		saveText.saveTextToTXTFile();
-		//Assertions
+		//Reading from file.
+		//Create Object of java FileReader and BufferedReader class.
+		String savedText = "saveTextFile.txt";
+		FileReader fileReader = new FileReader(savedText);
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
+		String contentOfTextFile = "";
+		//Loop to read all lines one by one from file, content saved in a variable, and send keys from this variable.
+		String readFromTextFile = null;
+		while ((contentOfTextFile = bufferedReader.readLine()) != null) {
+			readFromTextFile = contentOfTextFile;
+		}
+		// Assertions
+		String expectedTextFromFile = "Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.";
+		String actualTextFromFile = readFromTextFile;
+		Assertions.assertEquals(expectedTextFromFile, actualTextFromFile);
 	}
 	
 	@AfterEach

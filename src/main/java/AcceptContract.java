@@ -2,7 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class AcceptContract extends StartDriver{
+public class AcceptContract extends StartDriver {
 	public AcceptContract(WebDriver startdriver) {
 		super(startdriver);
 	}
