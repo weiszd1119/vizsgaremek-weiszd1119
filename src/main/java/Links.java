@@ -15,6 +15,8 @@ public class Links extends StartDriver {
 	private final By findLinkSixth = By.xpath("//*[@id=\"content\"]/div/div/div[1]/div/ul/li[5]/a");
 	private final By findLinkSeventh = By.linkText("GitHub");
 	
+	private ArrayList<String> linksTitlesArrayList = new ArrayList<String>(); // Lista létrehozása a megjelenő linkek-nek
+	
 	public Links(WebDriver startdriver) {
 		super(startdriver);
 	}
@@ -55,38 +57,15 @@ public class Links extends StartDriver {
 		driver.findElement(findLinkSeventh).click();
 	}
 	
-	public String checkLinkResultFirst() {
-		String currentUrlLinksFirst = driver.getCurrentUrl();
-		return currentUrlLinksFirst;
+	public ArrayList<String> getLinksTitle() {
+		String linksTitleString = driver.findElement(By.xpath("//*[@id=\"repository-container-header\"]/div[1]/div/div/strong/a")).getText();
+		linksTitlesArrayList.add(linksTitleString);
+		return linksTitlesArrayList;
 	}
 	
-	public String checkLinkResultSecond() {
-		String currentUrlLinksSecond = driver.getCurrentUrl();
-		return currentUrlLinksSecond;
-	}
-	
-	public String checkLinkResultThird() {
-		String currentUrlLinksThird = driver.getCurrentUrl();
-		return currentUrlLinksThird;
-	}
-	
-	public String checkLinkResultFourth() {
-		String currentUrlLinksFourth = driver.getCurrentUrl();
-		return currentUrlLinksFourth;
-	}
-	
-	public String checkLinkResultFifth() {
-		String currentUrlLinksFifth = driver.getCurrentUrl();
-		return currentUrlLinksFifth;
-	}
-	
-	public String checkLinkResultSixth() {
-		String currentUrlLinksSixth = driver.getCurrentUrl();
-		return currentUrlLinksSixth;
-	}
-	
-	public String checkLinkResultSeventh() {
-		String currentUrlLinksSeventh = driver.getCurrentUrl();
-		return currentUrlLinksSeventh;
+	public String[] currentLinksResult() {
+		ArrayList<String> currentLinksArrayList = linksTitlesArrayList;
+		String[] currentLinksArrayListToArray = currentLinksArrayList.toArray(new String[0]);
+		return currentLinksArrayListToArray;
 	}
 }

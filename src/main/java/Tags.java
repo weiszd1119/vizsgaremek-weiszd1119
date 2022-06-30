@@ -19,6 +19,7 @@ public class Tags extends StartDriver {
 	private final By findTextTag = By.xpath("//*[@id=\"content\"]/div/div/div[2]/div[4]/div/a[7]");
 	private final By findThemesTag = By.xpath("//*[@id=\"content\"]/div/div/div[2]/div[4]/div/a[8]");
 	
+	private ArrayList<String> tagsTitlesArrayList = new ArrayList<String>(); // Lista létrehozása a megjelenő tagek-nek
 	public Tags(WebDriver startdriver) {
 		super(startdriver);
 	}
@@ -59,44 +60,17 @@ public class Tags extends StartDriver {
 		driver.findElement(findThemesTag).click();
 	}
 	
-	public String checkLinkTagCss() {
-		String currentUrlTagCss = driver.getCurrentUrl();
-		return currentUrlTagCss;
+	public ArrayList<String> getTagsTitle() {
+		String tagsTitleString = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[1]/h2")).getText();
+		tagsTitlesArrayList.add(tagsTitleString);
+		return tagsTitlesArrayList;
 	}
 	
-	public String checkLinkTagEmoji() {
-		String currentUrlTagEmoji = driver.getCurrentUrl();
-		return currentUrlTagEmoji;
+	public String[] currentTagsResult() {
+		ArrayList<String> currentTagsArrayList = tagsTitlesArrayList;
+		String[] currentTagsArrayListToArray = currentTagsArrayList.toArray(new String[0]);
+		return currentTagsArrayListToArray;
 	}
 	
-	public String checkLinkTagHtml() {
-		String currentUrlTagHtml = driver.getCurrentUrl();
-		return currentUrlTagHtml;
-	}
-	
-	public String checkLinkTagMarkdown() {
-		String currentUrlTagMarkdown = driver.getCurrentUrl();
-		return currentUrlTagMarkdown;
-	}
-	
-	public String checkLinkTagPrivacy() {
-		String currentUrlTagPrivacy = driver.getCurrentUrl();
-		return currentUrlTagPrivacy;
-	}
-	
-	public String checkLinkTagShortcodes() {
-		String currentUrlTagShortcodes = driver.getCurrentUrl();
-		return currentUrlTagShortcodes;
-	}
-	
-	public String checkLinkTagText() {
-		String currentUrlTagText = driver.getCurrentUrl();
-		return currentUrlTagText;
-	}
-	
-	public String checkLinkTagThemes() {
-		String currentUrlTagThemes = driver.getCurrentUrl();
-		return currentUrlTagThemes;
-	}
 	
 }

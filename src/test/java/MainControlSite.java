@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Tag("controls")
@@ -24,7 +26,7 @@ public class MainControlSite {
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--disable-notifications");
 		options.addArguments("--disable-extensions");
-		options.addArguments("--headless");
+		// options.addArguments("--headless");
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("start-maximized");
 		driver = new ChromeDriver(options);
@@ -41,47 +43,36 @@ public class MainControlSite {
 		Tags tags = (Tags) SiteFactory.Create("Tags", driver);
 		tags.navigate();
 		Thread.sleep(5000);
-		// Assertions
-		// css
 		tags.clickOnTagCss();
-		String expectedUrlTagCss = "https://lennertamas.github.io/blondesite/tags/css/";
-		String actualUrlTagCss = tags.checkLinkTagCss();
-		Assertions.assertEquals(expectedUrlTagCss, actualUrlTagCss);
-		// emoji
+		tags.getTagsTitle();
 		tags.clickOnTagEmoji();
-		String expectedUrlTagEmoji = "https://lennertamas.github.io/blondesite/tags/emoji/";
-		String actualUrlTagEmoji = tags.checkLinkTagEmoji();
-		Assertions.assertEquals(expectedUrlTagEmoji, actualUrlTagEmoji);
-		// html
+		tags.getTagsTitle();
 		tags.clickOnTagHtml();
-		String expectedUrlTagHtml = "https://lennertamas.github.io/blondesite/tags/html/";
-		String actualUrlTagHtml = tags.checkLinkTagHtml();
-		Assertions.assertEquals(expectedUrlTagHtml, actualUrlTagHtml);
-		// markdown
+		tags.getTagsTitle();
 		tags.clickOnTagMarkdown();
-		String expectedUrlTagMarkdown = "https://lennertamas.github.io/blondesite/tags/markdown/";
-		String actualUrlTagMarkdown = tags.checkLinkTagMarkdown();
-		Assertions.assertEquals(expectedUrlTagMarkdown, actualUrlTagMarkdown);
-		// privacy
+		tags.getTagsTitle();
 		tags.clickOnTagPrivacy();
-		String expectedUrlTagPrivacy = "https://lennertamas.github.io/blondesite/tags/privacy/";
-		String actualUrlTagPrivacy = tags.checkLinkTagPrivacy();
-		Assertions.assertEquals(expectedUrlTagPrivacy, actualUrlTagPrivacy);
-		// shortcodes
+		tags.getTagsTitle();
 		tags.clickOnTagShortcodes();
-		String expectedUrlTagShortcodes = "https://lennertamas.github.io/blondesite/tags/shortcodes/";
-		String actualUrlTagShortcodes = tags.checkLinkTagShortcodes();
-		Assertions.assertEquals(expectedUrlTagShortcodes, actualUrlTagShortcodes);
-		// text
+		tags.getTagsTitle();
 		tags.clickOnTagText();
-		String expectedUrlTagText = "https://lennertamas.github.io/blondesite/tags/text/";
-		String actualUrlTagText = tags.checkLinkTagText();
-		Assertions.assertEquals(expectedUrlTagText, actualUrlTagText);
-		// themes
+		tags.getTagsTitle();
 		tags.clickOnTagThemes();
-		String expectedUrlTagThemes = "https://lennertamas.github.io/blondesite/tags/themes/";
-		String actualUrlTagThemes = tags.checkLinkTagThemes();
-		Assertions.assertEquals(expectedUrlTagThemes, actualUrlTagThemes);
+		tags.getTagsTitle();
+		// Assertions
+		//Assertion: azt ellenőrizzük, hogy az utolsó lépés után a lista megegyezik-e az elvárt listával
+		List<String> expectedTagsTitlesArrayList = new ArrayList<>();
+		expectedTagsTitlesArrayList.add("Css");
+		expectedTagsTitlesArrayList.add("Emoji");
+		expectedTagsTitlesArrayList.add("HTML");
+		expectedTagsTitlesArrayList.add("Markdown");
+		expectedTagsTitlesArrayList.add("Privacy");
+		expectedTagsTitlesArrayList.add("Shortcodes");
+		expectedTagsTitlesArrayList.add("Text");
+		expectedTagsTitlesArrayList.add("Themes");
+		String[] expectedTagsTitlesArrayListToArray = expectedTagsTitlesArrayList.toArray(new String[0]); // Az Assertion nem tud listákat összehasonlítani, csak tömböket
+		String[] actualTagsTitlesArrayList = tags.currentTagsResult();
+		Assertions.assertArrayEquals(expectedTagsTitlesArrayListToArray, actualTagsTitlesArrayList);
 	}
 	
 	@Test
@@ -94,47 +85,35 @@ public class MainControlSite {
 		links.navigate();
 		Thread.sleep(5000);
 		// Assertions
-		// Apache Licence 2.0
 		links.clickOnLinkFirst();
-		String expectedUrlLinkFirst = "https://github.com/gohugoio/hugo/blob/master/LICENSE";
-		String actualUrlLinkFirst = links.checkLinkResultFirst();
-		Assertions.assertEquals(expectedUrlLinkFirst, actualUrlLinkFirst);
-		// Goldmark
+		links.getLinksTitle();
 		links.navigateback();
 		links.clickOnLinkSecond();
-		String expectedUrlLinkSecond = "https://github.com/yuin/goldmark";
-		String actualUrlLinkSecond = links.checkLinkResultSecond();
-		Assertions.assertEquals(expectedUrlLinkSecond, actualUrlLinkSecond);
-		// Chroma
+		links.getLinksTitle();
 		links.navigateback();
 		links.clickOnLinkThird();
-		String expectedUrlLinkThird = "https://github.com/alecthomas/chroma";
-		String actualUrlLinkThird = links.checkLinkResultThird();
-		Assertions.assertEquals(expectedUrlLinkThird, actualUrlLinkThird);
-		// Smartcrop
+		links.getLinksTitle();
 		links.navigateback();
 		links.clickOnLinkFourth();
-		String expectedUrlLinkFourth = "https://github.com/muesli/smartcrop";
-		String actualUrlLinkFourth = links.checkLinkResultFourth();
-		Assertions.assertEquals(expectedUrlLinkFourth, actualUrlLinkFourth);
-		// Cobra
+		links.getLinksTitle();
 		links.navigateback();
 		links.clickOnLinkFifth();
-		String expectedUrlLinkFifth = "https://github.com/spf13/cobra";
-		String actualUrlLinkFifth = links.checkLinkResultFifth();
-		Assertions.assertEquals(expectedUrlLinkFifth, actualUrlLinkFifth);
-		// Viper
+		links.getLinksTitle();
 		links.navigateback();
 		links.clickOnLinkSixth();
-		String expectedUrlLinkSixth = "https://github.com/spf13/viper";
-		String actualUrlLinkSixth = links.checkLinkResultSixth();
-		Assertions.assertEquals(expectedUrlLinkSixth, actualUrlLinkSixth);
-		// Gohugoio
-		links.navigateback();
-		links.clickOnLinkSeventh();
-		String expectedUrlLinkSeventh = "https://github.com/gohugoio";
-		String actualUrlLinkSeventh = links.checkLinkResultSeventh();
-		Assertions.assertEquals(expectedUrlLinkSeventh, actualUrlLinkSeventh);
+		links.getLinksTitle();
+		//Assertions
+		//Assertion: azt ellenőrizzük, hogy az utolsó lépés után a lista megegyezik-e az elvárt listával
+		List<String> expectedLinksTitlesArrayList = new ArrayList<>();
+		expectedLinksTitlesArrayList.add("hugo");
+		expectedLinksTitlesArrayList.add("goldmark");
+		expectedLinksTitlesArrayList.add("chroma");
+		expectedLinksTitlesArrayList.add("smartcrop");
+		expectedLinksTitlesArrayList.add("cobra");
+		expectedLinksTitlesArrayList.add("viper");
+		String[] expectedLinksTitlesArrayListToArray = expectedLinksTitlesArrayList.toArray(new String[0]); // Az Assertion nem tud listákat összehasonlítani, csak tömböket
+		String[] actualLinksTitlesArrayList = links.currentLinksResult();
+		Assertions.assertArrayEquals(expectedLinksTitlesArrayListToArray, actualLinksTitlesArrayList);
 	}
 	
 	@Test
@@ -145,19 +124,28 @@ public class MainControlSite {
 	public void pagesOnBlondeSite() throws InterruptedException {
 		Pages pages = (Pages) SiteFactory.Create("Pages", driver);
 		pages.navigate();
-		boolean arrowButtonExist = driver.findElement(By.className("icon-keyboard_arrow_right")).isDisplayed();
+		boolean arrowButtonExist = driver.findElement(By.className("icon-keyboard_arrow_right")).isEnabled();
 		while (arrowButtonExist == true) // Addig fut le, ameddig létezik a gomb
 		{
-			if (arrowButtonExist == false) {
-				System.out.println("Assert");
-				break;
-			}
 			Thread.sleep(5000);
-			pages.getTitle();
-			pages.clickOnPageButton();
+			try {
+				pages.getPagesTitle();
+				pages.clickOnPageButton();
+			} catch (Exception e) {
+				arrowButtonExist = false;
+			}
 		}
-		
-		// Assertions
+		//Assertion: azt ellenőrizzük, hogy az utolsó lépés után a lista megegyezik-e az elvárt listával
+		List<String> expectedPagesArrayList = new ArrayList<>();
+		expectedPagesArrayList.add("2019/03/05");
+		expectedPagesArrayList.add("2019/03/08");
+		expectedPagesArrayList.add("2019/03/09");
+		expectedPagesArrayList.add("2019/03/10");
+		expectedPagesArrayList.add("2019/03/11");
+		expectedPagesArrayList.add("2020/08/14");
+		String[] expectedPagesArrayListToArray = expectedPagesArrayList.toArray(new String[0]); // Az Assertion nem tud listákat összehasonlítani, csak tömböket
+		String[] actualPagesArrayList = pages.currentPagesResult();
+		Assertions.assertArrayEquals(expectedPagesArrayListToArray, actualPagesArrayList);
 	}
 	
 	@Test
@@ -175,15 +163,6 @@ public class MainControlSite {
 		String expectedCssStyleClass = "inline-flex align-middle leading-normal text-lg text-white icon-sun";
 		String actualCssStyleClass = cssStyle.currentCssStyle();
 		Assertions.assertEquals(expectedCssStyleClass, actualCssStyleClass);
-		// Print
-		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedCssStyleClass);
-		System.out.println("Actual result is: " + actualCssStyleClass);
-		if (expectedCssStyleClass.equals(actualCssStyleClass)) {
-			System.out.println("Test passed!");
-		} else {
-			System.out.println("Test failed!");
-		}
 	}
 	
 	@AfterEach

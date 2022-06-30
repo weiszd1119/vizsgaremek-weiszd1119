@@ -29,7 +29,7 @@ public class MainWorkWithData {
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--disable-notifications");
 		options.addArguments("--disable-extensions");
-		options.addArguments("--headless");
+		// options.addArguments("--headless");
 		options.addArguments("--window-size=1920,1080");
 		options.addArguments("start-maximized");
 		driver = new ChromeDriver(options);
@@ -56,16 +56,6 @@ public class MainWorkWithData {
 		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
 		String actualUrlContact = contact.currentContactResult();
 		Assertions.assertEquals(expectedUrlContact, actualUrlContact);
-		// Print results
-		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedUrlContact);
-		System.out.println("Actual result is: " + actualUrlContact);
-		if (expectedUrlContact.equals(actualUrlContact)) {
-			System.out.println("Test passed!");
-		}
-		else {
-			System.out.println("Test failed!");
-		}
 	}
 	
 	@Test
@@ -87,16 +77,6 @@ public class MainWorkWithData {
 		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
 		String actualUrlContact = contact.currentContactResult();
 		Assertions.assertEquals(expectedUrlContact, actualUrlContact);
-		// Print results
-		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedUrlContact);
-		System.out.println("Actual result is: " + actualUrlContact);
-		if (expectedUrlContact.equals(actualUrlContact)) {
-			System.out.println("Test passed!");
-		}
-		else {
-			System.out.println("Test failed!");
-		}
 	}
 	
 	@Test
@@ -161,16 +141,6 @@ public class MainWorkWithData {
 		String expectedWarningMessage = "Fülle dieses Feld aus.";
 		String actualWarningMessage = contact.currentWarningMessageResult();
 		Assertions.assertEquals(expectedWarningMessage, actualWarningMessage);
-		// Print results
-		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedWarningMessage);
-		System.out.println("Actual result is: " + actualWarningMessage);
-		if (expectedWarningMessage.equals(actualWarningMessage)) {
-			System.out.println("Test passed!");
-		}
-		else {
-			System.out.println("Test failed!");
-		}
 	}
 	
 	@Test
@@ -188,16 +158,6 @@ public class MainWorkWithData {
 		String expectedUrlQParameter = "";
 		String actualUrlQParameter = search.currentSearchResult();
 		Assertions.assertEquals(expectedUrlQParameter, actualUrlQParameter);
-		// Print results
-		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedUrlQParameter);
-		System.out.println("Actual result is: " + actualUrlQParameter);
-		if (expectedUrlQParameter.equals(actualUrlQParameter)) {
-			System.out.println("Test passed!");
-		}
-		else {
-			System.out.println("Test failed!");
-		}
 	}
 	
 	@Test
@@ -214,16 +174,6 @@ public class MainWorkWithData {
 		String[] expectedTableColumnNames = {"Bob", "Alice"};
 		String[] actualTableColumnNames = tables.getNameTable();
 		Assertions.assertArrayEquals(expectedTableColumnNames, actualTableColumnNames);
-		// Print results
-		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedTableColumnNames);
-		System.out.println("Actual result is: " + actualTableColumnNames);
-		if (expectedTableColumnNames.equals(actualTableColumnNames)) {
-			System.out.println("Test passed!");
-		}
-		else {
-			System.out.println("Test failed!");
-		}
 	}
 	
 	@Test
@@ -240,16 +190,6 @@ public class MainWorkWithData {
 		String[] expectedTableColumnAges = {"27", "23"};
 		String[] actualTableColumnAges = tables.getAgeTable();
 		Assertions.assertArrayEquals(expectedTableColumnAges, actualTableColumnAges);
-		// Print results
-		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedTableColumnAges);
-		System.out.println("Actual result is: " + actualTableColumnAges);
-		if (expectedTableColumnAges.equals(actualTableColumnAges)) {
-			System.out.println("Test passed!");
-		}
-		else {
-			System.out.println("Test failed!");
-		}
 	}
 	
 	@Test
@@ -265,16 +205,6 @@ public class MainWorkWithData {
 		String[] expectedOrderedListElements = {"First item", "Second item", "Third item"};
 		String[] actualOrderedListElements = list.getOrderedList();
 		Assertions.assertArrayEquals(expectedOrderedListElements, actualOrderedListElements);
-		// Print results
-		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedOrderedListElements);
-		System.out.println("Actual result is: " + actualOrderedListElements);
-		if (expectedOrderedListElements.equals(actualOrderedListElements)) {
-			System.out.println("Test passed!");
-		}
-		else {
-			System.out.println("Test failed!");
-		}
 	}
 	
 	@Test
@@ -290,16 +220,6 @@ public class MainWorkWithData {
 		boolean expectedResultImageTest = true; // Azt vizsgáljuk, hogy a mentés után létezik-e a fájl
 		boolean actualResultImageTest = saveImageTest.checkSaveImageResult();
 		Assertions.assertTrue(actualResultImageTest);
-		// Print results
-		System.out.println("Test results are:");
-		System.out.println("Expected result was: " + expectedResultImageTest);
-		System.out.println("Actual result is: " + actualResultImageTest);
-		if (expectedResultImageTest == actualResultImageTest) {
-			System.out.println("Test passed!");
-		}
-		else {
-			System.out.println("Test failed!");
-		}
 	}
 	
 	@Test

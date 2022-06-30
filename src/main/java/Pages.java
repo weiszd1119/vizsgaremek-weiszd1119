@@ -17,14 +17,19 @@ public class Pages extends StartDriver {
 		driver.navigate().to(urlPages);
 	}
 	
-	public ArrayList<String> getTitle() {
+	public ArrayList<String> getPagesTitle() {
 		String pagesTitleString = driver.findElement(By.xpath("//*[@id=\"date\"]")).getText();
 		pagesTitlesArrayList.add(pagesTitleString);
-		System.out.println(pagesTitlesArrayList);
 		return pagesTitlesArrayList;
 	}
 	public void clickOnPageButton() {
 		driver.findElement(findArrowButton).click();
+	}
+	
+	public String[] currentPagesResult() {
+		ArrayList<String> currentPagesArrayList = pagesTitlesArrayList;
+		String[] currentPagesArrayListToArray = currentPagesArrayList.toArray(new String[0]);
+		return currentPagesArrayListToArray;
 	}
 	
 	
