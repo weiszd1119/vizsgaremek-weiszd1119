@@ -5,8 +5,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,7 +23,7 @@ public class Search extends StartDriver {
 		driver.navigate().to(urlSearch);
 	}
 	
-	public void writeIntoSearchField() throws IOException {
+	public void writeIntoSearchField() throws IOException, InterruptedException {
 		// A textfile sorainak számának lekérdezése ahhoz, hogy csak addig fusson le a fori (i < linesDataSourceTxt) Path path = Paths.get(fileName);
 		int linesDataSource = 0;
 		try {
@@ -33,30 +31,21 @@ public class Search extends StartDriver {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Text file long was: " + linesDataSource + " line");
 		for (int i = 0; i < linesDataSource; i++) {
 			// Sorok beolvasása
 			String inputActualLine = Files.readAllLines(Paths.get("searchSource.txt")).get(i);
 			// Sorok elküldése
 			driver.findElement(findSearchBox).sendKeys(inputActualLine, Keys.ENTER);
 			driver.findElement(findAcceptButton);
-			// "q" paraméter kiolvasása az URL-ből
-			String currentUrlSearch = driver.getCurrentUrl();
-			URL urlSearchResultGetQParameter;
-			urlSearchResultGetQParameter = new URL(currentUrlSearch);
-			String parameters = urlSearchResultGetQParameter.getQuery();
-			System.out.println("Parameters were: " + parameters);
+			Thread.sleep(5000);
 			driver.navigate().back();
 			driver.findElement(findSearchBox).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
 		}
 	}
 	
-	public String currentSearchResult() throws MalformedURLException {
-		String currentUrlSearch = driver.getCurrentUrl();
-		URL urlSearchResultGetQParameter;
-		urlSearchResultGetQParameter = new URL(currentUrlSearch);
-		String q = urlSearchResultGetQParameter.getQuery();
-		System.out.println(q);
-		return q;
+	// Azt várjuk el, hogy a keresési mező használata után kapjunk egy találati oldalt. A találati oldalon szerepel az a szó, hogy "találat", ha sikeretelen a keresés, a szó nem szerepel az oldalon.
+	public boolean currentSearchResult() {
+		boolean currentSearchFindAWord = driver.getPageSource().contains("Ergebnisse"); //Az Ergebnisse szó németül találatot jelent
+		return currentSearchFindAWord;
 	}
 }

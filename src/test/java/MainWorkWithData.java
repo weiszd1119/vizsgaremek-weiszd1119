@@ -53,10 +53,10 @@ public class MainWorkWithData {
 		contact.writeIntoContactSubject();
 		contact.writeIntoContactMessage();
 		contact.pushSubmitButton();
-		// Assertions
-		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
-		String actualUrlContact = contact.currentContactResult();
-		Assertions.assertEquals(expectedUrlContact, actualUrlContact);
+		//Assertions
+		String expectedFormMessage = "Send successful!";
+		String actualFormMessage = contact.currentContactResult();
+		Assertions.assertEquals(expectedFormMessage, actualFormMessage);
 	}
 	
 	@Test
@@ -74,10 +74,10 @@ public class MainWorkWithData {
 		contact.writeIntoContactSubjectFromTxtFile();
 		contact.writeIntoContactMessageFromTxtFile(); //A filebeolvasás üres sor esetén leáll
 		contact.pushSubmitButton();
-		// Assertions
-		String expectedUrlContact = "https://getform.io/f/4bc32c7d-2c91-4c4d-bacf-a8c1bccf1de9";
-		String actualUrlContact = contact.currentContactResult();
-		Assertions.assertEquals(expectedUrlContact, actualUrlContact);
+		//Assertions
+		String expectedFormMessage = "Send successful!";
+		String actualFormMessage = contact.currentContactResult();
+		Assertions.assertEquals(expectedFormMessage, actualFormMessage);
 	}
 	
 	@Test
@@ -155,10 +155,10 @@ public class MainWorkWithData {
 		Thread.sleep(5000);
 		search.writeIntoSearchField();
 		// Assertions
-		// Azt ellenőrizzük, hogy az URL megkapja-e a "q" paramétert a keresőmezőből
-		String expectedUrlQParameter = "";
-		String actualUrlQParameter = search.currentSearchResult();
-		Assertions.assertEquals(expectedUrlQParameter, actualUrlQParameter);
+		// Azt várjuk el, hogy a keresési mező használata után kapjunk egy találati oldalt. A találati oldalon szerepel az a szó, hogy "találat", ha sikeretelen a keresés, a szó nem szerepel az oldalon.
+		boolean expectedSearchValue = true;
+		boolean actualSearchValue = search.currentSearchResult();
+		Assertions.assertEquals(expectedSearchValue, actualSearchValue);
 	}
 	
 	@Test
@@ -218,9 +218,14 @@ public class MainWorkWithData {
 		saveImageTest.navigate();
 		Thread.sleep(5000);
 		saveImageTest.saveImage();
-		boolean expectedResultImageTest = true; // Azt vizsgáljuk, hogy a mentés után létezik-e a fájl
-		boolean actualResultImageTest = saveImageTest.checkSaveImageResult();
+		saveImageTest.saveImageSecond();
+		//Assertions
+		boolean actualResultImageTest = saveImageTest.checkSaveImageResult(); // Azt vizsgáljuk, hogy a mentés után létezik-e a fájl
 		Assertions.assertTrue(actualResultImageTest);
+		boolean actualResultImageTestSecond = saveImageTest.checkSaveImageSecondResult(); // Második mentés ellenőrzése
+		Assertions.assertTrue(actualResultImageTestSecond);
+		boolean actualResultImageTestEqual = saveImageTest.checkSavedTwoImageIsEqual(); // A két lementett kép egyezőségének ellenőrzése pixel szinten
+		Assertions.assertTrue(actualResultImageTestEqual);
 	}
 	
 	

@@ -205,9 +205,9 @@ public class MainUserManagement {
 		modifyData.writeIntoPhoneField();
 		modifyData.clickOnSaveProfileButton();
 		// Assertions
-		String expectedModifyrMessage = "Profile Edited!";
+		String expectedModifyMessage = "Profile Edited!";
 		String actualModifyMessage = modifyData.currentModifyMessageResult();
-		Assertions.assertEquals(expectedModifyrMessage, actualModifyMessage);
+		Assertions.assertEquals(expectedModifyMessage, actualModifyMessage);
 	}
 	
 	@Test
@@ -223,7 +223,9 @@ public class MainUserManagement {
 		modifyData.clickOnDeleteAccountButton();
 		modifyData.clickOnDeleteAccountSureButton();
 		// Assertions
-		// Visszatért a login oldalra, üzenet nincs
+		String expectedDeleteMessage = "Profile Deleted!";
+		String actualDeleteMessage = modifyData.currentModifyMessageResult();
+		Assertions.assertEquals(expectedDeleteMessage, actualDeleteMessage);
 	}
 	
 	@AfterEach
