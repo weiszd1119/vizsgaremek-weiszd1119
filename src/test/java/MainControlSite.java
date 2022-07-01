@@ -59,7 +59,6 @@ public class MainControlSite {
 		tags.getTagsTitle();
 		tags.clickOnTagThemes();
 		tags.getTagsTitle();
-		// Assertions
 		//Assertion: azt ellenőrizzük, hogy az utolsó lépés után a lista megegyezik-e az elvárt listával
 		List<String> expectedTagsTitlesArrayList = new ArrayList<>();
 		expectedTagsTitlesArrayList.add("Css");
@@ -102,7 +101,6 @@ public class MainControlSite {
 		links.navigateback();
 		links.clickOnLinkSixth();
 		links.getLinksTitle();
-		//Assertions
 		//Assertion: azt ellenőrizzük, hogy az utolsó lépés után a lista megegyezik-e az elvárt listával
 		List<String> expectedLinksTitlesArrayList = new ArrayList<>();
 		expectedLinksTitlesArrayList.add("hugo");

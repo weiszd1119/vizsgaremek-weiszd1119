@@ -26,4 +26,9 @@ public class AcceptContract extends StartDriver {
 		WebElement CloseButton = driver.findElement(findCloseButton);
 		CloseButton.click();
 	}
+	
+	public boolean currentContractResult() {
+		boolean currentContractVisible = driver.findElement(By.xpath("//*[@id=\"overlay\"]/div")).isDisplayed(); // True-t adna vissza, ha nem tűnne el, tehát nekünk a false érték a jó
+		return currentContractVisible;
+	}
 }

@@ -47,7 +47,9 @@ public class MainUserManagement {
 		acceptContract.navigate();
 		Thread.sleep(5000);
 		acceptContract.clickOnAcceptButton();
-		// Assertions
+		// Assertion: Azt vizsgáljuk, hogy az adatkezelési nyilatkozat eltűnt-e
+		boolean actualUrlRegister = acceptContract.currentContractResult(); // True-t adna vissza, ha nem tűnne el, tehát nekünk a false érték a jó
+		Assertions.assertFalse(actualUrlRegister);
 	}
 	
 	@Test
@@ -60,7 +62,9 @@ public class MainUserManagement {
 		acceptContract.navigate();
 		Thread.sleep(5000);
 		acceptContract.clickOnCloseButton();
-		// Assertions
+		// Assertion: Azt vizsgáljuk, hogy az adatkezelési nyilatkozat eltűnt-e
+		boolean actualUrlRegister = acceptContract.currentContractResult(); // True-t adna vissza, ha nem tűnne el, tehát nekünk a false érték a jó
+		Assertions.assertFalse(actualUrlRegister);
 	}
 	
 	@Test
@@ -116,10 +120,6 @@ public class MainUserManagement {
 			//
 			register.deleteAllFieldWithJSONFile();
 		}
-		// Assertions
-		String expectedRegisterMessage = "User registered!";
-		String actualUrlRegister = register.currentRegisterMessageResult();
-		Assertions.assertEquals(expectedRegisterMessage, actualUrlRegister);
 	}
 	
 	@Test

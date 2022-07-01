@@ -202,7 +202,7 @@ public class MainWorkWithData {
 		List list = (List) SiteFactory.Create("List", driver);
 		list.navigate();
 		Thread.sleep(5000);
-		list.currentOrderedResult();
+		//Assertions
 		String[] expectedOrderedListElements = {"First item", "Second item", "Third item"};
 		String[] actualOrderedListElements = list.getOrderedList();
 		Assertions.assertArrayEquals(expectedOrderedListElements, actualOrderedListElements);
