@@ -195,16 +195,16 @@ public class MainWorkWithData {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("List on Blonde Site")
-	@Description("List on the Blonde Site")
+	@Story("OrderedList on Blonde Site")
+	@Description("OrderedList on the Blonde Site")
 	@Severity(SeverityLevel.NORMAL)
 	public void orderedListTestOnBlondeSite() throws InterruptedException {
-		List list = (List) SiteFactory.Create("List", driver);
-		list.navigate();
+		OrderedList orderedList = (OrderedList) SiteFactory.Create("OrderedList", driver);
+		orderedList.navigate();
 		Thread.sleep(5000);
 		//Assertions
 		String[] expectedOrderedListElements = {"First item", "Second item", "Third item"};
-		String[] actualOrderedListElements = (String[]) list.getOrderedList().toArray(new String[0]);
+		String[] actualOrderedListElements = orderedList.getOrderedList();
 		Assertions.assertArrayEquals(expectedOrderedListElements, actualOrderedListElements);
 	}
 	

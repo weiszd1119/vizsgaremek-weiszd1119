@@ -27,7 +27,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
+import java.util.OrderedList;
 
 public class Tags extends StartDriver {
 	private final String urlTags = "https://lennertamas.github.io/blondesite/about/";
@@ -43,7 +43,7 @@ public class Tags extends StartDriver {
 	}
 	
 	public String[] getTagList() {
-		List<WebElement> ahrefs = driver.findElements(findAllTags);
+		OrderedList<WebElement> ahrefs = driver.findElements(findAllTags);
 		String[] aHrefList;
 		aHrefList = new String[ahrefs.size()];
 		for (int i = 0; i < ahrefs.size(); i++) {

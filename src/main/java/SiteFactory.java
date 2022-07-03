@@ -27,8 +27,8 @@ public class SiteFactory {
 				return new Tables(driver);
 			case "WebService":
 				return new WebService(driver);
-			case "List":
-				return new List(driver);
+			case "OrderedList":
+				return new OrderedList(driver);
 			case "SaveImageTest":
 				return new SaveImage(driver);
 			case "SaveText":
