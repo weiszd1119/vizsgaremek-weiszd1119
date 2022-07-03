@@ -53,10 +53,6 @@ public class Links extends StartDriver {
 		driver.findElement(findLinkSixth).click();
 	}
 	
-	public void clickOnLinkSeventh() {
-		driver.findElement(findLinkSeventh).click();
-	}
-	
 	public ArrayList<String> getLinksTitle() {
 		String linksTitleString = driver.findElement(By.xpath("//*[@id=\"repository-container-header\"]/div[1]/div/div/strong/a")).getText();
 		linksTitlesArrayList.add(linksTitleString);

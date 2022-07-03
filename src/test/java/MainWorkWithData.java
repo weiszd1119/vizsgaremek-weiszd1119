@@ -204,7 +204,7 @@ public class MainWorkWithData {
 		Thread.sleep(5000);
 		//Assertions
 		String[] expectedOrderedListElements = {"First item", "Second item", "Third item"};
-		String[] actualOrderedListElements = list.getOrderedList();
+		String[] actualOrderedListElements = (String[]) list.getOrderedList().toArray(new String[0]);
 		Assertions.assertArrayEquals(expectedOrderedListElements, actualOrderedListElements);
 	}
 	
