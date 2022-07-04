@@ -37,7 +37,7 @@ public class MainWebService {
 	@RepeatedTest(5)
 	@Epic("Blonde Site")
 	@Story("Web Service Test at Blonde Site")
-	@Description("Web Service Test at Blonde Site")
+	@Description("Running a REST test to check the connection with correct URL, if response code is 200, the connection was established")
 	@Severity(SeverityLevel.CRITICAL)
 	public void webServiceTestOkAtBlondeSite() throws InterruptedException {
 		WebService webService = (WebService) SiteFactory.Create("WebService", driver);
@@ -50,7 +50,7 @@ public class MainWebService {
 	@RepeatedTest(5)
 	@Epic("Blonde Site")
 	@Story("Web Service Test at Blonde Site")
-	@Description("Web Service Test at Blonde Site")
+	@Description("Running a REST test to check the connection with bad URL, if response code is 404, the page not found")
 	@Severity(SeverityLevel.CRITICAL)
 	public void webServiceTestNotFountAtBlondeSite() throws InterruptedException {
 		WebService webService = (WebService) SiteFactory.Create("WebService", driver);

@@ -41,7 +41,7 @@ public class MainWorkWithData {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Fill Contact on Blonde Site")
-	@Description("Fill Contact the Blonde Site")
+	@Description("Fill all contact field from defined strings, and send Submit button")
 	@Severity(SeverityLevel.NORMAL)
 	public void fillContactOnBlondeSite() throws InterruptedException {
 		Contact contact = (Contact) SiteFactory.Create("Contact", driver);
@@ -62,7 +62,7 @@ public class MainWorkWithData {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Fill Contact on Blonde Site")
-	@Description("Fill Contact the Blonde Site")
+	@Description("Fill all contact field from TXT file, and send Submit button")
 	@Severity(SeverityLevel.NORMAL)
 	public void fillContactFromTxtFileOnBlondeSite() throws InterruptedException, IOException {
 		Contact contact = (Contact) SiteFactory.Create("Contact", driver);
@@ -83,7 +83,7 @@ public class MainWorkWithData {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Fill Contact on Blonde Site")
-	@Description("Fill Contact the Blonde Site")
+	@Description("Fill all contact field from JSON file, and send Submit button")
 	@Severity(SeverityLevel.NORMAL)
 	public void fillContactFromJSONFileOnBlondeSite() throws InterruptedException, IOException, ParseException {
 		Contact contact = (Contact) SiteFactory.Create("Contact", driver);
@@ -119,7 +119,7 @@ public class MainWorkWithData {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Delete inputs from Contact on Blonde Site")
-	@Description("Delete inputs from Fill Contact the Blonde Site")
+	@Description("Fill and delete contact fileds and check warning message (warning message is 'Please fill field!', which is an built-in message in Chrome browser (test data is 'Fülle dieses Feld aus', because my system language is deutsch")
 	@Severity(SeverityLevel.NORMAL)
 	public void deleteInputFromContactOnBlondeSite() throws InterruptedException {
 		Contact contact = (Contact) SiteFactory.Create("Contact", driver);
@@ -147,7 +147,7 @@ public class MainWorkWithData {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Search on Blonde Site")
-	@Description("Search some expressions the Blonde Site")
+	@Description("Search with defined strings and check result")
 	@Severity(SeverityLevel.NORMAL)
 	public void searchOnBlondeSite() throws InterruptedException, IOException {
 		Search search = (Search) SiteFactory.Create("Search", driver);
@@ -163,8 +163,8 @@ public class MainWorkWithData {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("Search on Blonde Site")
-	@Description("Search some expressions the Blonde Site")
+	@Story("Tables on Blonde Site")
+	@Description("Check first table's Name column (array)")
 	@Severity(SeverityLevel.NORMAL)
 	public void tablesNameTestOnBlondeSite() throws InterruptedException {
 		Tables tables = (Tables) SiteFactory.Create("Tables", driver);
@@ -179,8 +179,8 @@ public class MainWorkWithData {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("Search on Blonde Site")
-	@Description("Search some expressions the Blonde Site")
+	@Story("Tables on Blonde Site")
+	@Description("Check first table's Age column (array)")
 	@Severity(SeverityLevel.NORMAL)
 	public void tablesAgeTestOnBlondeSite() throws InterruptedException {
 		Tables tables = (Tables) SiteFactory.Create("Tables", driver);
@@ -195,8 +195,8 @@ public class MainWorkWithData {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("OrderedList on Blonde Site")
-	@Description("OrderedList on the Blonde Site")
+	@Story("Ordered List on Blonde Site")
+	@Description("Read <li> elements from <ol> ordered list, and check the result")
 	@Severity(SeverityLevel.NORMAL)
 	public void orderedListTestOnBlondeSite() throws InterruptedException {
 		OrderedList orderedList = (OrderedList) SiteFactory.Create("OrderedList", driver);
@@ -211,7 +211,7 @@ public class MainWorkWithData {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Save Image from Blonde Site")
-	@Description("Saving Image from the Blonde Site")
+	@Description("Save an image from subpage")
 	@Severity(SeverityLevel.NORMAL)
 	public void savingImageFromBlondeSite() throws InterruptedException, IOException {
 		SaveImage saveImageTest = (SaveImage) SiteFactory.Create("SaveImageTest", driver);

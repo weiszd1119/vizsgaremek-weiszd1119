@@ -37,7 +37,7 @@ public class MainControlSite {
 	@Test
 	@Epic("Tags")
 	@Story("Tags on Blonde Site")
-	@Description("Tags some expressions the Blonde Site")
+	@Description("Click on all tags  at subpage and check titles")
 	@Severity(SeverityLevel.NORMAL)
 	public void tagsOnBlondeSite() throws InterruptedException {
 		Tags tags = (Tags) SiteFactory.Create("Tags", driver);
@@ -77,7 +77,7 @@ public class MainControlSite {
 	@Test
 	@Epic("Math Typesetting")
 	@Story("Test all external links")
-	@Description("Test all external links")
+	@Description("Click on all links at subpage and check titles")
 	@Severity(SeverityLevel.NORMAL)
 	public void linksOnBlondeSite() throws InterruptedException {
 		Links links = (Links) SiteFactory.Create("Links", driver);
@@ -117,7 +117,7 @@ public class MainControlSite {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Pages on Blonde Site")
-	@Description("Pages the Blonde Site")
+	@Description("Click on next page buttons  at subpage and check titles")
 	@Severity(SeverityLevel.NORMAL)
 	public void pagesOnBlondeSite() throws InterruptedException {
 		Pages pages = (Pages) SiteFactory.Create("Pages", driver);
@@ -149,7 +149,7 @@ public class MainControlSite {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Css on Blonde Site")
-	@Description("Css on the Blonde Site")
+	@Description("Click on 'moon' button and check the result (button and class name changing)")
 	@Severity(SeverityLevel.NORMAL)
 	public void cssStyleOnBlondeSite() throws InterruptedException {
 		CssStyle cssStyle = (CssStyle) SiteFactory.Create("CssStyle", driver);
@@ -166,7 +166,7 @@ public class MainControlSite {
 	@AfterEach
 	@Epic("Blonde Site")
 	@Story("Make Screenshot")
-	@Description("Make Screenshot After Each Test")
+	@Description("Make a screenshot after each test at an important moment and attach it to Allure Report (generated Allure Report on GitHub is empty")
 	@Severity(SeverityLevel.CRITICAL)
 	public void makeScreenshot() {
 		Allure.addAttachment("Screenshot of Tested Page", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));

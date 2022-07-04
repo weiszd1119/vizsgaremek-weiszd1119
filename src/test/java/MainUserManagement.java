@@ -39,8 +39,8 @@ public class MainUserManagement {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("Register to Blonde Site")
-	@Description("Navigation to the Register page and register to the site")
+	@Story("Accept Contract on Blonde Site")
+	@Description("Accept the 'Terms and Conditions' popup window")
 	@Severity(SeverityLevel.CRITICAL)
 	public void acceptContractOnBlondeSite() throws InterruptedException {
 		AcceptContract acceptContract = (AcceptContract) SiteFactory.Create("AcceptContract", driver);
@@ -55,7 +55,7 @@ public class MainUserManagement {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Register to Blonde Site")
-	@Description("Navigation to the Register page and register to the site")
+	@Description("Close the Terms and Conditions popup window")
 	@Severity(SeverityLevel.CRITICAL)
 	public void closeContractOnBlondeSite() throws InterruptedException {
 		AcceptContract acceptContract = (AcceptContract) SiteFactory.Create("AcceptContract", driver);
@@ -70,7 +70,7 @@ public class MainUserManagement {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Register to Blonde Site")
-	@Description("Navigation to the Register page and register to the site")
+	@Description("Register one user and check appearing message after register")
 	@Severity(SeverityLevel.CRITICAL)
 	public void registerToBlondeSite() throws InterruptedException {
 		acceptContractOnBlondeSite();
@@ -90,8 +90,8 @@ public class MainUserManagement {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("LoginLogout to Blonde Site")
-	@Description("Navigation to the login page and login to the site")
+	@Story("Register to Blonde Site")
+	@Description("Register five users and check appearing message after every register")
 	@Severity(SeverityLevel.CRITICAL)
 	public void registerFromJSONFileToBlondeSite() throws InterruptedException, IOException, ParseException {
 		acceptContractOnBlondeSite();
@@ -124,8 +124,8 @@ public class MainUserManagement {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("LoginLogout to Blonde Site")
-	@Description("Navigation to the login page and login to the site")
+	@Story("Login to Blonde Site")
+	@Description("Login with one user and check result")
 	@Severity(SeverityLevel.CRITICAL)
 	public void loginToBlondeSite() throws InterruptedException {
 		registerToBlondeSite();
@@ -144,8 +144,8 @@ public class MainUserManagement {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("LoginLogout to Blonde Site")
-	@Description("Navigation to the login page and login to the site")
+	@Story("Login to Blonde Site")
+	@Description("Login with five users and check result")
 	@Severity(SeverityLevel.CRITICAL)
 	public void loginFromJSONFileToBlondeSite() throws InterruptedException, IOException, ParseException {
 		registerFromJSONFileToBlondeSite();
@@ -177,7 +177,7 @@ public class MainUserManagement {
 	@Test
 	@Epic("Blonde Site")
 	@Story("LoginLogout to Blonde Site")
-	@Description("Navigation to the login page and login to the site")
+	@Description("Logout from site and check result")
 	@Severity(SeverityLevel.CRITICAL)
 	public void logoutFromBlondeSite() throws InterruptedException {
 		loginToBlondeSite();
@@ -192,8 +192,8 @@ public class MainUserManagement {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("Save Image from Blonde Site")
-	@Description("Saving Image from the Blonde Site")
+	@Story("Modify data on Blonde Site")
+	@Description("Modiiy profile data and check result")
 	@Severity(SeverityLevel.NORMAL)
 	public void modifyDataOnBlondeSite() throws InterruptedException {
 		loginToBlondeSite();
@@ -212,8 +212,8 @@ public class MainUserManagement {
 	
 	@Test
 	@Epic("Blonde Site")
-	@Story("Save Image from Blonde Site")
-	@Description("Saving Image from the Blonde Site")
+	@Story("Delete account from Blonde Site")
+	@Description("Delete account data and check result")
 	@Severity(SeverityLevel.NORMAL)
 	public void deleteAccountFromBlondeSite() throws InterruptedException {
 		loginToBlondeSite();
