@@ -26,7 +26,7 @@ ___
     |
     <a href="https://github.com/weiszd1119/vizsgaremek-weiszd1119">Code</a>
     |
-    <a href="https://weiszd1119.github.io/vizsgaremek-weiszd1119/54/">Allure report</a>
+    <a href="https://weiszd1119.github.io/vizsgaremek-weiszd1119">Allure report</a>
   </p>
 </div>
 <details>
@@ -60,12 +60,12 @@ ___
 | Data(s) deleting                                  | [ModifyData](https://lennertamas.github.io/blondesite/)                                                                                                                                   | MainWorkWithDataTest                                           |
 | Save data from the site                           | [SaveImage](https://lennertamas.github.io/blondesite/post/image-test/), [SaveText](https://lennertamas.github.io/blondesite/post/math-typesetting/)                                       | MainWorkWithDataTest                                           |
 | Logout                                            | [LoginLogout](https://lennertamas.github.io/blondesite/)                                                                                                                                  | MainUserManagementTest                                         |
-| ------------------------------------------------- | -----------------------------------------------                                                                                                                                           | --------------------------------------------------------       |
+| ----------------------------- | -----------------------------                                                                                                                                           | -----------------------------       |
 | Web connection (REST)                             | [WebService](https://lennertamas.github.io/blondesite/)                                                                                                                                   | MainWebServiceTest                                             |
 | Page style options (light/dark)                   | [CssStyle](https://lennertamas.github.io/blondesite/about/)                                                                                                                               | MainControlSiteTest                                            |
 | Check links to external sites                     | [Links](https://lennertamas.github.io/blondesite/about/)                                                                                                                                  | MainControlSiteTest                                            |
 | Checking the operation of tags                    | [Tags](https://lennertamas.github.io/blondesite/about/)                                                                                                                                   | MainControlSiteTest                                            |
-| ------------------------------------------------- | ----------------------------------------                                                                                                                                                  | --------------------------------------------------------       |
+| ----------------------------- | -----------------------------                                                                                                                                                  | -----------------------------       |
 | Start the browser's driver                        | StartDriver                                                                                                                                                                               | N/A                                                            |
 | SiteFactory class (Page Object Modell)            | SiteFactory                                                                                                                                                                               | N/A                                                            |
 
@@ -81,7 +81,7 @@ ___
 
 ## Authors
 
-* The test items were created by [WEISZ, Dávid AKA weiszd1119](https://github.com/weiszd1119), participant of the Codecool Test Automation course between 11/04/2022 - 24/06/2022.
+* The test items were created by [Weisz, Dávid aka weiszd1119](https://github.com/weiszd1119), participant of the Codecool Test Automation course between 11/04/2022 - 24/06/2022.
 * The examination papers and thi documentation is available on [GitHub](https://github.com/weiszd1119/vizsgaremek-weiszd1119).
 </div>
 
