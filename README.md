@@ -146,6 +146,6 @@ As well as my family and friends who have accompanied me from the beginning:
 </div>
 ___
 
-WEISZ, Dávid
+<span style="font-variant:small-caps">Weisz</span>, Dávid
 
 Kóka, 3/7/2022

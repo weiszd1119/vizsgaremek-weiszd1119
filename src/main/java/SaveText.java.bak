@@ -23,7 +23,7 @@ public class SaveText extends StartDriver {
 		
 		String stringOfTextToFile = driver.findElement(textToFile).getText();
 		
-		File file = new File("saveTextToFile" + ".txt");
+		File file = new File("saveTextFile" + ".txt");
 		{
 			FileWriter fw;
 			try {

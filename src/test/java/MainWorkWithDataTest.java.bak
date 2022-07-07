@@ -241,7 +241,7 @@ public class MainWorkWithDataTest {
 		saveText.saveTextToTXTFile();
 		//Reading from file.
 		//Create Object of java FileReader and BufferedReader class.
-		String savedText = "saveTextToFile.txt";
+		String savedText = "saveTextFile.txt";
 		FileReader fileReader = new FileReader(savedText);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		String contentOfTextFile = "";
