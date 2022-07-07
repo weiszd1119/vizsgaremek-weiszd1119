@@ -149,3 +149,5 @@ ___
 <span style="font-variant:small-caps">Weisz</span>, Dávid
 
 Kóka, 3/7/2022
+
+Note: saveTextFromBlondeSite() has already created the file in a previous run, which is why the exported text is listed twice and why we get AssertionError.
