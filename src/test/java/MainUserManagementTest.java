@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @Tag("usermanagement")
-public class MainUserManagement {
+public class MainUserManagementTest {
 	
 	WebDriver driver;
 	

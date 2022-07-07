@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @Tag("workWithData")
-public class MainWorkWithData {
+public class MainWorkWithDataTest {
 	
 	WebDriver driver;
 	
@@ -119,7 +119,7 @@ public class MainWorkWithData {
 	@Test
 	@Epic("Blonde Site")
 	@Story("Delete inputs from Contact on Blonde Site")
-	@Description("Fill and delete contact fileds and check warning message (warning message is 'Please fill field!', which is an built-in message in Chrome browser (test data is 'Fülle dieses Feld aus', because my system language is deutsch")
+	@Description("Fill and delete contact fields and check warning message")
 	@Severity(SeverityLevel.NORMAL)
 	public void deleteInputFromContactOnBlondeSite() throws InterruptedException {
 		Contact contact = (Contact) SiteFactory.Create("Contact", driver);
@@ -139,7 +139,7 @@ public class MainWorkWithData {
 		// Figyelmeztető szöveg keresése
 		contact.currentWarningMessageResult();
 		// Assertions
-		String expectedWarningMessage = "Fülle dieses Feld aus.";
+		String expectedWarningMessage = "Please fill out this field.";
 		String actualWarningMessage = contact.currentWarningMessageResult();
 		Assertions.assertEquals(expectedWarningMessage, actualWarningMessage);
 	}

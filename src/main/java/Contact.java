@@ -142,7 +142,7 @@ public class Contact extends StartDriver {
 		return currentFormMessage;
 	}
 	
-	// Fülle dieses Feld aus keresése
+	
 	public String currentWarningMessageResult() {
 		String currentWarningMessage = driver.findElement(By.name("name")).getAttribute("validationMessage");
 		return currentWarningMessage;

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Tag("controls")
-public class MainControlSite {
+public class MainControlSiteTest {
 	
 	WebDriver driver;
 	

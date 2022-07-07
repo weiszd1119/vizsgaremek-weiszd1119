@@ -14,7 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
 
 @Tag("webservice")
-public class MainWebService {
+public class MainWebServiceTest {
 	WebDriver driver;
 	
 	@BeforeEach
