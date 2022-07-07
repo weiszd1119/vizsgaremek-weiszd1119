@@ -13,8 +13,6 @@ public class Search extends StartDriver {
 	private final String urlSearch = "https://lennertamas.github.io/blondesite/about/";
 	private final By findSearchBox = By.name("q");
 	
-	//A keresés után felugrik egy Google-s adatkezelő nyilatkozat
-	
 	public Search(WebDriver startdriver) {
 		super(startdriver);
 	}

@@ -141,8 +141,6 @@ public class Contact extends StartDriver {
 		String currentFormMessage = driver.findElement(formMessage).getText();
 		return currentFormMessage;
 	}
-	
-	
 	public String currentWarningMessageResult() {
 		String currentWarningMessage = driver.findElement(By.name("name")).getAttribute("validationMessage");
 		return currentWarningMessage;
