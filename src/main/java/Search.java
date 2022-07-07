@@ -13,7 +13,7 @@ public class Search extends StartDriver {
 	private final String urlSearch = "https://lennertamas.github.io/blondesite/about/";
 	private final By findSearchBox = By.name("q");
 	
-	private final By findAcceptButton = By.id("L2AGLb"); //A keresés után felugrik egy Google-s adatkezelő nyilatkozat
+	//A keresés után felugrik egy Google-s adatkezelő nyilatkozat
 	
 	public Search(WebDriver startdriver) {
 		super(startdriver);
@@ -36,7 +36,6 @@ public class Search extends StartDriver {
 			String inputActualLine = Files.readAllLines(Paths.get("searchSource.txt")).get(i);
 			// Sorok elküldése
 			driver.findElement(findSearchBox).sendKeys(inputActualLine, Keys.ENTER);
-			driver.findElement(findAcceptButton);
 			Thread.sleep(5000);
 			driver.navigate().back();
 			driver.findElement(findSearchBox).sendKeys(Keys.CONTROL, "a", Keys.DELETE);
@@ -45,7 +44,7 @@ public class Search extends StartDriver {
 	
 	// Azt várjuk el, hogy a keresési mező használata után kapjunk egy találati oldalt. A találati oldalon szerepel az a szó, hogy "találat", ha sikeretelen a keresés, a szó nem szerepel az oldalon.
 	public boolean currentSearchResult() {
-		boolean currentSearchFindAWord = driver.getPageSource().contains("Ergebnisse"); //Az Ergebnisse szó németül találatot jelent
+		boolean currentSearchFindAWord = driver.getPageSource().contains("Found"); //Az Ergebnisse szó németül találatot jelent
 		return currentSearchFindAWord;
 	}
 }
